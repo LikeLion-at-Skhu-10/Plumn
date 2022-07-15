@@ -4,11 +4,8 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'index.html')
 
-def base1(request):
-    return render(request, 'base1.html')
-
-def base2(request):
-    return render(request, 'base2.html')
+def base(request):
+    return render(request, 'base.html')
 
 def notice(request):
     return render(request, 'notice.html')

@@ -22,8 +22,7 @@ import posts.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', posts.views.index, name='index'),
-    path('base1/', posts.views.base1, name='base1'),
-    path('base2/', posts.views.base2, name='base2'),
+    path('base', posts.views.base, name='bas'),
     path('notice/', posts.views.notice, name='notice'),
     path('find_id/', posts.views.find_id, name='find_id'),
     path('find_pw/', posts.views.find_pw, name='find_pw'),
