@@ -1,1 +1,27 @@
 <!-- 메인 페이지 -->
+{% extends 'base.html' %}
+{% load static %}
+<head>
+  
+  {% block title %} 글이 맺히는 곳, Plumn{% endblock %}
+  {% block head %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  {% endblock %}
+</head>
+
+{% block content %}
+<div id="slidebanner">
+  <ul class="slides">
+    <li><img src="{% static 'img/banner1.png' %}"></li>
+    <li><img src="{% static 'img/test2.png' %}"></li>
+    <li><img src="{% static 'img/test3.png' %}"></li>
+  </ul>
+  <p class="slide-anch">
+    <span class="prev"><i class="fa-solid fa-angle-left" style="text-decoration: none; color: white; font-size: 30pt;"></i></span>
+    <span class="next"><i class="fa-solid fa-angle-right" style="text-decoration: none; color: white; font-size: 30pt;"></i></span>
+  </p>
+  <ul class="slide-pagination"></ul>
+  
+</div>
+<script src="{% static 'js/slide.js' %}"></script>
+{% endblock %}

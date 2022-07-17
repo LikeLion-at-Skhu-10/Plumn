@@ -1,0 +1,31 @@
+#slidebanner {
+  width: 80vw;
+  height: 70vh;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.slides {
+  position: absolute;
+  display: flex;
+  left: 0;
+  top: 0;
+}
+
+.slides li:not(:last-child){
+  float: left;
+}
+
+.slides img {
+  width: 80vw;
+  height: 70vh;
+}
+
+.slide-anch {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}

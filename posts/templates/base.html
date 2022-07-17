@@ -1,1 +1,57 @@
-<!-- 메인 페이지 base -->
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset = "UTF-8">
+  <title>{% block title %} base {% endblock %}</title>
+  <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <link href="{% static 'css/test.css' %}" rel="stylesheet">
+  {% block head %}
+  {% endblock %}
+</head>
+<body>
+  <!-- 헤더(네브) -->
+  <div id="header">
+    <div class="nav">
+      <!-- 메뉴바, index 로고  -->
+      <div class="nav1">
+        <label for="checkbox" class="hbmenu">
+          <input type="checkbox" id="checkbox">
+          <span class="line line-main"></span>
+          <span class="line line-split"></span>
+        </label>
+        <h1 class="index"><a href="{% url 'index' %}">Plumn</a></h1>
+      </div>
+      <!-- 검색, 글쓰기, 마이페이지 -->
+      <div class="nav2">
+        <a href="#"><i class="fa-solid fa-magnifying-glass" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+        <a href="{% url 'create' %}"><i class="fa-solid fa-pencil" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+        <a href="{% url 'mypage' %}"><i class="fa-solid fa-user" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+      </div>
+    </div>
+    <hr class="hrline">
+  </div>
+  <div id="container">
+    <!-- 아래부터는 상속제외 -->
+    {% block content %}
+    {% endblock %}
+  </div>
+  <!-- 푸터 -->
+  <div id="footer">
+    {% block footer %}
+    <div class="footer_box">
+      <div class="footer_first">
+        <h2>글이 맺히는 곳, Plumn</h2>
+        <br>
+        <p>김은혜, 전천우, 정재완, 최재훈</p> 
+      </div>
+      <div class="footer_second">
+        <p>ⓒ Copyright Plumn. ALL Right Reserved.</p>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</body> 
+</html>

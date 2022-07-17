@@ -1,0 +1,178 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+  v2.0 | 20110126
+  License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ================================================================================== */
+/* @font-face kit by Fonts2u (https://fonts2u.com) */ 
+@font-face {
+  font-family:"Austria";
+  src:
+  url("Austria_Script.eot?") format("eot"),
+  url("Austria_Script.woff") format("woff"),
+  url("Austria_Script.ttf") format("truetype"),
+  url("Austria_Script.svg#Austria") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+/* 네비게이션 바 */
+.nav {
+  display: flex;
+  margin: 0 15px 0 15px;
+  justify-content: space-between;
+}
+.nav h1 {
+  display: inline-block;
+  margin: 15px 0 0 5px;
+  font-family: "Austria";
+  font-size: 20pt;
+}
+.nav1 {
+  position: relative;
+  float: left;
+  margin: 10px 0 10px 0;
+}
+.index > a:link, .index > a:visited, .index > a:active {
+  text-decoration: none;
+  color: black;
+}
+.nav2 {
+  display: flex;
+  width: 10%;
+  float: right;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav2 i {
+  position: relative;
+}
+.nav2 a:hover {
+  background-color: #eee;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: box;
+}
+
+/* 메뉴바 */
+#checkbox {
+  display: none;
+}
+.hbmenu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+  float: left;
+}
+.line {
+  position: absolute;
+  width: 20px;
+}
+.line-main::before, .line-main::after,
+.line-split::before, .line-split::after {
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: 2px;
+  background-color: black;
+  transition: transform .5s;
+}
+.line-main::before{
+  transform: translateY(-7px);
+}
+.line-main::after {
+  transform: translateY(7px);
+}
+.line-split::before, .line-split::after {
+  width: 10px;
+  transition: transform .5s, opacity .5s;
+} 
+.line-split::after {
+  transform: translateX(10px);
+}
+#checkbox:checked~.line-main::before{
+  transform: rotate(45deg);
+}
+#checkbox:checked~.line-main::after{
+  transform: rotate(-45deg);
+}
+#checkbox:checked~.line-split::before{
+  opacity: 0;
+}
+#checkbox:checked~.line-split::after{
+  opacity: 0
+}
+
+/* hr */
+.hrline {
+  margin-top: 10px;
+  border: 1px solid #eee;
+}
+
+/* footer */
+#footer {
+  background-color: black;
+  width: 100%;
+  position: relative;
+  padding: 3em 0 5em 0;
+  height: 20vh;
+}
+.footer_box {
+  display: flex;
+  justify-content: space-around;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 10em 0 10em;
+}
+.footer_box h2, .footer_box p {
+  color: white;
+}
