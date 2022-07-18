@@ -1,1 +1,31 @@
 from django.urls import path
+from posts import views
+
+urlpatterns=[
+    path('base', views.base, name='bas'),
+    path('notice/', views.notice, name='notice'),
+    path('find_id/', views.find_id, name='find_id'),
+    path('find_pw/', views.find_pw, name='find_pw'),
+    path('login/', views.login, name='login'),
+    path('register/', views.register, name='register'),
+    path('create/', views.create, name='create'),
+    path('donate/', views.donate, name='donate'),
+    path('donatesuc/', views.donatesuc, name='donatesuc'),
+    path('feedback/', views.feedback, name='feedback'),
+    path('feedbacksuc/', views.feedbacksuc, name='feedbacksuc'),
+    path('list/', views.list, name='list'),
+    path('read/', views.read, name='read'),
+    path('readreport/', views.readreport, name='readreport'),
+    path('update/', views.update, name='update'),
+    path('libr/', views.like, name='like'),
+    path('pay/', views.pay, name='pay'),
+    path('paysuc/', views.paysuc, name='paysuc'),
+    path('scrap/', views.scrap, name='scrap'),
+    path('difuser/', views.difuser, name='difuser'),
+    path('editprofile/', views.editprofile, name='editprofile'),
+    path('follower/', views.follower, name='follower'),
+    path('following/', views.following, name='following'),
+    path('mypage/', views.mypage, name='mypage'),
+    path('plumusing/', views.plumusing, name='plumusing'),
+    path('setting/', views.setting, name='setting'),
+]
