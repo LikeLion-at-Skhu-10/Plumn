@@ -1,0 +1,504 @@
+/**************************************************/
+body {
+  letter-spacing: 1px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+img {
+  width: 1000px;
+}
+
+/* 아이디 박스 */
+.id_wrap {
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.id_wrap input {
+  width: 120%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.id_wrap input:focus {
+  border: 1px solid #fc9595;
+}
+
+/* 비밀번호 박스 */
+.pw_wrap {
+  margin-top: 20px;
+  width: 80%;
+}
+
+.pw_wrap input {
+  width: 120%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.pw_wrap input:focus {
+  border: 1px solid #fc9595;
+}
+
+/* 로그인 부수 요소 */
+.login_etc {
+  padding: 10px 0px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: lighter;
+}
+
+.login_wrap {
+  display: flex;
+  padding: 10px 0px 25px;
+  text-align: center;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+ul {
+  display: block;
+}
+
+.login_wrap li {
+  position: relative;
+  display: inline-block;
+}
+
+.login_wrap .find_text {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 30px;
+  padding-left: 5px;
+  text-decoration: none;
+  color: gray;
+}
+
+.find_text:hover {
+  color: #fc9595;
+}
+
+li + li::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 1px;
+  width: 1px;
+  height: 12px;
+  border-radius: 3px;
+  background-color: lightgray;
+}
+
+/* .login {
+  display: flex;
+} */
+
+/* 로그인 버튼 */
+button {
+  margin: 20px;
+}
+
+.btn {
+  margin-left: 180px;
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-weight: 500;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 50%;
+}
+
+.btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* #FA777C */
+
+/**************************************************/
+/*register.html 회원가입 부분 */
+
+.register_wrap {
+  text-align: center;
+}
+
+.register_text {
+  margin: 0 auto;
+  width: 500px;
+}
+
+.text_wrap > h4 {
+  color: #fc9595;
+  text-align: left;
+}
+
+.text_wrap {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+/* 입력창 (공통) */
+.text_wrap input {
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.text_wrap input:focus {
+  border: 1px solid #fc9595;
+}
+
+.certification {
+  display: flex;
+  align-items: flex-start;
+}
+
+.certify_btn {
+  margin-top: -10px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 300px;
+  margin-right: -40px;
+}
+
+.certify_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.certify_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+/* 회원가입, 돌아가기 버튼 */
+
+.register_btn {
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 200px;
+}
+
+.register_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.register_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+.cancel_btn {
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 200px;
+}
+
+.cancel_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.cancel_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+/**************************************************/
+
+/* 아이디 찾기 창 */
+.tel_find {
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.tel_find input {
+  width: 107%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.tel_find input:focus {
+  border: 1px solid #fc9595;
+}
+
+/* 아이디 찾기 버튼 */
+
+.find_id_btn {
+  margin-left: 200px;
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 200px;
+}
+
+.find_id_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.find_id_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+/**************************************************/
+
+/* 아이디 찾기 성공 창*/
+.listId {
+  border: 1px solid lightgray;
+  color: black;
+  padding: 30px 30px;
+  border-radius: 10px;
+}
+
+.id_find_success {
+  display: flex;
+  flex-direction: column;
+}
+
+.success_id_btn {
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 200px;
+}
+.success_id_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+.success_id_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+/**************************************************/
+
+/* 비밀번호 찾기 창 */
+
+.text_wrap1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* 입력창 (공통) */
+.text_wrap1 input {
+  width: 80%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.text_wrap1 input:focus {
+  border: 1px solid #fc9595;
+}
+.tel_certify {
+  display: flex;
+  align-content: flex-start;
+}
+
+.tel_certify_btn {
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 250px;
+  margin-top: -10px;
+}
+
+.tel_certify_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.tel_certify_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+.find_pw_btn {
+  margin: 0 auto;
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 480px;
+}
+
+.find_pw_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.find_pw_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+.hr_register {
+  border: none;
+  border-top: 1px solid lightgray;
+  overflow: visible;
+  text-align: center;
+  margin-top: 24px;
+  height: 16px;
+}
+
+.hr_register::after {
+  content: "또는";
+  position: relative;
+  top: -15px;
+  background-color: white;
+  padding: 0 10px;
+  color: mediumturquoise;
+  font-size: 16px;
+}
+
+p {
+  text-align: center;
+  color: mediumturquoise;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 전체 hr 고정 */
+hr {
+  border: none;
+  border-top: 1px solid lightgray;
+}
+
+/**************************************************/
+
+/* 비밀번호 변경 창 */
+.new_pw input {
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.new_pw input:focus {
+  border: 1px solid #fc9595;
+}
+
+.new_pw {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.pw_change_font {
+  color: #fc9595;
+  font-size: 8px;
+}
+
+.change_pw_btn {
+  margin-left: 50px;
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 200;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 300px;
+}
+
+.change_pw_btn_plumn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.change_pw_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+/* 입력창 (공통) */
+
+/**************************************************/
+
+/* 아이디 찾기 창과 같은 클래스 사용 */

@@ -7,7 +7,6 @@
   <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
-  <link href="{% static 'css/test.css' %}" rel="stylesheet">
   {% block head %}
   {% endblock %}
 </head>
@@ -39,8 +38,9 @@
     {% endblock %}
   </div>
   <!-- 푸터 -->
+  {% block footer %}
   <div id="footer">
-    {% block footer %}
+    
     <div class="footer_box">
       <div class="footer_first">
         <h2>글이 맺히는 곳, Plumn</h2>

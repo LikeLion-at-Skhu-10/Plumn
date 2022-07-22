@@ -1,0 +1,54 @@
+<!-- 비밀번호 찾기 성공창 -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <title>비밀번호 변경 페이지</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body>
+    <div>
+      <div class="container">
+        <a href="{% url 'index' %}">
+          <img class="picture" src="{% static 'img/plumn.png' %}"
+        /></a>
+        <div class="change_pw">
+          <h4>비밀번호 재설정</h4>
+          <div class="new_pw">
+            <input type="password" name="" id="" placeholder="비밀번호 입력" />
+            <p class="pw_change_font">
+              비밀번호는 10자리 이상(영문자, 숫자, 특수문자 각 1개 포함)
+            </p>
+          </div>
+          <h4>비밀번호 재입력</h4>
+          <div class="new_pw">
+            <input
+              type="password"
+              name=""
+              id=""
+              placeholder="비밀번호 재입력"
+            />
+          </div>
+
+          <div class="new_pw">
+            <button
+              onclick="certifyAlert()"
+              class="change_pw_btn change_pw_btn_plumn"
+              type="button"
+            >
+              비밀번호 변경
+            </button>
+            <script>
+              function certifyAlert() {
+                alert("비밀번호가 변경되었습니다.");
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </body>
+</html>

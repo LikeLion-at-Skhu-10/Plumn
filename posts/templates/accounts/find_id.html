@@ -1,1 +1,37 @@
 <!-- 아이디 찾기 -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <title>아이디 찾기창</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+
+  <body>
+    <div>
+      <div class="container">
+        <a href="{% url 'index' %}">
+          <img class="picture" src="{% static 'img/plumn.png' %}"
+        /></a>
+        <div>
+          <div class="tel_find">
+            <h4>전화번호를 입력하세요 !</h4>
+            <input type="tel" name="" id="" placeholder="000-0000-0000" />
+          </div>
+
+          <div class="find_id">
+            <a href="{% url 'find_id_success' %}">
+              <button class="find_id_btn find_id_btn_plumn" type="button">
+                아이디 찾기
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="hr_register"/>
+      <a href="{% url 'register' %}"> <p>계정 생성</p></a>
+    </div>
+  </body>
+</html>
