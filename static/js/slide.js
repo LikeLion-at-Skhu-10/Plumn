@@ -8,6 +8,7 @@ const next = document.querySelector('.next');
 const slideWidth = 80;
 makeClone();
 initfunction(); // 슬라이드 넓이 및 위치값 초기화 함수
+autoSlide();
 
 function makeClone(){
     let cloneSlide_first = slideimg[0].cloneNode(true);
@@ -21,36 +22,60 @@ function initfunction() {
     slides.style.left = -(slideWidth) + 'vw';
 }
 
+function autoSlide() { //자동슬라이드 코드
+    setInterval(function () {
+        if (index <= slideCount -1){
+            slides.style.left = -(index + 2) * (slideWidth) + 'vw';
+            slides.style.transition = `${0.5}s ease-out`;
+        }
+        if (index === slideCount - 1) {
+            setTimeout(function () {
+                slides.style.left = -(slideWidth) + 'vw';
+                slides.style.transition = `${0}s ease-out`;
+            }, 500);
+            index = -1;
+        }
+        index += 1;
+    }, 4000);
+}
+
+let timer
 next.addEventListener('click', function() { 
-    
-    if (index <= slideCount -1){
-        console.log(index, slideWidth)
-        slides.style.left = - (index + 2) * (slideWidth) + 'vw';
-        slides.style.transition = `${0}s ease-out`;
+    if(!timer){
+        timer = setTimeout(() => {
+            if (index <= slideCount -1){
+                slides.style.left = - (index + 2) * (slideWidth) + 'vw';
+                slides.style.transition = `${0.5}s ease-out`;
+            }
+            if (index === slideCount - 1){ //마지막 슬라이드다.
+                setTimeout(function() {
+                    slides.style.left = -(slideWidth) + 'vw';
+                    slides.style.transition = `${0}s ease-out`;
+                }, 500);
+                index = -1;
+            }
+            index += 1;
+            timer = null;
+        }, 600);
     }
-    if (index === slideCount - 1){ //마지막 슬라이드다.
-        console.log("마지막 슬라이드")
-        setTimeout(function() {
-            slides.style.left = -(slideWidth) + 'vw';
-            slides.style.transition = `${0}s ease-out`;
-        }, 500);
-        index = -1;
-    }
-    index += 1;
-    
 });
 
 prev.addEventListener('click', function(){
-    if (index >=0 ){
-        slides.style.left = - index * (slideWidth) + 'vw';
-        slides.style.transition = `${0}s ease-out`;
+    if(!timer){
+        timer = setTimeout(() => {
+            if (index >=0 ){
+                slides.style.left = - index * (slideWidth) + 'vw';
+                slides.style.transition = `${0.5}s ease-out`;
+            }
+            if (index === 0){
+                setTimeout(function() {
+                    slides.style.left = -slideCount * (slideWidth) + 'vw';
+                    slides.style.transition = `${0}s ease-out`;
+                }, 500);
+                index = slideCount;
+            }
+            index -= 1;
+            timer = null;
+        }, 600);
     }
-    if (index === 0){
-        setTimeout(function() {
-            slides.style.left = -slideCount * (slideWidth) + 'vw';
-            slides.style.transition = `${0}s ease-out`;
-        }, 500);
-        index = slideCount;
-    }
-    index -= 1;
 });

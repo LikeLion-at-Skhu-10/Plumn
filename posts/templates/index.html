@@ -17,11 +17,106 @@
     <li><img src="{% static 'img/test3.png' %}"></li>
   </ul>
   <p class="slide-anch">
-    <span class="prev"><i class="fa-solid fa-angle-left" style="text-decoration: none; color: white; font-size: 30pt;"></i></span>
-    <span class="next"><i class="fa-solid fa-angle-right" style="text-decoration: none; color: white; font-size: 30pt;"></i></span>
+    <span class="prev">&lang;</span>
+    <span class="next">&rang;</span>
   </p>
   <ul class="slide-pagination"></ul>
   
 </div>
+<!-- 추천글 -->
+<div id="recommend-container">
+  <h3 class="plumnh3">추천 글</h3>
+  <a class="recolist-anch" href="{% url 'list' %}">전체 글 보러가기 →</a>
+    <span class="anchoverlay"></span>
+    <span class="anchoverbase"></span>
+  <!-- 5개짜리 리스트 -->
+  <div class="recommend-list">
+
+    <!-- 개별아이템들 -->
+    <div class="recommend-item">
+      <a href="#">
+        <figure>
+          <img src="{% static 'img/recommend_1.jpg' %}">
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>벚꽃놀이</h4>
+      <p>by. Gracekim</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <figure>
+          <img src="{% static 'img/recommend_1.jpg' %}">
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>벚꽃놀이</h4>
+      <p>by. Gracekim</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <figure>
+          <img src="{% static 'img/recommend_1.jpg' %}">
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>벚꽃놀이</h4>
+      <p>by. Gracekim</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <figure>
+          <img src="{% static 'img/recommend_1.jpg' %}">
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>벚꽃놀이</h4>
+      <p>by. Gracekim</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <figure>
+          <img src="{% static 'img/recommend_1.jpg' %}">
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>벚꽃놀이</h4>
+      <p>by. Gracekim</p>
+    </div>
+  </div>
+</div>
+<div id="topic-container">
+  <h3 class="plumnh3">Topic</h3>
+  <div class="topic-list">
+    <!-- 개별아이템들 -->
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+  </div>
+</div>
+<div id="famous-banner">
+  <div class="famous-bannerwrap">
+    <h1>"A learned fool is more foolish than an ignorant one."</h1>
+    <h2>"엉터리로 배운 사람은 아무것도 모르는 사람보다 더 어리석다."</h2>
+  </div>
+</div>
+
 <script src="{% static 'js/slide.js' %}"></script>
 {% endblock %}
