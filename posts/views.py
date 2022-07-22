@@ -22,6 +22,12 @@ def login(request):
 def register(request):
     return render(request, 'accounts/register.html')
 
+def find_id_success(request):
+    return render(request, 'accounts/find_id_success.html')
+
+def find_pw_success(request):
+    return render(request, 'accounts/find_pw_success.html')
+
 def create(request):
     return render(request, 'blog/create.html')
 

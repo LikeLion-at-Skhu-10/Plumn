@@ -1,1 +1,91 @@
 <!-- 회원가입 -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원가입 창</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body>
+    <div class="register_wrap">
+      <div class="register_text">
+        <div class="text_wrap">
+          <h4>이름을 입력하세요!</h4>
+          <input type="text" name="" id="" placeholder="이름 입력" />
+        </div>
+      </div>
+
+      <div class="register_text">
+        <div class="text_wrap">
+          <h4>아이디를 입력하세요!</h4>
+          <input type="email" name="" id="" placeholder="아이디 입력" />
+        </div>
+      </div>
+
+      <div class="register_text">
+        <div class="text_wrap">
+          <h4>비밀번호를 입력하세요!</h4>
+          <input type="password" name="" id="" placeholder="비밀번호 입력" />
+        </div>
+      </div>
+
+      <div class="register_text">
+        <div class="text_wrap">
+          <h4>비밀번호를 한 번 더 입력하세요!</h4>
+          <input type="password" name="" id="" placeholder="비밀번호 입력" />
+        </div>
+      </div>
+
+      <div class="register_text">
+        <div class="text_wrap">
+          <h4>전화번호를 입력하세요!</h4>
+          <div class="certification">
+            <input type="tel" name="" id="" placeholder="000-0000-0000" />
+            <button class="certify_btn certify_btn_plumn" type="button">
+              인증번호 전송
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="register_text">
+        <div class="text_wrap">
+          <h4>인증번호 입력</h4>
+          <div class="certification">
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="인증번호 입력(4자리)"
+            />
+            <button
+              onclick="certifyAlert()"
+              class="certify_btn certify_btn_plumn"
+              type="button"
+            >
+              인증번호 확인
+            </button>
+            <script>
+              function certifyAlert() {
+                alert("인증되었습니다.");
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div class="register">
+        <button class="register_btn register_btn_plumn" type="button">
+          회원가입
+        </button>
+        <a href="http://127.0.0.1:8000/login/">
+          <button class="cancel_btn cancel_btn_plumn" type="button">
+            돌아가기
+          </button>
+        </a>
+      </div>
+      <hr />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!-- 아이디 찾기 성공 -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이디 찾기 확인</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body>
+    <div>
+      <div class="container">
+        <a target="_blank" href="">
+          <img class="picture" src="{% static 'img/plumn.png' %}"
+        /></a>
+
+        <div class="id_find_success">
+          <h4>내 아이디</h4>
+          <div class="listId">skrgns0909@naver.com</div>
+
+          <div class="find_id">
+            <a href="http://127.0.0.1:8000/login/">
+              <button class="success_id_btn success_id_btn_plumn" type="button">
+                로그인하기
+              </button>
+            </a>
+            <a href="http://127.0.0.1:8000/find_pw/">
+              <button class="success_id_btn success_id_btn_plumn" type="button">
+                비밀번호 찾기
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </body>
+</html>
