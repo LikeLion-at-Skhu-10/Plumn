@@ -4,7 +4,7 @@ from .models import User
 from argon2 import PasswordHasher
 
 class RegisterForm(forms.ModelForm):
-    user_id = forms.CharFIeld(
+    user_id = forms.CharField(
         label='아이디',
         requried=True,
         widget=forms.TextInput(
@@ -18,7 +18,7 @@ class RegisterForm(forms.ModelForm):
             'unique' : '중복된 아이디입니다.'}
     )
 
-    user_pwd = forms.CharFIeld(
+    user_pw = forms.CharField(
         label='비밀번호',
         requried=True,
         widget=forms.PasswordInput(
@@ -30,7 +30,7 @@ class RegisterForm(forms.ModelForm):
         error_messages={'required' : '비밀번호를 입력해 주세요.'}
     )
 
-    user_pwd_confirm = forms.CharFIeld(
+    user_pw_confirm = forms.CharField(
         label='비밀번호 확인',
         requried=True,
         widget=forms.PasswordInput(
@@ -54,7 +54,7 @@ class RegisterForm(forms.ModelForm):
         error_messages={'required' : '닉네임을 입력해 주세요.'}
     )    
 
-    user_phone = forms.CharFIeld(
+    user_phone = forms.CharField(
         label='전화번호',
         requried=True,
         widget=forms.CharField(
@@ -89,20 +89,20 @@ class RegisterForm(forms.ModelForm):
         cleaned_data = super().clean()
         
         user_id = cleaned_data.get('user_id', '')
-        user_pwd = cleaned_data.get('user_pwd', '')
-        user_pwd_confirm = cleaned_data.get('user_pwd_confirm', '')
+        user_pw = cleaned_data.get('user_pw', '')
+        user_pw_confirm = cleaned_data.get('user_pw_confirm', '')
         user_name = cleaned_data.get('user_name', '')
         user_phone = cleaned_data.get('user_phone', '')
         
-        if user_pwd != user_pwd_confirm:
+        if user_pw != user_pw_confirm:
             return self.add_error('user_pwd_confirm', '비밀번호가 다릅니다.')
         elif not (4 <= len(user_id) <= 16):
             return self.add_error('user_id', '아이디는 4~16자로 입력해 주세요.')
-        elif 8 > len(user_pwd):
+        elif 8 > len(user_pw):
             return self.add_error('user_pwd', '비밀번호는 8자 이상으로 적어주세요.')
         else:
             self.user_id = user_id
-            self.user_pwd = PasswordHasher().hash(user_pwd)
-            self.user_pwd_confirm = user_pwd_confirm
+            self.user_pw = PasswordHasher().hash(user_pw)
+            self.user_pw_confirm = user_pw_confirm
             self.user_name = user_name
             self.user_phone = user_phone
