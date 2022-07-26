@@ -27,7 +27,7 @@ urlpatterns = [
     path('', posts.views.index, name='index'),
     #이런 url 이름 하에 생기는 모든 url들은 각각의 앱 폴더.urls.py라고 하는 파이썬 파일에서 관리함
     path('posts/', include('posts.urls')),
-    path('accounts/', include('accounts.urls')),
+    path('', include('accounts.urls')),
     path('mypage/', include('mypage.urls')),
 ]
 
