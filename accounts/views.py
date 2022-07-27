@@ -104,24 +104,3 @@ def findid(request):
             return render(request, 'find_id.html')
     else:
         return render(request, 'find_id.html')      
-
-def findidsuccess(request, email):
-    userid = get_object_or_404(User, id=id)
-    return render(request, 'find_id_success.html')
-
-#비밀번호 찾기
-def findpw(request): 
-    if request.method == 'POST':
-        userid = request.POST.get('user_id')
-        userphone = request.POST.get('user_phone')
-        try:
-            user = User.objects.filter(user_id=userid, user_phone=userphone)
-            if user is not None:
-                return render(request, 'find_pw_success.html', {'user':user})
-        except:
-            if userid is None:
-                return messages.info(request, "해당 아이디가 없습니다.")
-            else :
-                return messages.info(request, "해당 전화번호는 없습니다.")
-    else:
-        return render(request, 'find_pw.html')
