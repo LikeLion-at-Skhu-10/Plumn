@@ -8,7 +8,6 @@ urlpatterns=[
 
     path('logout/', views.logout, name='logout'),
     path('findid/', views.findid, name='find_id'),
-    path('findidsuccess/', views.findidsuccess, name='find_id_success'),
         
     path('activate/<str:uidb64>/<str:token>/', views.activate, name="activate"), 
     path('password_reset/', auth_views.PasswordResetView.as_view(), name="password_reset"), #비밀번호 초기화
