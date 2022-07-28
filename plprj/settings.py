@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os, json
+
+#장고에 MySQL연동시켜 데베 세팅 툴파일을 생성해서 import한 것.
+import os, json, my_settings 
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 
@@ -90,13 +92,15 @@ WSGI_APPLICATION = 'plprj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+DATABASES = my_settings.DATABASES
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -178,7 +182,7 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True 
 
 # 사이트와 관련한 자동응답 받을 이메일주소?
-EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
+EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = EMAIL_HOST_USER
 
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 
