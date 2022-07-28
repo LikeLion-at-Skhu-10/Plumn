@@ -1,3 +1,4 @@
+#회원가입을 이메일 인증으로 하기 위한 토큰파일
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 class AccountActivationTokenGenerator(PasswordResetTokenGenerator):
