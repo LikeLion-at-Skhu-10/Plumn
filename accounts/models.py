@@ -15,10 +15,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     phoneNumRegex = RegexValidator(regex = r'^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$')
     user_phone = models.CharField(validators = [phoneNumRegex], max_length=11, unique=True, verbose_name='유저 전화번호')
     is_staff = models.BooleanField('스태프 권한', default=False)
-    is_active = models.BooleanField('사용중', default=True)
+    is_active = models.BooleanField('사용중', default=False)
     date_joined = models.DateTimeField('가입일', default=timezone.now)
-
+    #    last_login = models.DateTimeField('마지막 로그인시간', default=timezone.now)
     objects = UserManager()
+    
     
     USERNAME_FIELD = 'email'                                        # email을 사용자의 식별자로 설정
     REQUIRED_FIELDS = ['username', 'user_phone']                   # 필수입력값
@@ -32,6 +33,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = '유저'
         swappable = 'AUTH_USER_MODEL'
 
+#    def email_user(self, subject, message, from_email=None, **kwargs): # 이메일 발송 메소드
+#        send_mail(subject, message, from_email, [self.email], **kwargs)
+        
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
