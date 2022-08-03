@@ -20,17 +20,47 @@
           <input type="checkbox" id="checkbox">
           <span class="line line-main"></span>
           <span class="line line-split"></span>
+          <div class="menu__box">
+            <!-- 프로필부분 -->
+            <div class="myprofile">
+              <div class="pro__circle"><img src="{% static 'img/munchickitten.jpg' %}"></div>
+              <a class="pro__noti"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+              <h3>플럼님</h3>
+              <a class="mp_logout">로그아웃</a>
+              <!-- 게시글, 구독자, 관심작가 데이터 들어가는 부분 -->
+              <div class="profile__usersub">
+                <a href="#" class="usersubinfo">게시글 <span>5</span></a>
+                <a href="#" class="usersubinfo">구독자 <span>30</span></a>
+                <a href="#" class="usersubinfo">관심작가 <span>5</span></a>
+              </div>
+            </div>
+            <div class="menu_home">
+              <i class="fa-solid fa-house" style="text-decoration: none; color: black; font-size: 20pt;"></i>
+              <a href="{% url 'index' %}" class="plumn__home">플럼홈</a>
+            </div>
+            <div class="menulist">
+              <a href="{% url 'list' %}" class="menulist__item">전체 글 보기</a>
+              <a href="{% url 'scrap' %}" class="menulist__item">내 서재</a>
+              <a href="{% url 'pay' %} " class="menulist__item">플럼 구매</a>
+              <a href="#" class="menulist__item">마이 뱃지</a>
+            </div>
+            <div class="menu_fb">
+              <div><h2>"A learned fool is more foolish than an ignorant one"</h2></div>
+              <div><a href="{% url 'feedback' %}">사이트 피드백</a></div>
+            </div>
+          </div>
         </label>
         <h1 class="index"><a href="{% url 'index' %}">Plumn</a></h1>
       </div>
+
       <!-- 검색, 글쓰기, 마이페이지 -->
       <div class="nav2">
-        <a href="#"><i class="fa-solid fa-magnifying-glass" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+        <input type="text" placeholder="검색어를 입력하세요" class="search_input">
+        <button type="button" class="search_btn" href="#"><i class="fa-solid fa-magnifying-glass" style="text-decoration: none; color: black; font-size: 20pt;"></i></button>
         <a href="{% url 'create' %}"><i class="fa-solid fa-pencil" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
         <a href="{% url 'mypage' %}"><i class="fa-solid fa-user" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
       </div>
     </div>
-    <hr class="hrline">
   </div>
   <div id="container">
     <!-- 아래부터는 상속제외 -->
