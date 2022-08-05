@@ -1,11 +1,10 @@
 import json, requests, time, random
-
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
-from django.contrib.auth.forms import PasswordResetForm, PasswordContextMixin, PasswordChangeForm
+from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
 from django.views.generic import TemplateView, FormView
 #from argon2 import PasswordHasher
 from django.views import View
@@ -13,7 +12,7 @@ from django.http import JsonResponse
 from .models import User#, Authentication
 from django.template import RequestContext
 from django.urls import reverse_lazy
-from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordContextMixin
 # 이메일 가입을 위한 SMTP 관련 인증
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -48,7 +47,7 @@ def logout(request):
     return redirect('main')
 
 #회원가입
-#에러 메세지(이메일, 닉네임, 전화번호)만 추가하면 됨
+#에러 메세지(이메일, 닉네임, 전화번호)만 추가하면 됨 -> 폼으로 그냥 하자
 def register(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['password_confirm']:
@@ -108,7 +107,10 @@ def findid(request):
             messages.info(request, "해당 전화번호는 없습니다.")
             return render(request, 'find_id.html')
     else:
-        return render(request, 'find_id.html')      
+        return render(request, 'find_id.html')
+          
+def find_id_succeess(request):
+    return render(request, 'find_id_success.html')
 
 #비밀번호 초기화하기 위해 아이디(=이메일) 존재하는 여부 검색
 class PasswordResetView(PasswordResetView):
