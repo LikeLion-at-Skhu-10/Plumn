@@ -3,11 +3,12 @@ body {
 }
 
 #container {
-  width: 1920px;
-  height: 500px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin: 0 auto;
+  padding-top: 150px;
+  flex-direction: column;
 }
 
 .plus_button_wrap {
@@ -53,11 +54,38 @@ body {
   display: none;
 }
 
+
+.title_form{
+  display: inline-block;
+  width: 480px;
+  margin-bottom: 100px;
+}
+
 .title_write {
-  font-size: 45px;
-  text-align: center;
-  margin-top: 30px;
-  opacity: 0.2;
+  opacity: 1;
+}
+
+.form-control{
+  font-size: 2em;
+  text-decoration: none;
+  visibility: visible;
+  margin-bottom: 20px;
+  height: 10px;
+}
+
+.form-control:focus{
+  outline: none;
+}
+
+.form-control:empty::before{
+  color: black;
+  opacity: 0.5;
+}
+
+.form-control:empty::before{
+  content: "제목을 입력하세요";
+  cursor: text;
+  font-size: 30pt;
 }
 
 .hr_style {

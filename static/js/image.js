@@ -1,6 +1,8 @@
 // 커버 배경색 변경 js
 
 const container = document.getElementById("container");
+// const textArea = documnet.getElementById("title_write");
+
 const colors = [
   "#ffafb0",
   "#f2cfa5",
@@ -19,6 +21,7 @@ container.style.backgroundColor = "white";
 function colorChange() {
   const colorIdx = parseInt(Math.random() * colors.length); // 순서를 랜덤으로 만들기
   container.style.backgroundColor = colors[colorIdx]; // 랜덤으로 배열 안의 컬러를 선택한다.
+  // textArea.style.backgroundColor = colors[colorIdx];
 }
 
 // 커버 이미지 변경 js

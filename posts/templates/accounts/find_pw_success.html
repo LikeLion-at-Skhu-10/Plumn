@@ -15,8 +15,10 @@
     <div>
       <div class="container">
         <a href="{% url 'index' %}">
-          <img class="picture" src="{% static 'img/plumn.png' %}"
-        /></a>
+          <div class="img-box">
+            <a href="{% url 'index' %}">
+                <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
+                </div>
         <div class="change_pw">
           <h4>비밀번호 재설정</h4>
           <div class="new_pw">

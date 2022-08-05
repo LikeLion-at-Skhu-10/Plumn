@@ -8,7 +8,11 @@
 }
 
 .picture {
-  width: 1200px;
+  max-width: 90%;
+}
+
+.img-box{
+  width: 70%;
 }
 
 /* 아이디 박스 */
