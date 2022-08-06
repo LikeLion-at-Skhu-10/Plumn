@@ -109,9 +109,9 @@ def findid(request):
     else:
         return render(request, 'find_id.html')
           
-def find_id_success(request):
-    #user = get_object_or_404(User, id=id)
-    return render(request, 'find_id_success.html')
+#def find_id_success(request):
+#    #user = get_object_or_404(User, id=id)
+#    return render(request, 'find_id_success.html')
 
 #비밀번호 초기화하기 위해 아이디(=이메일) 존재하는 여부 검색
 class PasswordResetView(PasswordResetView):
