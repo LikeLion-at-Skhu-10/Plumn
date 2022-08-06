@@ -18,17 +18,18 @@
         <a href="{% url 'index' %}">
           <img class="picture" src="{% static 'img/plumn.png' %}"
         /></a>
-
+          <form method="POST">
+            {% csrf_token %}
         <div class="text_wrap">
           <div class="tel_find">
             <h4>아이디를 입력하세요!</h4>
-            <input type="text" class="input_margin" name="" id="" placeholder="아이디 입력" />
-            <a class="find_pw_btn find_pw_btn_plumn" type="button" href="{% url 'find_pw_success' %}">
-              비밀번호 초기화하기
+            {{form.as_p}}
           </a>
           </div>
         </div>
+        <button class="btn btn_plumn" ><span>비밀번호 초기화</span></button>
       </div>
+    </form>
       <hr class="hr_register" />
       <a href="{% url 'register' %}"> <p>계정 생성</p></a>
       {% endblock %}

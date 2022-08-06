@@ -13,6 +13,8 @@
 
   <body>
     {% block content %}
+    <form method="POST">
+      {% csrf_token%}
     <div>
       <div class="container">
         <a href="{% url 'index' %}">
@@ -21,15 +23,18 @@
         <div class="text_wrap">
           <div class="tel_find">
             <h4>전화번호를 입력해주세요!</h4>
-            <input type="text" class="input_margin" name="" id="" placeholder="전화번호 입력" />
-            <a class="find_pw_btn find_pw_btn_plumn" type="button" href="{% url 'find_id_success' %}">
-              아이디 찾기
+            <input type="tel" class="user_phone" name="user_phone" id="" placeholder="전화번호 입력" />
+            <button class="btn btn_plumn" type="submit"><span>아이디찾기</span></button>
           </a>
+          {% for message in message %}
+              {{message }}
+            {% endfor %}
           </div>
         </div>
       </div>
       <hr class="hr_register" />
       <a href="{% url 'register' %}"> <p>계정 생성</p></a>
+    </form>
       {% endblock %}
     </div>
     {% block footer %} {% endblock %}

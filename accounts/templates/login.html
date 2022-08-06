@@ -17,18 +17,19 @@
   <fieldset class="container">
     <a href="{% url 'index' %}">
       <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
-
+      <form method="POST">
+        {% csrf_token %}
     <div class="idpw_wrap">
       <div class="id_wrap">
         <h4>아이디</h4>
-        <input type="email" name="" id="" placeholder="Email" />
+        <input type="email" name="email" id="" placeholder="Email" />
       </div>
 
       <div class="pw_wrap">
         <h4>비밀번호</h4>
-        <input type="password" name="" id="" placeholder="Password" />
+        <input type="password" name="password" id="" placeholder="Password" />
       </div>
-
+    </form>
       <div class="login_etc">
         <li>
           <a href="{% url 'register' %}" class="find_text">계정 생성하기</a>
