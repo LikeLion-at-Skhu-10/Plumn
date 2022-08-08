@@ -23,9 +23,16 @@
         <div class="text_wrap">
           <div class="tel_find">
             <h4>아이디를 입력하세요!</h4>
-            {{form.as_p}}
+            {{ form.as_p }}
           </a>
           </div>
+          {% if messages %}
+          {% for message in messages %}
+          <span style="color: red;">
+              {{ message.message }}
+          </span>
+          {% endfor %}
+          {% endif %}
         </div>
         <button class="btn btn_plumn" ><span>비밀번호 초기화</span></button>
       </div>

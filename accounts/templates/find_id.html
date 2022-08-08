@@ -14,21 +14,22 @@
   <body>
     {% block content %}
     <form method="POST">
-      {% csrf_token%}
+      {% csrf_token %}
     <div>
       <div class="container">
         <a href="{% url 'index' %}">
-          <img class="picture" src="{% static 'img/plumn.png' %}"
-        /></a>
+          <img class="picture" src="{% static 'img/plumn.png' %}"/></a>
         <div class="text_wrap">
           <div class="tel_find">
             <h4>전화번호를 입력해주세요!</h4>
-            <input type="tel" class="user_phone" name="user_phone" id="" placeholder="전화번호 입력" />
+            <input type="tel" name="user_phone" id="" placeholder="전화번호 입력" />
+            {% if messages %}
+            {% for message in messages %}
+              <span style="color: red;">  {{ message.message }} </span>
+            {% endfor %}
+            {% endif %}
             <button class="btn btn_plumn" type="submit"><span>아이디찾기</span></button>
           </a>
-          {% for message in message %}
-              {{message }}
-            {% endfor %}
           </div>
         </div>
       </div>
