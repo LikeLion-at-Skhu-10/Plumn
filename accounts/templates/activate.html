@@ -1,1 +1,22 @@
-{{user.user_id}}님 환영합니다 !
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+    <title>{% block title %} 아이디 찾기창 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% endblock %}
+  </head>
+
+<body>
+    {% block content %}
+    <div>
+        <h2>{{user.username}}님 계정이 활성화되었습니다.</h2>
+        <h2>환영합니다!</h2>
+        {% endblock %}
+    </div>
+{% block footer %} {% endblock %}
+</body>
+</html>
