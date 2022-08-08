@@ -2,37 +2,45 @@
 {% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
-    <title>{% block title %} 아이디 찾기창 {% endblock %}</title>
-    {% block head %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    {% endblock %}
-  </head>
 
-  <body>
-    {% block content %}
-    <div>
-      <div class="container">
-        <div class="img-box">
+<head>
+  <meta charset="UTF-8" />
+  <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+  <title>{% block title %} 아이디 찾기창 {% endblock %}</title>
+  {% block head %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  {% endblock %}
+</head>
+
+<body>
+  {% block content %}
+  <div>
+    <div class="container">
+      <div class="img-box">
         <a href="{% url 'index' %}">
-            <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
-            </div>
-        <div class="text_wrap">
-          <div class="tel_find">
-            <h4>전화번호를 입력해주세요!</h4>
-            <input type="text" class="input_margin" name="" id="" placeholder="전화번호 입력" />
-            <a class="find_pw_btn find_pw_btn_plumn" type="button" href="{% url 'find_id_success' %}">
-              아이디 찾기
-          </a>
-          </div>
+          <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
+      </div>
+      <div class="text_wrap">
+        <div class="tel_find">
+          <h4>전화번호를 입력해주세요!</h4>
+          <input type="text" class="input_margin" name="" id="" placeholder="전화번호 입력" />
+          <!-- <a class="find_pw_btn find_pw_btn_plumn" type="button" href="{% url 'find_id_success' %}">
+            아이디 찾기
+          </a> -->
+          <button class="find_pw_btn find_pw_btn_plumn" type="button"
+            onclick="location.href= '{% url 'find_id_success' %}';">
+            <h4>아이디 찾기</h4>
+          </button>
         </div>
       </div>
-      <hr class="hr_register" />
-      <a href="{% url 'register' %}"> <p>계정 생성</p></a>
-      {% endblock %}
     </div>
-    {% block footer %} {% endblock %}
-  </body>
+    <hr class="hr_register" />
+    <a href="{% url 'register' %}">
+      <p>계정 생성</p>
+    </a>
+    {% endblock %}
+  </div>
+  {% block footer %} {% endblock %}
+</body>
+
 </html>

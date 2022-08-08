@@ -12,13 +12,16 @@
   {% endblock %}
 </head>
 
+
+
+
 <body>
-  {% block content %}
-  <div id="container">    
+  <div id="container_one">
+    {% block content %}
     <div class="title_form">
-    <div class="title_write">
-      <h1 class="form-control" id="story" contenteditable="true"></h1>
-    </div>
+      <div class="title_write">
+        <h1 class="form-control" id="story" contenteditable="true"></h1>
+      </div>
     </div>
     <div class="plus_button_wrap">
       <div class="cover_image_plus">
@@ -43,22 +46,22 @@
         </button>
       </div>
     </div>
-
   </div>
-
 
   <!-- container 커버 부분 끝 -->
 
-  <!-- <hr class="hr_style">
+  <hr class="hr_style">
 
   <div class="container_two">
-    <div class="space_write">
-      <span>내용을 입력해주세요</span>
+    <div class="space_form">
+      <div class="space_write">
+        <p class="wrap_item item_type_text" id="demo" contenteditable="true" style="min-height: 300px"></p>
+      </div>
     </div>
 
     <div class="content_box">
-      <div class="box">본문</div>
-      <div class="box"><i class="fa-solid fa-bold fa-lg"></i></div>
+      <div class="box change_text">본문</div>
+      <div class="box change_boldtext"><i class="fa-solid fa-bold fa-lg"></i></div>
       <div class="box"><i class="fa-solid fa-underline fa-lg"></i></div>
       <div class="box"><i class="fa-solid fa-strikethrough fa-lg"></i></div>
       <div class="box"><i class="fa-solid fa-palette fa-lg"></i></div>
@@ -67,23 +70,25 @@
       <div class="box"><i class="fa-solid fa-paperclip fa-lg"></i></div>
     </div>
 
-    <hr class="hr_style">
+    <hr class="hr_stylelish">
 
-    <div class="keyword_btn">
-      <select name="keyword" id="keyword">
-        <option disabled selected>키워드 선택</option>
-        <option value="apple">인문</option>
-        <option value="orange">사회</option>
-        <option value="grape">과학</option>
-        <option value="melon">IT</option>
-      </select>
-    </div>
+    <span class="multi-select">
+      <div class="keyword_btn">
+        <select name="keyword" id="keyword">
+          <option disabled selected>키워드 선택</option>
+          <option value="apple">인문</option>
+          <option value="orange">사회</option>
+          <option value="grape">과학</option>
+          <option value="melon">IT</option>
+        </select>
+      </div>
+    </span>
 
-    <div class="keyword_selected">
+    <!-- <div class="keyword_selected">
       <button class="keyword_select">
         <span>과학</span>
       </button>
-    </div>
+    </div> -->
 
     <div class="saved">
       <button class="temporary_saved_btn" type="button">
@@ -93,13 +98,13 @@
         <span>저장</span>
       </button>
     </div>
+  </div>
 
 
-    <script src="{% static 'js/image.js' %}"></script>
-  </div> -->
+
   <script src="{% static 'js/image.js' %}"></script>
-  <script src="{% static 'js/title.js' %}"></script>
-
+  <!-- <script src="{% static 'js/title.js' %}"></script> -->
+  <!-- <script src="{% static 'js/content_box.js' %}"></script> -->
   {% endblock %}
   {% block footer %} {% endblock %}
 </body>

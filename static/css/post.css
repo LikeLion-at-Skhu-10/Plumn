@@ -2,12 +2,12 @@ body {
   height: 3000px;
 }
 
-#container {
+#container_one {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   margin: 0 auto;
-  padding-top: 150px;
+  padding-top: 100px;
   flex-direction: column;
 }
 
@@ -54,53 +54,83 @@ body {
   display: none;
 }
 
-
-.title_form{
+.title_form {
   display: inline-block;
   width: 480px;
-  margin-bottom: 100px;
+  margin-bottom: 180px;
+  padding-left: 820px;
+  padding-top: 100px;
 }
 
 .title_write {
   opacity: 1;
+  word-wrap: break-word;
+  padding-bottom: 30px;
 }
 
-.form-control{
-  font-size: 2em;
+.form-control {
+  font-size: 36px;
   text-decoration: none;
   visibility: visible;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   height: 10px;
+  line-height: 1.5em;
 }
 
-.form-control:focus{
+.form-control:focus {
   outline: none;
 }
 
-.form-control:empty::before{
+.form-control:empty::before {
   color: black;
   opacity: 0.5;
 }
 
-.form-control:empty::before{
+.form-control:empty::before {
   content: "제목을 입력하세요";
   cursor: text;
   font-size: 30pt;
 }
 
 .hr_style {
-  width: 80%;
+  width: 60%;
   border: 0.1px thin lightgray;
   opacity: 0.5;
-  margin-top: 50px;
+  margin-top: 30px;
+}
+
+/* 내용 입력 할려는 부분 */
+
+.space_form {
+  width: 60%;
+  margin: 0 auto;
 }
 
 .space_write {
   font-size: 16px;
   margin-top: 50px;
-  text-align: center;
-  margin-right: 438px;
+  text-align: left;
+  outline: none;
+}
+
+.wrap_item:focus {
+  outline: none;
+}
+
+.wrap_item:empty::before {
+  color: black;
   opacity: 0.5;
+}
+
+.wrap_item:empty::before {
+  content: "내용을 입력하세요";
+  cursor: text;
+  font-size: 20pt;
+}
+
+.item_type_text {
+  font-size: 24px;
+  line-height: 2em;
 }
 
 /***********************************************/
@@ -111,16 +141,22 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  margin-right: 90px;
 }
 
 .box {
   display: flex;
-  width: 60px;
-  height: 35px;
+  width: 80px;
+  height: 40px;
   border: 0.3px solid #fc9595;
   justify-content: center;
   align-items: center;
+}
+
+.hr_stylelish {
+  width: 60%;
+  border: 0.1px thin lightgray;
+  opacity: 0.5;
+  margin-top: 20px;
 }
 
 /***********************************************/
@@ -129,7 +165,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  margin-right: 280px;
+  margin-right: 360px;
 }
 
 #keyword {
@@ -147,7 +183,7 @@ body {
   cursor: pointer;
 }
 
-.keyword_selected {
+/* .keyword_selected {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -164,13 +200,14 @@ body {
   background-color: #fc9595;
   border: 1.5px solid #fe8d92;
   color: #ffffff;
-}
+} */
 
 /***********************************************/
 /* 저장 부분 */
 .saved {
   display: flex;
   justify-content: flex-end;
+  margin-right: 30px;
 }
 
 .temporary_saved_btn,
@@ -189,7 +226,7 @@ body {
 }
 
 .saved_btn {
-  margin-right: 190px;
+  margin-right: 350px;
 }
 
 .temporary_saved_btn:hover,
@@ -198,4 +235,219 @@ body {
   border: 1.5px solid #fe8d92;
   color: #ffffff;
   cursor: pointer;
+}
+
+/***********************************************/
+/* 피드백 페이지 */
+.feedback_sentence {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.plumn_text {
+  color: #fc9595;
+}
+
+.feedback_space {
+  display: flex;
+  justify-content: center;
+}
+
+.feedback_text {
+  display: block;
+  width: 50%;
+  height: 550px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid 1px black;
+  border-radius: 20px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-left: 20px;
+  resize: none;
+}
+
+.feedback_text:focus {
+  outline: 1px solid #fc9595;
+  border: none;
+}
+
+#feedback_cnt {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 420px;
+}
+
+.btn_centero {
+  display: flex;
+  justify-content: center;
+}
+
+.fb_submit_btn {
+  text-align: center;
+  width: 180px;
+  height: 40px;
+  position: relative;
+  border-radius: 20px;
+  padding: 2px 7px;
+  font-weight: 400;
+  background-color: white;
+  border: 2px solid #fc9595;
+  margin-top: 30px;
+  transition: 0.25s;
+}
+
+.fb_submit_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 2px solid #fe8d92;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.feedback_sentence_suc {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.fb_home_btn {
+  text-align: center;
+  width: 180px;
+  height: 40px;
+  position: relative;
+  border-radius: 20px;
+  padding: 2px 7px;
+  font-weight: 400;
+  background-color: white;
+  border: 2px solid #fc9595;
+  margin-top: 100px;
+  transition: 0.25s;
+}
+
+.fb_home_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 2px solid #fe8d92;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.hr_stylelishe {
+  width: 100%;
+  border: 0.1px thin lightgray;
+  opacity: 0.6;
+  margin-top: 50px;
+}
+
+/***********************************************/
+/* list.html */
+
+.list_title {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.list_title_text {
+  font-size: 36px;
+}
+
+/* 첫줄 버튼 목록 */
+.list_button_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.list_btn_wrap_two {
+  margin-top: 30px;
+}
+
+.list_btn_wrap_list {
+  display: none;
+}
+
+.list_btn {
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-weight: 300;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  width: 150px;
+}
+
+.list_btn {
+  border: 1.5px solid #fc9595;
+  color: #fc9595;
+}
+
+.list_btn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: white;
+  cursor: pointer;
+}
+
+/* 하나의 리스트 만들기 */
+
+.writing_list {
+  display: flex;
+}
+
+.list_text {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-top: 100px;
+  margin-left: 100px;
+}
+
+.writing_title {
+  margin-bottom: 30px;
+}
+
+.writing_content {
+  margin-bottom: 50px;
+}
+
+.list_date {
+  margin-right: 30px;
+}
+
+.list_comment {
+  margin-right: 30px;
+}
+
+.list_like {
+  margin-right: 30px;
+}
+
+.list_who {
+  display: flex;
+  width: 5%;
+}
+
+.list_writer {
+  display: flex;
+  align-items: flex-end;
+}
+
+.list_photo {
+  display: flex;
+  width: 20%;
+  height: 250px;
+  align-items: flex-end;
+}
+
+.list_photosize {
+  display: flex;
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
 }

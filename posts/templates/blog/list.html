@@ -1,1 +1,88 @@
 <!-- 글 목록 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} 리스트 목록 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="list_container">
+        <div class="list_title">
+            <h2 class="list_title_text">IT 게시글</h2>
+        </div>
+        <div class="list_button_wrap">
+            <div class="list_btn_wrap_one">
+                <button class="list_btn" type="button"><span>가정/생활</span></button>
+                <button class="list_btn" type="button"><span>건강/취미</span></button>
+                <button class="list_btn" type="button"><span>경제/경영</span></button>
+                <button class="list_btn" type="button"><span>국어/외국어</span></button>
+                <button class="list_btn" type="button"><span>컴퓨터/IT/모바일</span></button>
+                <button class="list_btn" type="button"><span>사회/정치</span></button>
+                <button class="list_btn" type="button" onclick="myFunction()"><i
+                        class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+            <div class="list_btn_wrap_list">
+                <div class="list_btn_wrap_two">
+                    <button class="list_btn list_btn_hiding" type="button"><span>문학</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>유아/아동</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>여행</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>역사</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>예술</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>인문</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>인물</span></button>
+                </div>
+                <div class="list_btn_wrap_two">
+                    <button class="list_btn list_btn_hiding" type="button"><span>자기계발</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>과학</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>종교</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>문화</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>공학</span></button>
+                    <button class="list_btn list_btn_hiding" type="button"><span>요리</span></button>
+                    <button class="list_btn list_btn_hiding" type="button" onclick="myFunction()">
+                        <i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="writing_list">
+            <div class="list_text">
+                <div class="writing_title">
+                    <p class="list_title_text">Ipad Air 4세대 리뷰</p>
+                </div>
+                <div class="writing_content">
+                    <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
+                </div>
+                <div class="writing_dateother">
+                    <span class="list_date">August.08.2022</span>
+                    <span class="list_comment">댓글 10</span>
+                    <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                    <span class="list_tag">IT</span>
+                </div>
+            </div>
+
+            <div class="list_who">
+                <span class="list_writer">by GraceKim</span>
+            </div>
+            <div class="list_photo">
+                <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/list_btn.js' %}"></script>
+    {% endblock %}
+    {% block footer %} {% endblock %}
+</body>
+
+</html>

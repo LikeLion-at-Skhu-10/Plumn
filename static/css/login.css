@@ -11,7 +11,7 @@
   max-width: 90%;
 }
 
-.img-box{
+.img-box {
   width: 70%;
 }
 
@@ -64,7 +64,6 @@
   align-items: center;
   font-weight: lighter;
 }
-
 
 .login_etc li {
   position: relative;
@@ -135,7 +134,7 @@ li + li::before {
 /**************************************************/
 /*register.html 회원가입 부분 */
 
-.input_margin{
+.input_margin {
   margin-top: 20px;
 }
 
@@ -156,7 +155,6 @@ li + li::before {
 }
 
 .text_wrap {
-  margin-bottom: 30px;
   margin-top: 40px;
 }
 
@@ -204,13 +202,12 @@ li + li::before {
 
 /* 회원가입, 돌아가기 버튼 */
 
-
-.register{
+.register {
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 50px;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
 .register_btn {
@@ -234,7 +231,6 @@ li + li::before {
   color: white;
   cursor: pointer;
 }
-
 
 .register > div {
   margin-left: 20px;
@@ -306,7 +302,7 @@ li + li::before {
   flex-direction: column;
 } */
 
-.find_id{
+.find_id {
   display: flex;
   margin-top: 40px;
 }
@@ -384,7 +380,6 @@ li + li::before {
 
 .find_pw_btn {
   margin: 0 auto;
-  position: relative;
   padding: 15px 30px;
   border-radius: 10px;
   font-weight: 300;
@@ -393,7 +388,7 @@ li + li::before {
   color: #fc9595;
   transition: 0.25s;
   text-align: center;
-  width: 200px;
+  width: 220px;
 }
 
 .find_pw_btn_plumn {
@@ -462,7 +457,7 @@ a {
 }
 
 .new_pw {
-margin: 30px 0px;
+  margin: 30px 0px;
 }
 
 .pw_change_font {
@@ -472,12 +467,12 @@ margin: 30px 0px;
   margin-top: 2px;
 }
 
-.change_pw{
+.change_pw {
   display: flex;
   flex-direction: column;
 }
 
-.change_button{
+.change_button {
   display: flex;
   justify-content: center;
 }
