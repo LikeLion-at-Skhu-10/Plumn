@@ -1,6 +1,5 @@
 from django.urls import path
 from accounts import views
-from django.contrib.auth import views as auth_views
 from posts import views as posts_views
 
 urlpatterns=[
@@ -10,7 +9,6 @@ urlpatterns=[
 
     path('logout/', views.logout, name='logout'),
     path('find_id/', views.findid, name='find_id'), 
-    #path('find_id_success/', views.find_id_success, name='find_id_success'),
         
     path('activate/<str:uidb64>/<str:token>/', views.activate, name="activate"), 
     path('password_reset/', views.PasswordResetView.as_view(), name="find_pw"), #비밀번호 초기화. 'find_pw'로 했더니 안돼서 이걸로 바꿈.
