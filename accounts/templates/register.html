@@ -18,38 +18,40 @@
       <div class="register_text">
         <div class="text_wrap">
           <h4>이름을 입력하세요!</h4>
-          <input type="text" class="input_margin" name="user_name" id="" placeholder="이름 입력" />
+          {{forms.username}}
         </div>
       </div>
 
       <div class="register_text">
         <div class="text_wrap">
           <h4>아이디를 입력하세요!</h4>
-          <input type="email" class="input_margin" name="email" id="" placeholder="아이디 입력" />
+          {{forms.email}}
         </div>
       </div>
 
       <div class="register_text">
         <div class="text_wrap">
           <h4>비밀번호를 입력하세요!</h4>
-          <input type="password" class="input_margin" name="password" id="" placeholder="비밀번호 입력" />
+         {{forms.password}}
         </div>
       </div>
 
       <div class="register_text">
         <div class="text_wrap">
           <h4>비밀번호를 한 번 더 입력하세요!</h4>
-          <input type="password" class="input_margin" name="password_confirm" id="" placeholder="비밀번호 입력" />
+          {{forms.password_confirm}}
         </div>
       </div>
 
       <div class="register_text">
         <div class="text_wrap">
           <h4>전화번호를 입력하세요!</h4>
-            <input type="tel" class="input_margin" name="user_phone" id="" placeholder="000-0000-0000" />
+           {{forms.user_phone}}
         </div>
       </div>
-
+      {% if error %}
+      <span style="color: red;">{{  error }}</span>
+      {% endif %}
       <div class="register">
         <div>
           <button class="btn btn_plumn" ><span>회원가입</span></button>
