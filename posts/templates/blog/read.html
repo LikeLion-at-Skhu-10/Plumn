@@ -21,14 +21,162 @@
         </div>
     </div>
     <div class="tt_wrap">
-        <p class="tt_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eligendi fugiat iste,
-            consequatur obcaecati,
-            delectus earum laborum expedita ab quo id assumenda tempora excepturi saepe omnis natus est eos aut?</p>
-        <div class="tt_btn_wrap">
-            <span class="list_tag_btn">#IT</span>
-            <span class="tt_feedback">이의제기</span>
+        <div class="tt_textandbtn">
+            <p class="tt_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eligendi fugiat iste,
+                consequatur obcaecati,
+                delectus earum laborum expedita ab quo id assumenda tempora excepturi saepe omnis natus est eos
+                aut?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eligendi fugiat iste,
+                consequatur obcaecati,
+                delectus earum laborum expedita ab quo id assumenda tempora excepturi saepe omnis natus est eos
+                aut?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eligendi fugiat iste,
+                consequatur obcaecati,
+                delectus earum laborum expedita ab quo id assumenda tempora excepturi saepe omnis natus est eos
+                aut?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eligendi fugiat iste,
+                consequatur obcaecati,
+                delectus earum laborum expedita ab quo id assumenda tempora excepturi saepe omnis natus est eos
+                aut?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eligendi fugiat iste,
+                consequatur obcaecati,
+                delectus earum laborum expedita ab quo id assumenda tempora excepturi saepe omnis natus est eos aut?
+            <div class="tt_btn_wrap">
+                <span class="list_tag_btn">#IT</span>
+                <button class="tt_feedback" type="button" onclick="reportBtn()">이의제기</button>
+            </div>
+            </p>
+        </div>
+
+        <div class="myintro_box">
+            <div class="myintro_info">작가 정보</div>
+            <hr class="myintro_hr">
+            <div class="myintro_profile">
+                <div class="profile_photo">
+                    <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="profile_img">
+                </div>
+                <p class="profile_name">으네 작가</p>
+                <p class="profile_description">IT전공이지만 음악을 좋아하는 일반인</p>
+                <button class="profile_follow" id="follow_btn" onclick="changebtnName()">구독</button>
+            </div>
         </div>
     </div>
+
+    <hr class="content_alert">
+
+    <div class="dif_writing">
+        <span>이 작가의 다른 게시글 보기</span>
+    </div>
+    <!-- 첫번째 게시글 -->
+    <div class="writing_list">
+        <div class="list_text">
+            <div class="writing_title">
+                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
+                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
+            </div>
+            <div class="writing_content">
+                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
+            </div>
+            <div class="writing_dateother">
+                <span class="list_date">August.08.2022</span>
+                <span class="list_comment">댓글 10</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                <span class="list_tag_btn">#IT</span>
+            </div>
+        </div>
+
+        <div class="list_who">
+            <span class="list_writer">by GraceKim</span>
+        </div>
+        <div class="list_photo">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+        </div>
+    </div>
+    <hr class="list_hr">
+    <!-- 두번째 게시글 -->
+    <div class="writing_list">
+        <div class="list_text">
+            <div class="writing_title">
+                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
+                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
+            </div>
+            <div class="writing_content">
+                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
+            </div>
+            <div class="writing_dateother">
+                <span class="list_date">August.08.2022</span>
+                <span class="list_comment">댓글 10</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                <span class="list_tag_btn">#IT</span>
+            </div>
+        </div>
+
+        <div class="list_who">
+            <span class="list_writer">by GraceKim</span>
+        </div>
+        <div class="list_photo">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+        </div>
+    </div>
+    <hr class="list_hr">
+
+    <div class="dif_writing">
+        추천 게시글
+    </div>
+    <!-- 첫번째 추천 게시글 -->
+    <div class="writing_list">
+        <div class="list_text">
+            <div class="writing_title">
+                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
+                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
+            </div>
+            <div class="writing_content">
+                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
+            </div>
+            <div class="writing_dateother">
+                <span class="list_date">August.08.2022</span>
+                <span class="list_comment">댓글 10</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                <span class="list_tag_btn">#IT</span>
+            </div>
+        </div>
+
+        <div class="list_who">
+            <span class="list_writer">by GraceKim</span>
+        </div>
+        <div class="list_photo">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+        </div>
+    </div>
+    <hr class="list_hr">
+    <!-- 두번째 추천 게시글 -->
+    <div class="writing_list">
+        <div class="list_text">
+            <div class="writing_title">
+                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
+                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
+            </div>
+            <div class="writing_content">
+                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
+            </div>
+            <div class="writing_dateother">
+                <span class="list_date">August.08.2022</span>
+                <span class="list_comment">댓글 10</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                <span class="list_tag_btn">#IT</span>
+            </div>
+        </div>
+
+        <div class="list_who">
+            <span class="list_writer">by GraceKim</span>
+        </div>
+        <div class="list_photo">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+        </div>
+    </div>
+    <hr class="list_hr">
+
+    <script>
+        function reportBtn() {
+            window.location = "{% url 'readreport' %}";
+        }</script>
+    <script src="{% static 'js/btnchange.js' %}"></script>
     {% endblock %}
 
     {% block footer %} {% endblock %}

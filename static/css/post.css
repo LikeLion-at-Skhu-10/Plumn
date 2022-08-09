@@ -504,18 +504,31 @@ body {
 }
 
 .tt_wrap {
-  width: 50%;
+  display: flex;
+  width: 100%;
   height: auto;
-  margin: 0 auto;
   font-size: 24px;
   line-height: 1.5em;
   word-spacing: 1px;
 }
 
-.tt_btn_wrap {
+.tt_textandbtn {
+  width: 80%;
+  height: auto;
+}
+
+.tt_text {
   display: flex;
-  margin-top: 100px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.tt_btn_wrap {
+  width: 50%;
+  display: flex;
   justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 100px;
 }
 
 .tt_feedback {
@@ -525,4 +538,200 @@ body {
   border-radius: 15px;
   color: #fc9595;
   font-size: 15px;
+  background-color: white;
+}
+
+.tt_feedback:hover {
+  cursor: pointer;
+}
+
+.myintro_box {
+  width: 15%;
+  height: 350px;
+  border: 1px solid black;
+  border: none;
+  box-shadow: 1px 2px 5px 0px lightgray;
+  margin-right: 100px;
+}
+
+/* 내 프로필 소개란 */
+
+.myintro_info {
+  font-size: 28px;
+  font-weight: 500;
+  padding: 10px 15px;
+}
+
+.myintro_hr {
+  width: 90%;
+  color: gray;
+  margin-bottom: 30px;
+}
+
+.myintro_profile {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.profile_photo {
+  width: 25%;
+  height: 80px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.profile_img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profile_name {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.profile_description {
+  font-size: 14px;
+}
+
+.profile_follow {
+  background-color: white;
+  border: 1px solid #fc9595;
+  text-align: center;
+  padding: 5px 15px;
+  border-radius: 25px;
+  color: #fc9595;
+  font-size: 18px;
+  margin-top: 10px;
+  transition: 0.25s;
+}
+
+.profile_follow:hover {
+  cursor: pointer;
+  background-color: #fc9595;
+  color: white;
+  border: 1px solid #de6666;
+}
+
+.content_alert {
+  width: 90%;
+  color: black;
+  margin-top: 50px;
+  opacity: 0.5;
+}
+
+.dif_writing {
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 50px;
+  font-size: 28px;
+}
+
+/***********************************************/
+/* 이의제기 페이지(readreport.html) */
+
+.readreport_wrap {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #fc9595;
+  width: 50%;
+  height: 680px;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.report_reason {
+  margin-top: 25px;
+}
+
+.report_reason_txt {
+  font-size: 18px;
+  padding: 15px;
+}
+
+.report_reason_btn {
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.report_text {
+  margin-top: 25px;
+}
+
+.report_write {
+  display: flex;
+  border: 1px solid #fe8d92;
+  border-radius: 25px;
+  width: 80%;
+  height: 400px;
+  align-content: center;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.report_btn_wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.report_cel_btn {
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 12px;
+  padding: 7px 40px;
+  margin-right: 15px;
+  transition: 0.25s;
+}
+
+.report_mit_btn {
+  border: 1px solid #fc9595;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 12px;
+  padding: 7px 40px;
+  margin-left: 15px;
+  transition: 0.25s;
+}
+
+.report_cel_btn:hover {
+  background-color: lightgray;
+  cursor: pointer;
+  border: 1px solid gray;
+  color: white;
+}
+
+.report_mit_btn:hover {
+  background-color: #fc9595;
+  cursor: pointer;
+  border: 1px solid #de6666;
+  color: white;
+}
+
+.report_form {
+  font-size: 16px;
+  text-decoration: none;
+  visibility: visible;
+  margin-bottom: 30px;
+  height: 30px;
+  line-height: 1.5em;
+  margin: 20px;
+}
+
+.report_form:focus {
+  outline: none;
+}
+
+.report_form:empty::before {
+  color: black;
+  opacity: 0.5;
+  content: "신고 사유를 작성해주세요";
+  cursor: text;
+  font-size: 16px;
 }
