@@ -1,1 +1,51 @@
 <!-- 플럼 사용 내역 -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 플럼 사용 내역 {% endblock %}
+{% block head %}
+<link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="mypage">
+    <div class="mypage_banner">
+      <h1>플럼이의 나무이야기</h1>
+    </div>
+    <div class="mypage_content">
+      <div class="mypage_profile">
+        <img src="{% static 'img/munchickitten.jpg' %}">
+      </div>
+      <div class="myp_paylist_container">        
+        <div class="myp_paylist-wrap">
+          <h1>결제 내역</h1>
+          <table class="myp_tb">
+            <thead>
+              <tr>
+                <th>날짜</th><th>내역</th><th>결제금액</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2022-07-03</td><td>100 plum</td><td> 11,000 </td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="myp_paylist-wrap">
+          <h1>후원 내역</h1>
+          <table class="myp_tb">
+            <thead>
+              <tr>
+                <th>날짜</th>
+                <th>내역</th>
+                <th>결제금액</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2022-07-03</td><td>100 plum</td><td> 11,000 </td></tr>
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

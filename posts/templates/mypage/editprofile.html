@@ -8,34 +8,34 @@
 {% endblock %}
 {% block content %}
 <div id="mypage">
-    <div class="mypage_banner">
-      <h1>플럼이의 나무이야기</h1>
+  <div class="mypage_banner">
+    <h1>플럼이의 나무이야기</h1>
+  </div>
+  <div class="mypage_content">
+    <div class="mypage_profile">
+      <button class="mp_editbtn">
+        <img src="{% static 'img/munchickitten.jpg' %}">
+        <input type="image"/>
+      </button>
     </div>
-    <div class="mypage_content">
-      <div class="mypage_profile">
-        <button class="mp_editbtn">
-          <img src="{% static 'img/munchickitten.jpg' %}">
-          <input type="file"/>
-        </button>
+    <form class="editpr_ip">
+      <div class="prform">
+        <input type="text" required class="prInput">
+        <label class="prInputLabel" for="name">이름</label>
+        <span class="spanOverlay"></span>
+        <span class="spanBase"></span>
       </div>
-      <form class="editpr_ip">
-        <div class="prform">
+      <div class="prform">
           <input type="text" required class="prInput">
-          <label class="prInputLabel" for="name">이름</label>
+          <label class="prInputLabel" for="name">자기소개</label>
           <span class="spanOverlay"></span>
           <span class="spanBase"></span>
-        </div>
-        <div class="prform">
-            <input type="text" required class="prInput">
-            <label class="prInputLabel" for="name">자기소개</label>
-            <span class="spanOverlay"></span>
-            <span class="spanBase"></span>
-        </div>
-        <div class="edit_combtn">
-          <a href="{% url 'mypage' %}"><span>취소하기</span></a>
-          <button type="submit"><span>프로필 변경</span></button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div class="edit_combtn">
+        <a href="{% url 'mypage' %}"><span>취소하기</span></a>
+        <button type="submit"><span>프로필 변경</span></button>
+      </div>
+    </form>
+  </div>
   </div>
 {% endblock %}
