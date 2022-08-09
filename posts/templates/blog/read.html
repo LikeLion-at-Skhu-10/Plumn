@@ -1,1 +1,37 @@
-<!-- 굴 읽기 페이지 -->
+<!-- 글 읽기 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} ~~~의 플럼 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="backimage_wrap">
+        <div class="rd_img">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="background_img">
+            <p class="rd_text">Ipad 4세대 air 리뷰</p>
+        </div>
+    </div>
+    <div class="tt_wrap">
+        <p class="tt_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat eligendi fugiat iste,
+            consequatur obcaecati,
+            delectus earum laborum expedita ab quo id assumenda tempora excepturi saepe omnis natus est eos aut?</p>
+        <div class="tt_btn_wrap">
+            <span class="list_tag_btn">#IT</span>
+            <span class="tt_feedback">이의제기</span>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block footer %} {% endblock %}
+</body>
+
+</html>
