@@ -4,17 +4,21 @@ from pyexpat import model
 from tkinter import CASCADE
 from django.db import models
 from accounts.models import User
-from posts.views import setting
+from mypage.models import Notification
+from django.db.models.signals import post_save, post_delete
 
-#post class 제목과 글/ 글 생성 시간/ 이미지/ 좋아요/유저
+#from posts.views import setting
+
+#post class 제목과 글/ 글 생성 시간/ 이미지/ 추천 / 유저
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    title = models.CharField(max_length=200, null=False)
-    content = models.TextField(null=False)
-    pub_date = models.DateTimeField(auto_now_add=True)
-    #image = models.ForeignKey(on_delete=models.CASCADE, null=False)
-    like_users = models.ManyToManyField(User, related_name='like_articles')
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=256, null=False)
+    content = models.TextField(null=False) # 내용 부분 도대체 어떻게 처리해야 할지?
+    post_date = models.DateTimeField(auto_now_add=True) 
+    background_image = models.ImageField(upload_to='images/', blank=True) #제목 배경 사진
+    like_users = models.ManyToManyField(User, related_name='like_articles') #추천수
+    topic = models.ManyToManyField('Topic') #토픽
+    
     def __str__(self):
         return self.title
 
@@ -31,24 +35,43 @@ class Topic(models.Model):
         
     topic = models.CharField(max_length = 50, choices=TOPIC_CHOICES, default=None)
 
-
-class Photo(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to = 'images/', blank= True, null = True)
+#class Photo(models.Model):
+#    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+#    image = models.ImageField(upload_to = 'images/', blank= True, null = True)
 
 # 댓글
-class Comment (models.Model):
-    user = models.ForeignKey(User, on_delete=CASCADE)
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name='comments')
     content = models.TextField(null=False)
     created = models.DateTimeField(auto_now_add=True) # create 했을 때
     updated = models.DateTimeField(auto_now=True) # 수정하고 저장 시에 
+    
+    def user_comment_post(sender, instance, *args, **kwargs): # 댓글 알람 
+        comment = instance
+        post = comment.post
+        text_preview = comment.body[:90]
+        sender = comment.user
+        notify = Notification(post=post, sender=sender, user=post.user, text_preview=text_preview ,notification_type=2)
+        notify.save()
 
+    def user_del_comment_post(sender, instance, *args, **kwargs): # 유저가 댓글 삭제 시
+        like = instance
+        post = like.post
+        sender = like.user
+
+        notify = Notification.objects.filter(post=post, sender=sender, notification_type=2)
+        notify.delete()
+    
     def __str__(self):
         return self.content
+
+post_save.connect(Comment.user_comment_post, sender=Comment)
+post_delete.connect(Comment.user_del_comment_post, sender=Comment)
         
 #피드백  
 class Feedback(models.Model):
-    user = models.ForeignKey(User, on_delete = models.SET_NULL, null = True) #유저가 탈퇴해도 피드백은 남아있음.
+    user = models.ForeignKey(User, on_delete = models.CASCADE) #유저가 탈퇴해도 피드백은 남아있음.
     feedback = models.TextField() 
     feed_date = models.DateTimeField(auto_now_add=True)
 
@@ -57,7 +80,7 @@ class Feedback(models.Model):
         
 #이의제기
 class Objection(models.Model):
-    user = models.ForeignKey(User, on_delete = models.SET_NULL, null = True) #이하동문
+    user = models.ForeignKey(User, on_delete = models.CASCADE) #이하동문
     objection = models.TextField()
     obj_date = models.DateTimeField(auto_now_add=True)
     OBJ_CHOICES = (
@@ -68,3 +91,24 @@ class Objection(models.Model):
     
     def __str__(self):
         return self.obj_choices
+    
+#추천
+class Likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_like')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_like')
+
+    def user_liked_post(sender, instance, *args, **kwargs):
+        like = instance
+        post = like.post
+        sender = like.user
+        notify = Notification(post=post, sender=sender, user=post.user, notification_type=1)
+        notify.save()
+
+    def user_unlike_post(sender, instance, *args, **kwargs):
+        like = instance
+        post = like.post
+        sender = like.user
+
+        notify = Notification.objects.filter(post=post, sender=sender, notification_type=1)
+        notify.delete()
+#스크랩

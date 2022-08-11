@@ -102,17 +102,20 @@ def activate(request, uidb64, token):
          
 #아이디 찾기
 def findid(request):
-    if request.method == 'POST' :
-        find_id = request.POST.get('user_phone')
-        if User.objects.filter(user_phone=find_id).exists():
-            user = User.objects.get(user_phone=find_id)
-            return render(request, 'find_id_success.html', {'user':user}) 
-        else:
-            messages.info(request, "해당 전화번호는 없습니다.")
-            return render(request, 'find_id.html')
+    if request.user.is_authenticated: # 안 되면 is_anonymous로 해보기
+        return render(request, 'login.html')
     else:
-        return render(request, 'find_id.html')
-    
+        if request.method == 'POST' :
+            find_id = request.POST.get('user_phone')
+            if User.objects.filter(user_phone=find_id).exists():
+                user = User.objects.get(user_phone=find_id)
+                return render(request, 'find_id_success.html', {'user':user}) 
+            else:
+                messages.info(request, "해당 전화번호는 없습니다.")
+                return render(request, 'find_id.html')
+        else:
+            return render(request, 'find_id.html')
+
 
 #비밀번호 초기화하기 위해 아이디(=이메일) 존재하는 여부 검색
 class PasswordResetView(PasswordResetView):

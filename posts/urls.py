@@ -4,28 +4,12 @@ from accounts import views as account_views
 urlpatterns=[
     path('base', views.base, name='base'),
     path('notice/', views.notice, name='notice'),
-    path('findid/', account_views.findid, name='find_id'),
-    path('find_pw', account_views.PasswordResetView.as_view(), name="find_pw"),
-    path('login/', account_views.login, name='login'),
-    path('register/', account_views.register, name='register'),
-    path('create/', views.create, name='create'),
-    path('donate/', views.donate, name='donate'),
-    path('donatesuc/', views.donatesuc, name='donatesuc'),
-    path('feedback/', views.feedback, name='feedback'),
-    path('feedbacksuc/', views.feedbacksuc, name='feedbacksuc'),
-    path('list/', views.list, name='list'),
-    path('read/', views.read, name='read'),
-    path('readreport/', views.readreport, name='readreport'),
-    path('update/', views.update, name='update'),
-    path('libr/', views.like, name='like'),
-    path('pay/', views.pay, name='pay'),
-    path('paysuc/', views.paysuc, name='paysuc'),
-    path('scrap/', views.scrap, name='scrap'),
-    path('difuser/', views.difuser, name='difuser'),
-    path('editprofile/', views.editprofile, name='editprofile'),
-    path('follower/', views.follower, name='follower'),
-    path('following/', views.following, name='following'),
-    path('mypage/', views.mypage, name='mypage'),
-    path('plumusing/', views.plumusing, name='plumusing'),
-    path('setting/', views.setting, name='setting'),
+    
+    #path('create/', views.create, name='create'),
+    #path('list/', views.list, name='list'),
+    #path('read/', views.read, name='read'),
+    #path('update/', views.update, name='update'),
+    
+    path('feedback/', views.feedback, name='feedback'), #피드백
+    path('readreport/<int:id>', views.readreport, name='readreport'), # 이의제기
 ]

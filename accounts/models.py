@@ -11,7 +11,7 @@ from django.core.validators import RegexValidator #전화번호 입력을 위한
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, verbose_name='유저 아이디') 
     password = models.CharField(max_length=128, verbose_name='유저 비밀번호')
-    username = models.CharField(max_length=32, unique=True, verbose_name='유저 이름')
+    username = models.CharField(max_length=32, unique=True, primary_key=True, verbose_name='유저 이름')
     phoneNumRegex = RegexValidator(regex = r'^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$')
     user_phone = models.CharField(validators = [phoneNumRegex], max_length=11, unique=True, verbose_name='유저 전화번호')
     is_staff = models.BooleanField('스태프 권한', default=False)
@@ -32,9 +32,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = '유저' 
         verbose_name_plural = '유저'
         swappable = 'AUTH_USER_MODEL'
-
-#    def email_user(self, subject, message, from_email=None, **kwargs): # 이메일 발송 메소드
-#        send_mail(subject, message, from_email, [self.email], **kwargs)
         
 class UserManager(BaseUserManager):
     use_in_migrations = True
