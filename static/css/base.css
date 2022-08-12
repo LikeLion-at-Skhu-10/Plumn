@@ -108,14 +108,13 @@ body, h1, h2, h3, h4, h5, h6, input, textarea, select {
 }
 .nav2 {
   display: flex;
-  width: 90vw;
+  position: relative;
+  margin: 0 auto;
   float: right;
   justify-content: space-around;
   align-items: center;
   margin-right: 30px;
-}
-.nav2 i {
-  position: relative;
+  gap: 50px;
 }
 .nav2 a:hover {
   background-color: #eee;
@@ -123,31 +122,132 @@ body, h1, h2, h3, h4, h5, h6, input, textarea, select {
   box-sizing: border-box;
 }
 /* 검색창 */
-.search_input {
-  width: 70vw;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  border: 1px solid gray;
-  border-radius: 20px;
-  height: 30px;
-  text-align: center;
+
+#search-content {
+  margin: 0 auto;
+  height: 50px;
+  width: 70px;
+  transform: translate(90%, 40%);
 }
-.search_input::placeholder{
-  text-align: center;
-  font-size: 1.3em;
+#search-content.on {
+  -webkit-animation-name: in-out;
+  animation-name: in-out;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
-.search_btn{
-  display: inline;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-}
-.search_btn:hover{
-  background-color: #eee;
-  border-radius: 50%;
+.search-input {
   box-sizing: border-box;
+  width: 35px;
+  height: 35px;
+  border: 5px solid #000;
+  border-radius: 50%;
+  background: none;
+  color: #FC9595;
+  font-size: 16px;
+  font-weight: 400;
+  outline: 0;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
+    padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
+    padding 0.2s;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}
+.search {
+  background: none;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border-radius: 100%;
+  outline: 0;
+  border: 0;
+  color: inherit;
   cursor: pointer;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
+}
+.search:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 5px;
+  background-color: #000;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-top: 18px;
+  margin-left: 14px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+.close {
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+.close:before {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 5px;
+  margin-top: -1px;
+  margin-left: -13px;
+  background-color: #000;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+.close:after {
+  content: "";
+  position: absolute;
+  width: 27px;
+  height: 5px;
+  background-color: #000;
+  margin-top: -1px;
+  margin-left: -13px;
+  cursor: pointer;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.square {
+  box-sizing: border-box;
+  position: absolute;
+  padding: 0 40px 0 10px;
+  width: 400px;
+  height: 40px;
+  border: 5px solid #000;
+  border-radius: 0;
+  background: none;
+  color: #FC9595;
+  font-size: 16px;
+  font-weight: 400;
+  outline: 0;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
+    padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
+    padding 0.2s;
+  -webkit-transition-delay: 0.4s, 0s, 0.4s;
+  transition-delay: 0.4s, 0s, 0.4s;
+  -webkit-transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%);
 }
 
 /* 메뉴바 */

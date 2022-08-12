@@ -54,11 +54,16 @@
       </div>
 
       <!-- 검색, 글쓰기, 마이페이지 -->
+
       <div class="nav2">
-        <input type="text" placeholder="검색어를 입력하세요" class="search_input">
-        <button type="button" class="search_btn" href="#"><i class="fa-solid fa-magnifying-glass" style="text-decoration: none; color: black; font-size: 20pt;"></i></button>
-        <a href="{% url 'create' %}"><i class="fa-solid fa-pencil" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
-        <a href="{% url 'mypage' %}"><i class="fa-solid fa-user" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+        <div class="search-container">
+          <form id="search-content">
+            <input type="text" name="input" class="search-input" id="search-input">
+            <button type="reset" class="search" id="search-btn"></button>
+          </form>
+        </div>
+        <a href="{% url 'create' %}"><i class="fa-solid fa-pencil" style="text-decoration: none; color: black; font-size: 28pt;"></i></a>
+        <a href="{% url 'mypage' %}"><i class="fa-solid fa-user" style="text-decoration: none; color: black; font-size: 28pt;"></i></a>
       </div>
     </div>
   </div>
@@ -80,7 +85,8 @@
         <p>ⓒ Copyright Plumn. ALL Right Reserved.</p>
       </div>
     </div>
+    <script src="{% static 'js/search.js' %}"></script>
     {% endblock %}
   </div>
-</body> 
+</body>
 </html>

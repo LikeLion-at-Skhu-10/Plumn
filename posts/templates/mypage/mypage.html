@@ -23,8 +23,8 @@
     </div>
     <div class="mypage_info">
       <a>게시글<span>5</span></a>
-      <a>구독자<span>30</span></a>
-      <a>관심작가<span>5</span></a>
+      <a id="follow_modalBtn">구독자<span>30</span></a>
+      <a id="follower_modalBtn">관심작가<span>5</span></a>
     </div>
     <div class="mypage_menu">
       <div class="mp_menu_first">
@@ -47,10 +47,57 @@
       </div>
     </div>
   </div>
+
+  <div id="follow_modal" class="fmodal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>구독자</h1>
+        <span class="closebtn">&times;</span>
+      </div>
+      <hr>
+      <div class="follow__list">
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
 </div>
 <script>
-    function settings(){
-        document.getElementById("settings_list").classList.toggle("show");
-    }
+  
+  function settings(){
+      document.getElementById("settings_list").classList.toggle("show");
+  }
+
 </script>
+<script src="{% static 'js/followmodal.js' %}"></script>
 {% endblock %}
