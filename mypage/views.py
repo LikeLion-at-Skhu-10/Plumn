@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView, PasswordContextMixin
 from django.contrib.auth.decorators import login_required
@@ -36,18 +37,40 @@ def mypage(request, username):
         'posts_count':posts_count,
         'follow_status':follow_status,}
     return render(request, 'mypage.html', context)
-    
+
+# difuser    
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     profile = Profile.objects.get(user=user)
+    posts = Post.objects.filter(user=user).order_by('-posted')
     
     posts_count = Post.objects.filter(user=user).count()
     following_count = Follow.objects.filter(follower=user).count()
     followers_count = Follow.objects.filter(following=user).count()
 
+    # 구독 상태
+    follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
+
+	#Pagination
+    paginator = Paginator(posts, 4)
+    page_number = request.GET.get('page')
+    posts_paginator = paginator.get_page(page_number)
+
+    
+    context = {
+		'posts': posts_paginator,
+		'profile':profile,
+		'following_count':following_count,
+		'followers_count':followers_count,
+		'posts_count':posts_count,
+		'follow_status':follow_status,
+	}
+
+    return render(request, 'profile.html', context)
+
 
 #프로필 수정 - 확인
-@login_required(login_url='/login/')
+@login_required(login_url='/login')
 def edit_profile(request):
     user = request.user.id #로그인 auth를 안써서.. 확인해야 할 듯.
     profile = Profile.objects.get(userid=user)
@@ -55,34 +78,58 @@ def edit_profile(request):
         form = EditprofileForm(request.POST, request.FILES, instance = profile)
         if form.is_valid():
             form.save(commit=False)
-            if Profile.objects.filter(username=form.cleaned_data['username']) :#수정하려는 닉네임이 있다면
-                form = EditprofileForm
-                error_message = "이미 존재하는 이름입니다."
-                return render(request, 'editprofile.html', {'form':form, "error_message":error_message})
-            else:
-                user.username = form.cleaned_data['username']
-                user.save()
+            form.save()
             return redirect('mypage')
     else:
         form = EditprofileForm()
         return render(request, 'editprofile.html', {'form':form})
         
 #비밀번호 변경 - 확인
-@login_required(login_url='/login/')
+@login_required(login_url='/login')
 def password_edit(request):
+    user = request.user
     if request.method == 'POST':
-        password_change_form = PasswordChangeForm(request.user, request.POST)
-        if password_change_form.is_valid():
-            user = password_change_form.save()
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            new_password1 = form.cleaned_data.get('new_password1')
+            user.set_password(new_password1)
             update_session_auth_hash(request, user)
             messages.success(request, "비밀번호를 성공적으로 변경했습니다.")
-            return redirect('mypage') #패스워드 변경 완료로 바꿔도 무방
+            return redirect('mypage') 
+        else:
+            form = PasswordChangeForm(instance=user)
     else:
-        password_change_form = PasswordChangeForm(request.user)
-        
-    return render(request, 'mypage/password_change.html', {'password_change_form':password_change_form})
+        return render(request, 'password_change.html', {'form':form})
+
+#팔로우
+@login_required(login_url='/login')
+def follow(request, username, option):
+    following = get_object_or_404(User, username=username)
+
+    try:
+        f, created = Follow.objects.get_or_create(follower=request.user, following=following)
+
+        if int(option) == 0:
+            f.delete()
+			
+        else:
+            posts = Post.objects.all().filter(user=following)[:25]
+
+        return render(request, 'profile.html', args=[username])
+    except User.DoesNotExist:
+        return render(request, 'profile', args=[username])
 
 
+def followers(request, username):
+    follower = Follow.objects.filter(follower=username)
+    context = follower
+    return render(request, 'follower.html', context)
+
+def followings(request, username):
+    followings = Follow.objects.filter(following=username)
+    context = followings
+    return render(request, 'following.html', context)
+    
 #알람 확인 - 확인
 def show_notifications(request):
     user = request.user

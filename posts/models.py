@@ -25,12 +25,12 @@ class Post(models.Model):
 #토픽
 class Topic(models.Model):
     TOPIC_CHOICES = (
-        ('LIFE', '가정 / 생활'), ('HEALTH', '건강'), ('ECONOMY / MANAGEMENT', '경제 / 경영'), 
+        ('LIFE', '가정 / 생활'), ('HEALTH / COOK', '건강 / 요리'), ('ECONOMY / MANAGEMENT', '경제 / 경영'), 
         ('LANGUAGE', '국어 / 외국어'), ('COMPUTER / IT', '컴퓨터 / IT'), ('POLITICS / SOCIETY', '정치 / 사회'),
         ('LITERATURE', '문학'), ('CHILD', '유아 / 아동'), ('TRAVEL', '여행'), 
         ('HISTORY', '역사'), ('ART', '예술'), ('HUMANITIES', '인문'),
         ('PEOPLE', '인물'), ('SELF-IMPROVEMENT', '자기계발'), ('SCIENCE', '과학'), ('RELIGION', '종교'),
-        ('COOK', '요리'), ('CULTURE', '문화'), ('ENGINEERING', '공학')
+        ('CULTURE', '문화'), ('ENGINEERING', '공학')
     )
         
     topic = models.CharField(max_length = 50, choices=TOPIC_CHOICES, default=None)
@@ -111,4 +111,13 @@ class Likes(models.Model):
 
         notify = Notification.objects.filter(post=post, sender=sender, notification_type=1)
         notify.delete()
+        
+#Likes
+post_save.connect(Likes.user_liked_post, sender=Likes)
+post_delete.connect(Likes.user_unlike_post, sender=Likes)
+
 #스크랩
+
+
+
+

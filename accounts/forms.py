@@ -14,7 +14,7 @@ class RegisterForm(forms.Form):
     username = forms.CharField(
         required= True,
         widget=forms.TextInput(
-        attrs={'class' : 'input_margin', 'placeholder' : '이름 입력' }),
+        attrs={'class' : 'input_margin', 'placeholder' : '닉네임 입력' }),
         error_messages={
             'required' : '닉네임을 입력해주세요.',
             'unique' : '이미 존재하는 닉네임입니다.'}
@@ -92,7 +92,9 @@ class RegisterForm(forms.Form):
 class PasswordResetForm(PasswordResetForm):
     email = forms.EmailField(
     max_length=254,
-    widget=forms.EmailInput(attrs={'class': 'input_margin',"autocomplete": "email", 'placeholder':'이메일 입력'}),
+    widget=forms.EmailInput(attrs={'class': 'input_margin', 
+                                   'autocomplete' : 'email',
+                                   'placeholder' : '이메일 입력'})
     )
 
 
