@@ -483,9 +483,18 @@ body, h1, h2, h3, h4, h5, h6, input, textarea, select {
   justify-content: space-around;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 10em 0 10em;
+  padding: 0 30px 0 30px;
 }
 .footer_box h2, .footer_box p {
   color: white;
 }
-
+.footer_sns{
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.snslist{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
