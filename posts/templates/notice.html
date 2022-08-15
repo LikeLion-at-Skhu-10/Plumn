@@ -1,1 +1,39 @@
 <!-- 알림 페이지 -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 알림 {% endblock %}
+{% block head %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="notice">
+  <div class="notice-container">
+    <div class="notice-header">
+      <div><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 1.5em;"></i></div>
+      <h1>오늘의 알람이 왔어요!</h1>
+      <a class="closebtn" href="{% url 'index' %}"><span>&times;</span></a>
+    </div>
+    <hr>
+    <div class="notice-body">
+      <div class="notice-item">
+        <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+        <h2>냐옹님이 포스팅 했어요!</h2>
+      </div>
+      <div class="notice-item">
+        <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+        <h2>냐옹님이 포스팅 했어요!</h2>
+      </div>
+      <div class="notice-item">
+        <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+        <h2>냐옹님이 포스팅 했어요!</h2>
+      </div>
+      <div class="notice-item">
+        <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+        <h2>냐옹님이 포스팅 했어요!</h2>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

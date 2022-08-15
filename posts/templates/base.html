@@ -25,15 +25,28 @@
         <div id="menu__box" class="">
           <!-- 프로필부분 -->
           <div class="myprofile">
-            <div class="pro__circle"><img src="{% static 'img/munchickitten.jpg' %}"></div>
-            <a class="pro__noti"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+            <div class="pro__circle">
+              <!-- 2. 로그인 안한 경우 -->
+              <img src="{% static 'img/needloginuser.png' %}">
+
+              <!-- 1. 로그인 한 경우 -->
+              <!-- <img src="{% static 'img/munchickitten.jpg' %}"> -->
+            </div>
+
+            <!-- 1. 로그인 한 경우 -->
+            <!-- <a class="pro__noti" href="{% url 'notice' %}"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
             <h3>플럼님</h3>
             <a class="mp_logout">로그아웃</a>
-            <!-- 게시글, 구독자, 관심작가 데이터 들어가는 부분 -->
             <div class="profile__usersub">
               <a class="usersubinfo">게시글 <span>5</span></a>
               <a class="usersubinfo">구독자 <span>30</span></a>
               <a class="usersubinfo">관심작가 <span>5</span></a>
+            </div> -->
+            
+            <!-- 2. 로그인 안한 경우 -->
+            <div class="mp_login_container">
+              <a href="{% url 'login' %}" class="mp_login">로그인</a>
+              <a href="{% url 'register' %}" class="mp_login">회원가입</a>
             </div>
           </div>
           <div class="menu_home">
@@ -42,17 +55,19 @@
           </div>
           <div class="menulist">
             <a href="{% url 'list' %}" class="menulist__item">전체 글 보기</a>
-            <a href="{% url 'scrap' %}" class="menulist__item">내 서재</a>
-            <a href="{% url 'pay' %} " class="menulist__item">플럼 구매</a>
-            <a href="#" class="menulist__item">마이 뱃지</a>
+            <a href="{% url 'scrap' %}" class="menulist__item" style="opacity: 0;">내 서재</a>
+            <a href="{% url 'pay' %} " class="menulist__item" style="opacity: 0;">플럼 구매</a>
+            <a href="#" class="menulist__item" style="opacity: 0;">마이 뱃지</a>
           </div>
           <div class="menu_fb">
             <div><h2>"A learned fool is more foolish than an ignorant one"</h2></div>
-            <div><a href="{% url 'feedback' %}">사이트 피드백</a></div>
+            <!-- 1. 로그인 한 경우 -->
+            <!-- <div><a href="{% url 'feedback' %}">사이트 피드백</a></div> -->
+            <!-- 2. 로그인 안한 경우 -->
+            <div><a href="{% url 'find_id' %}">아이디를 잊어버리셨나요?</a></div>
           </div>
         </div>
       </div>
-      </label>
       <h1 class="index"><a href="{% url 'index' %}">Plumn</a></h1>
     </div>
 
