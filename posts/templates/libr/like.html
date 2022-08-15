@@ -1,1 +1,88 @@
 <!-- 내 서재(좋아요페이지) -->
+<!-- 내 서재(스크랩페이지) -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 내 서재 {% endblock %}
+{% block head %}
+<link href="{% static 'css/library1.css' %}" rel="stylesheet">
+<link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="scrap">
+  <div class="scrap-container">
+    <div><h2>내 서재</h2></div>
+    <div class="scrap__a">
+      <a style="text-decoration: none; color:gray;"href="{% url 'scrap' %}">스크랩 글</a>
+      <a style="color: black;" href="{% url 'like' %}">추천한 글</a>
+    </div>
+
+    <div class="scrap__content_con">
+      <div class="scrap-wrap">
+        <!-- scrap item 반복 -->
+        <a class="write_item" href="{% url 'read' %}">
+          <div class="write-info">
+            <h1>Deep Python study with me</h1>
+            <p>Advance your data analyistics ....</p>
+            <div>
+              <span>July. 03. 2022</span>
+              <span>댓글 2</span>
+              <span><i class="fa-solid fa-heart"></i> 2</span>
+          </div>
+          </div>
+          <div class="write-img">
+            <img src="{% static 'img/plumn_icon.png' %}">
+          </div>
+        </a>
+
+        <a class="write_item" href="{% url 'read' %}">
+          <div class="write-info">
+            <h1>Deep Python study with me</h1>
+            <p>Advance your data analyistics ....</p>
+            <div>
+              <span>July. 03. 2022</span>
+              <span>댓글 2</span>
+              <span><i class="fa-solid fa-heart"></i> 2</span>
+          </div>
+          </div>
+          <div class="write-img">
+            <img src="{% static 'img/plumn_icon.png' %}">
+          </div>
+        </a>
+
+        <a class="write_item" href="{% url 'read' %}">
+          <div class="write-info">
+            <h1>Deep Python study with me</h1>
+            <p>Advance your data analyistics ....</p>
+            <div>
+              <span>July. 03. 2022</span>
+              <span>댓글 2</span>
+              <span><i class="fa-solid fa-heart"></i> 2</span>
+          </div>
+          </div>
+          <div class="write-img">
+            <img src="{% static 'img/plumn_icon.png' %}">
+          </div>
+        </a>
+
+        <a class="write_item" href="{% url 'read' %}">
+          <div class="write-info">
+            <h1>Deep Python study with me</h1>
+            <p>Advance your data analyistics ....</p>
+            <div>
+              <span>July. 03. 2022</span>
+              <span>댓글 2</span>
+              <span><i class="fa-solid fa-heart"></i> 2</span>
+          </div>
+          </div>
+          <div class="write-img">
+            <img src="{% static 'img/plumn_icon.png' %}">
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

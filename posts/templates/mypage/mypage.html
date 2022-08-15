@@ -18,9 +18,10 @@
       <i class="fa-solid fa-ellipsis-vertical" style="font-size: 20pt;"></i>
     </div>
     <div id="settings_list" class="">
-      <a href="{% url 'editprofile' %}" class="settings_item">프로필 변경</a>
+      <a href="{% url 'editprofile' %}" class ="settings_item">프로필 변경</a>
       <a href="{% url 'setting' %}"class="settings_item">내 정보 변경</a>
     </div>
+
     <div class="mypage_info">
       <a>게시글<span>5</span></a>
       <a id="follow_modalBtn">구독자<span>30</span></a>
@@ -93,11 +94,9 @@
 
 </div>
 <script>
-  
   function settings(){
-      document.getElementById("settings_list").classList.toggle("show");
+    document.getElementById("settings_list").classList.toggle("show")
   }
-
 </script>
 <script src="{% static 'js/followmodal.js' %}"></script>
 {% endblock %}
