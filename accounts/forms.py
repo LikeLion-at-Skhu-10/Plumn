@@ -70,8 +70,8 @@ class RegisterForm(forms.Form):
         
         if password != password_confirm:
             return self.add_error('password_confirm', '비밀번호가 다릅니다.')
-        elif not (4 <= len(username) <= 16):
-            return self.add_error('username', '이름은 4~16자로 입력해 주세요.')
+        elif not (2 <= len(username) <= 8):
+            return self.add_error('username', '이름은 2~8자로 입력해 주세요.')
         elif 8 > len(password):
             return self.add_error('password', '비밀번호는 8자 이상으로 적어주세요.')
         elif User.objects.filter(username=self.cleaned_data['username']).exists():

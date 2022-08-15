@@ -2,6 +2,7 @@ from time import time
 from django.shortcuts import render, redirect, get_object_or_404 #get_list_or_404
 import posts
 from .models import Post, Likes
+from accounts.models import User
 from mypage.models import Profile
 from .forms import FeedbackForm, ObjectionForm #PostForm
 from django.utils import timezone
@@ -11,6 +12,10 @@ def index(request):
     return render(request, 'index.html')
 
 def base(request):
+    user = request.user
+    if request.user.is_authenticated:
+        user = User.objects.get(id=user.id)
+        return render(request, 'base.html', {'user':user})
     return render(request, 'base.html')
 
 def notice(request):

@@ -1,10 +1,10 @@
 #slidebanner {
   width: 80vw;
-  height: 70vh;
+  height: 40vw;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 5em;
   margin-bottom: 60px;
 }
 .slides {
@@ -12,20 +12,13 @@
   display: flex;
   left: 0;
   top: 0;
-}
-.slides li {
   width: 80vw;
-  height: 70vh;
-  max-width: 100%;
 }
 .slides li:not(:last-child){
   float: left;
 }
 .slides img {
-  max-width: 100%;
-  max-height: 100%;
   width: 80vw;
-  height: 70vh;
 }
 .slide-anch span{
   position: absolute;
@@ -134,13 +127,13 @@
 .topic-list {
   display: grid;
   margin: 60px 200px 0 200px;
-  grid-template-columns: repeat(6, 150px);
-  grid-gap: 40px;
+  grid-template-columns: repeat(6, 10vw);
+  grid-gap: 1.5em;
   justify-content: space-around;
 }
 .topic-item{
-  width: 150px;
-  height: 45px;
+  width: 10vw;
+  height: 40px;
   background-color: white;
   border-radius: 30px;
   border: #FC9595 solid 1px;
@@ -167,12 +160,12 @@
 .famous-bannerwrap{
   display: flex;
   flex-direction: column;
-  padding: 80px;
+  padding: 5rem;
   text-align: center;
 }
 .famous-bannerwrap h1 {
   font-family:"Austria";
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .famous-bannerwrap h2{
   font-family: 'Noto Sans KR';

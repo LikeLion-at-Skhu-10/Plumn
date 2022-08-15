@@ -1,0 +1,73 @@
+<!-- 프로필 수정 -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 프로필 수정 {% endblock %}
+{% block head %}
+<link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="mypage">
+  <div class="mypage_banner">
+    <h1>{{user.username}}의 나무이야기</h1>
+  </div>
+
+  <div class="edit_bannercolor" onclick="selectColor()">
+    <i class="fa-solid fa-palette" style="font-size: 3em;"></i>
+  </div>
+  <div id="colorSelector" class="">
+    <ul class="colorList">
+      <li data-color="#2ecc71"></li>
+      <li data-color="#D64A4B"></li>
+      <li data-color="#8e44ad"></li>
+      <li class="active-color" data-color="#46a1de"></li>
+      <li data-color="#bdc3c7"></li>
+    </ul>
+  </div>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+  <div class="mypage_content">
+    <div class="mypage_profile">
+      <button class="mp_editbtn">
+        <img src="{% static 'img/munchickitten.jpg' %}">
+        <input type="file"/>
+      </button>
+    </div>
+    <form class="editpr_ip">
+      <div class="prform">
+        {{form.username}}
+        <label class="prInputLabel" for="name">이름</label>
+        <span class="spanOverlay"></span>
+        <span class="spanBase"></span>
+      </div>
+      {% if error %}
+      <span style="color: red;">{{  error }}</span>
+      {% endif %}
+
+      <div class="prform">
+          {{form.userintro}}
+          <label class="prInputLabel" for="name">자기소개</label>
+          <span class="spanOverlay"></span>
+          <span class="spanBase"></span>
+      </div>
+
+      <div class="edit_combtn">
+        <a href="{% url 'mypage' %}"><span>취소하기</span></a>
+        <button type="submit"><span>프로필 변경</span></button>
+      </div>
+
+    </form>
+
+  </div>
+</form>
+  </div>
+  <script>
+    function selectColor(){
+        document.getElementById("colorSelector").classList.toggle("show");
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+  <script src="{% static 'js/colorpicker.js' %}"></script>
+{% endblock %}

@@ -8,6 +8,7 @@ from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm, Set
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordContextMixin, PasswordResetConfirmView
 from django.views.generic import TemplateView, FormView
 from .forms import RegisterForm
+from mypage.models import Profile
 #from argon2 import PasswordHasher
 from django.views import View
 from django.http import JsonResponse
@@ -32,7 +33,7 @@ def login(request):
         if User.objects.filter(email=email).exists():
             if user is not None:
                 auth.login(request, user)
-                return redirect('base')
+                return redirect('index')
             else:
                 messages.info(request, "비밀번호를 다시 입력해주세요.")
                 return render(request, 'login.html')
@@ -45,7 +46,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('base')
+    return redirect('index')
 
 #회원가입
 def register(request):
@@ -63,7 +64,6 @@ def register(request):
             )
             user.save()
             user.is_active = False # 유저 비활성화
-            #user.save()
             current_site = get_current_site(request) 
             message = render_to_string('activation_email.html', {
                 'user': user,

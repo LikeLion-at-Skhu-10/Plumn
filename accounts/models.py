@@ -6,7 +6,10 @@ from django.utils import timezone
 #from django.utils.translation import ugettext_lazy
 from random import randint
 from django.core.validators import RegexValidator #전화번호 입력을 위한 유효성검사
- 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from mypage.models import Profile
+
 # verbose_name : admin페이지에서 보일 컬럼명
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, verbose_name='유저 아이디') 
@@ -32,6 +35,19 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = '유저' 
         verbose_name_plural = '유저'
         swappable = 'AUTH_USER_MODEL'
+
+#decorater를 통해서 signal에 필요한 인자들을 넘겨준다 
+#그리고 만약 User 모델에 새로운 record가 추가되면 Profile 모델의 user 필드를 instance의 값을 넣어주어 Profile에 새로운 record를 생성하라는 코드   
+#계정 생성하자마자 프로필 생성
+@receiver(post_save, sender=User)        
+def create_profile(sender, instance, created, **kwargs):
+    if created == True:
+        user = instance
+        profile = Profile.objects.create(
+            userid = user,
+            username = user.username, 
+            )
+
         
 class UserManager(BaseUserManager):
     use_in_migrations = True

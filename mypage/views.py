@@ -18,9 +18,9 @@ from django.views import View
 
 # 마이페이지
 @login_required(login_url='/login/')
-def mypage(request, username):
-    user = get_object_or_404(User, username=username)
-    profile = Profile.objects.get(user=user)
+def mypage(request):
+    user = request.user
+    profile = Profile.objects.get(id=user.id)
     
     # 마이페이지 내 나의 정보
     posts_count = Post.objects.filter(user=user).count()
@@ -29,19 +29,20 @@ def mypage(request, username):
     
     #팔로우 상태?
     follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
-    
+
     context={
         'profile':profile,
         'following_count':following_count,
         'followers_count':followers_count,
         'posts_count':posts_count,
         'follow_status':follow_status,}
+    
     return render(request, 'mypage.html', context)
 
 # difuser    
-def profile(request, username):
-    user = get_object_or_404(User, username=username)
-    profile = Profile.objects.get(user=user)
+def profile(request):
+    user = request.user
+    profile = Profile.objects.get(id=user.id)
     posts = Post.objects.filter(user=user).order_by('-posted')
     
     posts_count = Post.objects.filter(user=user).count()
@@ -70,14 +71,15 @@ def profile(request, username):
 
 
 #프로필 수정 - 확인
-@login_required(login_url='/login')
+@login_required(login_url='/login/')
 def edit_profile(request):
-    user = request.user.id #로그인 auth를 안써서.. 확인해야 할 듯.
-    profile = Profile.objects.get(userid=user)
+    user = request.user
+    #profile = Profile.objects.get(id=user.id)
+    
     if request.method == 'POST' :
-        form = EditprofileForm(request.POST, request.FILES, instance = profile)
+        form = EditprofileForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save(commit=False)
+            form = form.save(commit=False)
             form.save()
             return redirect('mypage')
     else:
@@ -101,7 +103,7 @@ def password_edit(request):
     else:
         return render(request, 'password_change.html', {'form':form})
 
-#팔로우
+#팔로우(임시)
 @login_required(login_url='/login')
 def follow(request, username, option):
     following = get_object_or_404(User, username=username)

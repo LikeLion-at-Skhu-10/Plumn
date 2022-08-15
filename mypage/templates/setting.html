@@ -1,0 +1,48 @@
+<!-- 개인정보 변경 페이지 -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 설정 {% endblock %}
+{% block head %}
+<link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="mypage">
+    <div class="mypage_banner">
+      <h1>플럼이의 나무이야기</h1>
+    </div>
+    <div class="mypage_content">
+      <div class="mypage_profile">
+        <button class="mp_editbtn">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+          <input type="file"/>
+        </button>
+      </div>
+      <form class="editpr_ip">
+        <div class="prform">
+          <input type="email" required class="prInput">
+          <label class="prInputLabel" for="name">메일</label>
+          <span class="spanOverlay"></span>
+          <span class="spanBase"></span>
+        </div>
+        <div class="prform">
+          <input type="password" required class="prInput">
+          <label class="prInputLabel" for="name">비밀번호</label>
+          <span class="pass_exp">(소문자, 대문자, 숫자, 특수문자 각 각 한 개 이상 포함)</span>
+          <span class="spanOverlay"></span>
+          <span class="spanBase"></span>
+        </div>
+        <div class="prform">
+          <input type="password" required class="prInput">
+          <label class="prInputLabel" for="name">비밀번호 확인</label>
+          <span class="spanOverlay"></span>
+          <span class="spanBase"></span>
+        </div>
+        <div class="edit_combtn">
+          <a href="{% url 'mypage' %}"><span>취소하기</span></a>
+          <button type="submit"><span>설정 변경</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

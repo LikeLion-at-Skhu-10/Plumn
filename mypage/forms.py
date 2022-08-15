@@ -13,7 +13,7 @@ class EditprofileForm(forms.Form):
     username = forms.CharField(
         required= True,
         widget=forms.TextInput(
-        attrs={'class' : 'input_margin', 'placeholder' : '닉네임 입력' }),
+        attrs={'required class' : 'prInput'}),
         error_messages={
             'required' : '닉네임을 입력해주세요.',
             'unique' : '이미 존재하는 닉네임입니다.'}
@@ -23,7 +23,7 @@ class EditprofileForm(forms.Form):
         max_length=256,
         required = False,
         widget=forms.TextInput(
-        attrs={'class' : 'input_margin', 'placeholder' : '소개말' }),
+        attrs={'required class' : 'prInput'}),
     )
     
     userphoto = forms.ImageField(required=False)
@@ -31,7 +31,7 @@ class EditprofileForm(forms.Form):
     
     class Meta:
         model = Profile
-        fields = ['username', 'userintro', 'userphoto','background_colors']
+        fields = ['username', 'userintro', 'userphoto', 'background_colors']
         
     def clean(self):
         cleaned_data = super().clean()
@@ -41,15 +41,15 @@ class EditprofileForm(forms.Form):
         userphoto = cleaned_data.get('userphoto')
         background_colors = cleaned_data.get('background_colors')
         
-        if username:
-            new_username = Profile.objects.get(username=username)
-            if Profile.objects.filter(new_username=self.cleaned_data['username']).exists():
-                return self.add_error('new_username', '이미 존재하는 닉네임입니다.')
-            else:
-                self.username = new_username
-                self.userintro = userintro
-                self.userphoto = userphoto
-                self.background_colors = background_colors
+        if not 2<= len(username) <= 8:
+            return self.add_error('username', '이름은 2~8자로 입력해 주세요.')
+        elif User.objects.filter(username=self.cleaned_data['username']).exists():
+            return self.add_error('username', '이미 존재하는 닉네임입니다.')
+        else:
+            self.username = username
+            self.userintro = userintro
+            self.userphoto = userphoto
+            self.background_colors = background_colors
 
 
 REGEX_PASSWORD = '^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'

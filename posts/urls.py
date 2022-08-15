@@ -2,7 +2,7 @@ from django.urls import path
 from posts import views 
 from accounts import views as account_views
 urlpatterns=[
-    path('base', views.base, name='base'),
+    path('base/', views.base, name='base'),
     path('notice/', views.notice, name='notice'),
     
     #path('create/', views.create, name='create'),
