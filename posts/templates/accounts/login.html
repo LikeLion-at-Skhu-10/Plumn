@@ -1,68 +1,60 @@
 <!-- 로그인 -->
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
-    <title>{% block title %} 로그인 창 {% endblock %}</title>
-    {% block head %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    {% endblock %}
-  </head>
 
-  <body>
-    {% block content %}
-    <div>
-      <div class="container">
-        <a href="{% url 'index' %}">
-          <img class="picture" src="{% static 'img/plumn.png' %}"
-        /></a>
+<head>
+  <meta charset="UTF-8" />
+  <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+  <title>{% block title %} 로그인 창 {% endblock %}</title>
+  {% block head %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  {% endblock %}
+</head>
 
-        <div class="idpw_wrap">
-          <div class="id_wrap">
-            <h4>아이디</h4>
-            <input type="email" name="" id="" placeholder="Email" />
-          </div>
+<body>
+  {% block content %}
+  <fieldset class="container">
+    <a href="{% url 'index' %}">
+      <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
 
-          <div class="pw_wrap">
-            <h4>비밀번호</h4>
-            <input type="password" name="" id="" placeholder="Password" />
-          </div>
-
-          <div class="login_wrap" id="login_wrap">
-            <div class="login_etc">
-              <li>
-                <a href="{% url 'register' %}" class="find_text"
-                  >계정 생성하기</a
-                >
-              </li>
-              <li>
-                <a href="{% url 'find_id' %}" class="find_text"
-                  >아이디 찾기</a
-                >
-              </li>
-              <li>
-                <a href="{% url 'find_pw' %}" class="find_text"
-                  >비밀번호 찾기</a
-                >
-              </li>
-            </div>
-            <div class="login">
-              <a href="{% url 'index' %}">
-                <button class="btn btn_plumn" type="button">
-                  로그인하기
-                </button></a
-              >
-            </div>
-          </div>
-        </div>
+    <div class="idpw_wrap">
+      <div class="id_wrap">
+        <h4>아이디</h4>
+        <input type="email" name="" id="" placeholder="Email" />
       </div>
-      <hr />
-      {% endblock %}
-    </div>
-    {% block footer %}
-    {% endblock %}
-  </body>
+
+      <div class="pw_wrap">
+        <h4>비밀번호</h4>
+        <input type="password" name="" id="" placeholder="Password" />
+      </div>
+
+      <div class="login_etc">
+        <li>
+          <a href="{% url 'register' %}" class="find_text">계정 생성하기</a>
+        </li>
+        <li>
+          <a href="{% url 'find_id' %}" class="find_text">아이디 찾기</a>
+        </li>
+        <li>
+          <a href="{% url 'find_pw' %}" class="find_text">비밀번호 찾기</a>
+        </li>
+      </div>
+
+      <div class="login">
+        <button class="btn btn_plumn" onclick="loginSubmit();"><span>로그인</span></button>
+      </div>
+      <script>
+        function loginSubmit() {
+          window.location = "{% url 'index' %}";
+        }
+      </script>
+
+  </fieldset>
+  <hr class="hrhr" />
+  {% endblock %}
+  </div>
+  {% block footer %} {% endblock %}
+</body>
+
 </html>

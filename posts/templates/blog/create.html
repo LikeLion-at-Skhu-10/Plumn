@@ -1,1 +1,104 @@
 <!-- 글쓰기 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+  <meta charset="UTF-8">
+  <title>{% block title %} 플럼 작성하기 {% endblock %}</title>
+  {% block head %}
+  <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+  {% endblock %}
+</head>
+
+<body>
+  {% block content %}
+  <div id="container">
+    <div class="plus_button_wrap">
+      <div class="cover_image_plus">
+        <input type="file" id="input-cover" class="image_inputType_file" accept="img/*">
+        <button class="cover_image_btn">
+          <i class="fa-solid fa-image"></i>
+          <span>커버 이미지 변경</span>
+        </button>
+      </div>
+
+      <div class="cover_color_plus">
+        <button class="cover_color_btn" onclick="colorChange()">
+          <i class="fa-solid fa-palette"></i>
+          <span>커버 배경색 변경</span>
+        </button>
+      </div>
+
+      <div class="middle_sort_plus">
+        <button class="sort_btn">
+          <i class="fa-solid fa-align-center"></i>
+          <span>가운데 정렬</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- <div class="title_write">
+      <p>제목을 입력해주세요</p>
+    </div> -->
+  </div>
+
+
+  <!-- container 커버 부분 끝 -->
+
+  <!-- <hr class="hr_style">
+
+  <div class="container_two">
+    <div class="space_write">
+      <span>내용을 입력해주세요</span>
+    </div>
+
+    <div class="content_box">
+      <div class="box">본문</div>
+      <div class="box"><i class="fa-solid fa-bold fa-lg"></i></div>
+      <div class="box"><i class="fa-solid fa-underline fa-lg"></i></div>
+      <div class="box"><i class="fa-solid fa-strikethrough fa-lg"></i></div>
+      <div class="box"><i class="fa-solid fa-palette fa-lg"></i></div>
+      <div class="box"><i class="fa-solid fa-link fa-lg"></i></div>
+      <div class="box"><i class="fa-solid fa-images fa-lg"></i></div>
+      <div class="box"><i class="fa-solid fa-paperclip fa-lg"></i></div>
+    </div>
+
+    <hr class="hr_style">
+
+    <div class="keyword_btn">
+      <select name="keyword" id="keyword">
+        <option disabled selected>키워드 선택</option>
+        <option value="apple">인문</option>
+        <option value="orange">사회</option>
+        <option value="grape">과학</option>
+        <option value="melon">IT</option>
+      </select>
+    </div>
+
+    <div class="keyword_selected">
+      <button class="keyword_select">
+        <span>과학</span>
+      </button>
+    </div>
+
+    <div class="saved">
+      <button class="temporary_saved_btn" type="button">
+        <span>임시 저장</span>
+      </button>
+      <button class="saved_btn" type="button">
+        <span>저장</span>
+      </button>
+    </div>
+
+
+    <script src="{% static 'js/image.js' %}"></script>
+  </div> -->
+  <script src="{% static 'js/image.js' %}"></script>
+
+  {% endblock %}
+  {% block footer %} {% endblock %}
+</body>
+
+</html>

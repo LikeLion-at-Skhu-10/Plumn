@@ -1,15 +1,18 @@
 <!-- 비밀번호 찾기 -->
-{% load static %}
+{% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
-    <title>로그인 창</title>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+    <title>{% block title %}비밀번호 찾기창 {% endblock %}</title>
+    {% block head %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% endblock %}
   </head>
 
   <body>
+    {% block content %}
     <div>
       <div class="container">
         <a href="{% url 'index' %}">
@@ -19,52 +22,17 @@
         <div class="text_wrap">
           <div class="tel_find">
             <h4>아이디를 입력하세요!</h4>
-            <input type="text" name="" id="" placeholder="아이디 입력" />
-          </div>
-
-          <div class="text_wrap1">
-            <h4>전화번호를 입력하세요!</h4>
-            <div class="tel_certify">
-              <input type="tel" name="" id="" placeholder="000-0000-0000" />
-              <button class="tel_certify_btn tel_certify_btn_plumn">
-                인증번호 전송
-              </button>
-            </div>
-          </div>
-
-          <div class="text_wrap1">
-            <h4>인증번호를 입력하세요</h4>
-            <div class="tel_certify">
-              <input
-                type="text"
-                name=""
-                id=""
-                placeholder="인증번호 입력(4자리)"
-              />
-              <button
-                onclick="certifyAlert()"
-                class="tel_certify_btn tel_certify_btn_plumn"
-                type="button"
-              >
-                인증번호 확인
-              </button>
-              <script>
-                function certifyAlert() {
-                  alert("인증되었습니다.");
-                }
-              </script>
-            </div>
-          </div>
-
-          <a href="{% url 'find_pw_success' %}">
-            <button class="find_pw_btn find_pw_btn_plumn" type="button">
-              비밀번호 변경하기
-            </button>
+            <input type="text" class="input_margin" name="" id="" placeholder="아이디 입력" />
+            <a class="find_pw_btn find_pw_btn_plumn" type="button" href="{% url 'find_pw_success' %}">
+              비밀번호 초기화하기
           </a>
+          </div>
         </div>
       </div>
-      <hr class="hr_register"/>
+      <hr class="hr_register" />
       <a href="{% url 'register' %}"> <p>계정 생성</p></a>
+      {% endblock %}
     </div>
+    {% block footer %} {% endblock %}
   </body>
 </html>

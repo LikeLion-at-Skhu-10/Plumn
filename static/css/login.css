@@ -1,7 +1,4 @@
 /**************************************************/
-body {
-  letter-spacing: 1px;
-}
 
 .container {
   display: flex;
@@ -10,8 +7,8 @@ body {
   /* justify-content: center; */
 }
 
-img {
-  width: 1000px;
+.picture {
+  width: 1200px;
 }
 
 /* 아이디 박스 */
@@ -21,12 +18,13 @@ img {
 }
 
 .id_wrap input {
-  width: 120%;
+  width: 110%;
   height: 30px;
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid lightgray;
   outline: none;
+  margin-top: 20px;
 }
 
 .id_wrap input:focus {
@@ -40,12 +38,13 @@ img {
 }
 
 .pw_wrap input {
-  width: 120%;
+  width: 110%;
   height: 30px;
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid lightgray;
   outline: none;
+  margin-top: 20px;
 }
 
 .pw_wrap input:focus {
@@ -62,27 +61,13 @@ img {
   font-weight: lighter;
 }
 
-.login_wrap {
-  display: flex;
-  padding: 10px 0px 25px;
-  text-align: center;
-}
 
-ol,
-ul {
-  list-style: none;
-}
-
-ul {
-  display: block;
-}
-
-.login_wrap li {
+.login_etc li {
   position: relative;
   display: inline-block;
 }
 
-.login_wrap .find_text {
+.find_text {
   display: inline-block;
   font-size: 14px;
   line-height: 30px;
@@ -99,32 +84,34 @@ li + li::before {
   content: "";
   position: absolute;
   top: 10px;
-  left: 1px;
+  left: -25px;
   width: 1px;
   height: 12px;
   border-radius: 3px;
   background-color: lightgray;
 }
 
-/* .login {
+.login {
   display: flex;
-} */
+  margin-left: 0 auto;
+}
 
 /* 로그인 버튼 */
-button {
+/* button {
   margin: 20px;
-}
+} */
 
 .btn {
   margin-left: 180px;
+  width: 200px;
+  margin-top: 20px;
   position: relative;
-  padding: 15px 30px;
+  padding: 15px 50px;
   border-radius: 15px;
-  font-weight: 500;
+  font-weight: 300;
   background-color: white;
   color: #fc9595;
   transition: 0.25s;
-  width: 50%;
 }
 
 .btn_plumn {
@@ -144,7 +131,13 @@ button {
 /**************************************************/
 /*register.html 회원가입 부분 */
 
+.input_margin{
+  margin-top: 20px;
+}
+
 .register_wrap {
+  /* display: flex;
+  flex-direction: column; */
   text-align: center;
 }
 
@@ -159,8 +152,8 @@ button {
 }
 
 .text_wrap {
-  margin-top: 40px;
   margin-bottom: 30px;
+  margin-top: 40px;
 }
 
 /* 입력창 (공통) */
@@ -183,15 +176,14 @@ button {
 }
 
 .certify_btn {
-  margin-top: -10px;
+  margin-top: 10px;
   padding: 15px 20px;
   border-radius: 10px;
   font-weight: 200;
   background-color: white;
   color: #fc9595;
   transition: 0.25s;
-  width: 300px;
-  margin-right: -40px;
+  width: 200px;
 }
 
 .certify_btn_plumn {
@@ -208,15 +200,23 @@ button {
 
 /* 회원가입, 돌아가기 버튼 */
 
+
+.register{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+}
+
 .register_btn {
   position: relative;
-  padding: 15px 30px;
+  padding: 15px 70px;
   border-radius: 10px;
   font-weight: 200;
   background-color: white;
   color: #fc9595;
   transition: 0.25s;
-  width: 200px;
 }
 
 .register_btn_plumn {
@@ -229,6 +229,13 @@ button {
   border: 1.5px solid #fe8d92;
   color: white;
   cursor: pointer;
+}
+
+
+.register > div {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 50px;
 }
 
 .cancel_btn {
@@ -257,48 +264,27 @@ button {
 /**************************************************/
 
 /* 아이디 찾기 창 */
+
 .tel_find {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
-  width: 80%;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .tel_find input {
-  width: 107%;
+  width: 150%;
   height: 30px;
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid lightgray;
+  margin-bottom: 50px;
   outline: none;
 }
 
 .tel_find input:focus {
   border: 1px solid #fc9595;
-}
-
-/* 아이디 찾기 버튼 */
-
-.find_id_btn {
-  margin-left: 200px;
-  position: relative;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-weight: 200;
-  background-color: white;
-  color: #fc9595;
-  transition: 0.25s;
-  width: 200px;
-}
-
-.find_id_btn_plumn {
-  border: 1.5px solid #fc9595;
-  color: #fc9595;
-}
-
-.find_id_btn_plumn:hover {
-  background-color: #fc9595;
-  border: 1.5px solid #fe8d92;
-  color: white;
-  cursor: pointer;
 }
 
 /**************************************************/
@@ -311,9 +297,14 @@ button {
   border-radius: 10px;
 }
 
-.id_find_success {
+/* .id_find_success {
   display: flex;
   flex-direction: column;
+} */
+
+.find_id{
+  display: flex;
+  margin-top: 40px;
 }
 
 .success_id_btn {
@@ -372,7 +363,7 @@ button {
   color: #fc9595;
   transition: 0.25s;
   width: 250px;
-  margin-top: -10px;
+  margin-top: 10px;
 }
 
 .tel_certify_btn_plumn {
@@ -392,11 +383,13 @@ button {
   position: relative;
   padding: 15px 30px;
   border-radius: 10px;
-  font-weight: 200;
+  font-weight: 300;
   background-color: white;
+  font-size: 11pt;
   color: #fc9595;
   transition: 0.25s;
-  width: 480px;
+  text-align: center;
+  width: 200px;
 }
 
 .find_pw_btn_plumn {
@@ -442,7 +435,8 @@ a {
 }
 
 /* 전체 hr 고정 */
-hr {
+.hrhr {
+  margin-top: 50px;
   border: none;
   border-top: 1px solid lightgray;
 }
@@ -451,7 +445,7 @@ hr {
 
 /* 비밀번호 변경 창 */
 .new_pw input {
-  width: 100%;
+  width: 110%;
   height: 30px;
   border-radius: 10px;
   padding: 0px 20px;
@@ -464,25 +458,37 @@ hr {
 }
 
 .new_pw {
-  margin-top: 30px;
-  margin-bottom: 30px;
+margin: 30px 0px;
 }
 
 .pw_change_font {
   color: #fc9595;
   font-size: 8px;
+  text-align: left;
+  margin-top: 2px;
+}
+
+.change_pw{
+  display: flex;
+  flex-direction: column;
+}
+
+.change_button{
+  display: flex;
+  justify-content: center;
 }
 
 .change_pw_btn {
-  margin-left: 50px;
+  margin-left: 100px;
   position: relative;
-  padding: 15px 30px;
-  border-radius: 10px;
+  padding: 15px 40px;
+  border-radius: 15px;
   font-weight: 200;
   background-color: white;
+  font-size: 11pt;
   color: #fc9595;
   transition: 0.25s;
-  width: 300px;
+  width: 200px;
 }
 
 .change_pw_btn_plumn {
