@@ -12,7 +12,11 @@
   </div>
   <div class="mypage_content">
     <div class="mypage_profile">
+      {% if profile.userphoto %}
+      <img src="{{profile.userphoto.url}}">
+      {% else %}
       <img src="{% static 'img/munchickitten.jpg' %}">
+      {% endif %}
     </div>
     <div class="mypage_settings" onclick="settings()">
       <i class="fa-solid fa-ellipsis-vertical" style="font-size: 20pt;"></i>

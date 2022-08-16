@@ -346,6 +346,8 @@
   height: 60px;
   width: 500px;
 }
+
+.prform {}
 .prInput{
   position: relative;
   all: unset;

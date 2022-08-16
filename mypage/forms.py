@@ -7,7 +7,7 @@ from accounts.models import User
 from argon2 import PasswordHasher
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
-
+import re
 
 class EditprofileForm(forms.Form):
     username = forms.CharField(
@@ -27,19 +27,19 @@ class EditprofileForm(forms.Form):
     )
     
     userphoto = forms.ImageField(required=False)
-    background_colors = forms.ChoiceField()
+    #background_colors = forms.ChoiceField()
     
     class Meta:
         model = Profile
-        fields = ['username', 'userintro', 'userphoto', 'background_colors']
-        
+        fields = ['username', 'userintro', 'userphoto']
+'''        
     def clean(self):
         cleaned_data = super().clean()
         
         username = cleaned_data.get('username')
         userintro = cleaned_data.get('userintro')
         userphoto = cleaned_data.get('userphoto')
-        background_colors = cleaned_data.get('background_colors')
+        #background_colors = cleaned_data.get('background_colors')
         
         if not 2<= len(username) <= 8:
             return self.add_error('username', '이름은 2~8자로 입력해 주세요.')
@@ -49,20 +49,20 @@ class EditprofileForm(forms.Form):
             self.username = username
             self.userintro = userintro
             self.userphoto = userphoto
-            self.background_colors = background_colors
-
+            #self.background_colors = background_colors
+'''
 
 REGEX_PASSWORD = '^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
 class PasswordChangeForm(forms.Form):
     new_password1 = forms.CharField(
         widget=forms.PasswordInput(
-        attrs={'class' : 'input_margin', 'placeholder' : '비밀번호 입력'}),
+        attrs={'required class' : 'prInput'}),
         error_messages={'required' : '비밀번호를 입력해 주세요.'}
     )
     
     new_password2 = forms.CharField(
         widget=forms.PasswordInput(
-        attrs={'class' : 'input_margin', 'placeholder' : '비밀번호 확인'}),
+        attrs={'required class' : 'prInput'}),
         error_messages={'required' : '비밀번호가 일치하지 않습니다.'}
     )
     
@@ -71,10 +71,18 @@ class PasswordChangeForm(forms.Form):
         fields = ['password']
     
         # --- django built-in validator
-    def clean_password(self):
-        new_password1 = self.cleaned_data['new_password1']
-        validate_password(new_password1)
-        return new_password1
+    def clean(self):
+        cleaned_data = super().clean()
+        
+        new_password1 = self.cleaned_data.get('new_password1')
+        new_password2 = self.cleaned_data.get('new_password2')
+        
+        if(new_password1 != new_password2):
+            return self.add_error('new_password1', '비밀번호가 일치하지 않습니다.')
+        elif re.search(REGEX_PASSWORD, new_password1) is None:
+            return self.add_error('new_password1', '소문자, 대문자, 숫자, 특수문자 각 각 한 개 이상 포함해주세요.')
+        else:
+            self.new_password1 = new_password1
 
     # --- check duplicate
     def clean_password2(self):

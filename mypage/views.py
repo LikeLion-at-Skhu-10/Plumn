@@ -2,7 +2,7 @@ import requests
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView, PasswordContextMixin
@@ -13,8 +13,9 @@ from accounts.models import User
 from posts.models import Post
 from .models import Profile, Follow, Notification
 from .forms import EditprofileForm, PasswordChangeForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
+
 
 # 마이페이지
 @login_required(login_url='/login/')
@@ -26,29 +27,29 @@ def mypage(request):
     posts_count = Post.objects.filter(user=user).count()
     following_count = Follow.objects.filter(follower=user).count()
     followers_count = Follow.objects.filter(following=user).count()
-    
-    #팔로우 상태?
-    follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
 
     context={
         'profile':profile,
         'following_count':following_count,
         'followers_count':followers_count,
         'posts_count':posts_count,
-        'follow_status':follow_status,}
+        }
     
     return render(request, 'mypage.html', context)
 
 # difuser    
-def profile(request):
-    user = request.user
-    profile = Profile.objects.get(id=user.id)
-    posts = Post.objects.filter(user=user).order_by('-posted')
+def profile(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = Profile.objects.get(userid=user)
+    posts = Post.objects.filter(user=user).order_by('post_date')
     
     posts_count = Post.objects.filter(user=user).count()
     following_count = Follow.objects.filter(follower=user).count()
     followers_count = Follow.objects.filter(following=user).count()
 
+    # 구독자 / 관심 작가
+    #follower = Follow.objects.filter(follower=username)
+    #following = Follow.objects.filter(following=username)
     # 구독 상태
     follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
 
@@ -65,33 +66,46 @@ def profile(request):
 		'followers_count':followers_count,
 		'posts_count':posts_count,
 		'follow_status':follow_status,
+        #'follower':follower,
+        #'following':following,
 	}
 
-    return render(request, 'profile.html', context)
+    return render(request, 'difuser.html', context)
 
 
 #프로필 수정 - 확인
 @login_required(login_url='/login/')
 def edit_profile(request):
     user = request.user
-    #profile = Profile.objects.get(id=user.id)
-    
+    profile = Profile.objects.get(id=user.id)
+    form = EditprofileForm()
+
     if request.method == 'POST' :
         form = EditprofileForm(request.POST, request.FILES)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.save()
+            profile.username = form.cleaned_data.get('username')
+            profile.userintro = form.cleaned_data.get('userintro')
+            profile.userphoto = form.cleaned_data.get('userphoto')
+            profile.save()
             return redirect('mypage')
+        # form 이 유효했을때와 안 유효했을때와의 둘다 케이스를 넣어줘야
+        # 그래야 유효하지 않는 form 이 들어오더라도 Http response object 를 받을 수 있다
+        else:
+            messages.info(request, form.error_messages)
+            return render(request, 'editprofile.html', {'form':form})
     else:
-        form = EditprofileForm()
         return render(request, 'editprofile.html', {'form':form})
         
 #비밀번호 변경 - 확인
 @login_required(login_url='/login')
-def password_edit(request):
+def setting(request):
     user = request.user
+    profile = Profile.objects.get(id=user.id)
+
+    form = PasswordChangeForm()
+    context = {'form':form}
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = PasswordChangeForm(request.POST)
         if form.is_valid():
             new_password1 = form.cleaned_data.get('new_password1')
             user.set_password(new_password1)
@@ -99,15 +113,19 @@ def password_edit(request):
             messages.success(request, "비밀번호를 성공적으로 변경했습니다.")
             return redirect('mypage') 
         else:
-            form = PasswordChangeForm(instance=user)
+            context['form'] = form
+            if form.errors:
+                for value in form.errors.values():
+                    context['error'] = value
+        return render(request, 'setting.html', context)
     else:
-        return render(request, 'password_change.html', {'form':form})
+        return render(request, 'setting.html', context)
 
-#팔로우(임시)
-@login_required(login_url='/login')
+#팔로우
+@login_required(login_url='/login/')
 def follow(request, username, option):
     following = get_object_or_404(User, username=username)
-
+    
     try:
         f, created = Follow.objects.get_or_create(follower=request.user, following=following)
 
@@ -116,12 +134,12 @@ def follow(request, username, option):
 			
         else:
             posts = Post.objects.all().filter(user=following)[:25]
-
-        return render(request, 'profile.html', args=[username])
+    
+        return HttpResponseRedirect(reverse('profile', args=[username]))
     except User.DoesNotExist:
-        return render(request, 'profile', args=[username])
+        return HttpResponseRedirect(reverse('profile', args=[username]))
 
-
+'''
 def followers(request, username):
     follower = Follow.objects.filter(follower=username)
     context = follower
@@ -131,7 +149,7 @@ def followings(request, username):
     followings = Follow.objects.filter(following=username)
     context = followings
     return render(request, 'following.html', context)
-    
+''' 
 #알람 확인 - 확인
 def show_notifications(request):
     user = request.user
