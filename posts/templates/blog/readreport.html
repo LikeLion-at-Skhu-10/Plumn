@@ -1,1 +1,62 @@
 <!-- 글 신고 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} 플럼 이의제기 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="backimage_wrap">
+        <div class="rd_img">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="background_img">
+            <p class="rd_text">Ipad 4세대 air 리뷰</p>
+        </div>
+    </div>
+
+    <div class="readreport_wrap">
+        <div class="report_reason">
+            <span class="report_reason_txt"><i class="fa-solid fa-square"></i> 위 글의 신고 사유를 선택해주세요</span>
+        </div>
+        <div class="report_reason_btn">
+            <label><input type="checkbox" name="reason" value="fact">허위 사실 유포</label>
+            <label><input type="checkbox" name="reason" value="legal">불법 정보</label>
+            <label><input type="checkbox" name="reason" value="leak">개인정보 유출, 거래</label>
+            <label><input type="checkbox" name="reason" value="overlap">도배 및 중복된 글</label>
+        </div>
+        <div class="report_text">
+            <span class="report_reason_txt">
+                <span style="color: #fc9595;"><i class="fa-solid fa-square"></i> 신고</span> 사유를 자세하게 작성해주세요</span>
+        </div>
+        <div class="report_write">
+            <h1 class="report_form" id="report" contenteditable="true"></h1>
+        </div>
+
+        <div class="report_btn_wrap">
+            <button class="report_cel_btn" type="button" onclick="cancelBtn()">취소</button>
+            <button class="report_mit_btn" type="submit" onclick="submitBtn()">제출</button>
+        </div>
+    </div>
+    <script>
+        function cancelBtn() {
+            window.location = "{% url 'read' %}";
+        }
+        function submitBtn() {
+            alert("제출하였습니다.");
+            window.location = "{% url 'read' %}";
+        }
+    </script>
+
+    {% endblock %}
+
+    {% block footer %} {% endblock %}
+</body>
+
+</html>
