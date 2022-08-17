@@ -49,8 +49,10 @@ def profile(request, username):
     followers_count = Follow.objects.filter(following=user).count()
 
     # 구독자 / 관심 작가
-    #follower = Follow.objects.filter(follower=username)
-    #following = Follow.objects.filter(following=username)
+    follower = Profile.objects.filter(userid=Follow.objects.filter(following=user))
+    #profile_follower = Profile.objects(id=follower)
+    following = Profile.objects.filter(userid=Follow.objects.filter(follower=user))
+    #profile_following = Profile.objects(id=following)
     # 구독 상태
     follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
 
@@ -67,8 +69,8 @@ def profile(request, username):
 		'followers_count':followers_count,
 		'posts_count':posts_count,
 		'follow_status':follow_status,
-        #'follower':follower,
-        #'following':following,
+        'follower':follower,
+        'following':following,
 	}
 
     return render(request, 'difuser.html', context)
