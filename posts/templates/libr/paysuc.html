@@ -1,1 +1,46 @@
 <!-- 결제 완료 페이지 -->
+<!-- 결제 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} 결제 완료 페이지 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/library2.css' %}" />
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="payPageWrap">
+        <span class="settle_text">플럼 샵</span>
+        <span class="plumnCharge_text">플럼 충전</span>
+
+        <div class="settleWrap">
+            <span class="settle_text">결제 완료 되었습니다!</span>
+            <span class="settle_text2">이후 재완 님 보유 플럼</span>
+
+            <div class="possess_plumn">
+                <span>보유 플럼</span>
+                <span>110 plumn</span>
+            </div>
+
+            <div class="homeShift_icon">
+                <i class="fa-solid fa-house home_icon" onclick="homeShift();"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function homeShift() {
+            window.location = "{% url 'index' %}";
+        }
+    </script>
+    {% endblock %}
+    {% block footer %} {% endblock %}
+</body>
+
+</html>

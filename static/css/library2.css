@@ -1,0 +1,247 @@
+.payPageWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.plumnFill_text {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 60px;
+}
+
+.plumnCharge_text {
+  text-align: center;
+  font-size: 18px;
+}
+
+span.plumnCharge_text::after {
+  content: "";
+  display: block;
+  width: 60px;
+  border-bottom: 1px solid gray;
+  margin: 10px auto;
+}
+
+.plumnFill_hr {
+  color: lightgray;
+  width: 70%;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.possess_plumn {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 10px 25px;
+  margin-bottom: 100px;
+}
+
+.fillinPlumn {
+  background-color: #f5f7f7;
+}
+
+/* 충천하기쪽 */
+
+.plumnCheckWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.plumnr1,
+.plumnr2,
+.plumnr3,
+.plumnr4,
+.plumnr5 {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+input[type="radio"] {
+  background-color: white;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-left: 12px;
+  border: 1px solid #fc9595;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
+
+input[type="radio"]:checked {
+  background-color: #fc9595;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-left: 12px;
+  border: 1px solid #f29494;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
+
+/* .fillinWrap1,
+.fillinWrap2,
+.fillinWrap3,
+.fillinWrap4,
+.fillinWrap5 {
+  background-color: #ebf0f0;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 30px 30px;
+  border: 1px solid lightgray;
+  width: 50%;
+  border-left: none;
+  border-right: none;
+}
+
+.fillinWrap1 {
+  display: block;
+}
+
+.fillinWrap2,
+.fillinWrap3,
+.fillinWrap4,
+.fillinWrap5 {
+  display: none;
+} */
+
+#fillinWrap1,
+#fillinWrap2,
+#fillinWrap3,
+#fillinWrap4,
+#fillinWrap5 {
+  background-color: #ebf0f0;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 30px 30px;
+  border: 1px solid lightgray;
+  width: 50%;
+  border-left: none;
+  border-right: none;
+}
+
+#fillinWrap1 {
+  display: block;
+}
+
+#fillinWrap2,
+#fillinWrap3,
+#fillinWrap4,
+#fillinWrap5 {
+  display: none;
+}
+
+.fillinText {
+  display: flex;
+  justify-content: space-around;
+}
+
+.fillinMeans {
+  display: flex;
+  justify-content: center;
+}
+
+.fillinMeans > input {
+  margin-right: 30px;
+}
+
+.fillinMeans > label {
+  margin-left: 50px;
+}
+
+.buyNotice {
+  display: flex;
+  justify-content: center;
+}
+
+.fillinCheckbox {
+  width: 100%;
+}
+
+.fillinCheckBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.fillinBtn {
+  width: 10%;
+  margin: 0 auto;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-weight: 300;
+  background-color: #f5f7f7;
+  color: #fc9595;
+  transition: 0.25s;
+  border: 1.5px solid #fc9595;
+}
+
+.fillinBtn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: #f5f7f7;
+  cursor: pointer;
+}
+
+/***************************************/
+/* 결제 완료 페이지 */
+
+.settleWrap {
+  background-color: #f5f7f7;
+  margin-top: 70px;
+}
+
+.settle_text {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 60px;
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.settle_text2 {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  margin-top: 50px;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
+.possess_plumn {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 25%;
+  border: 2px solid lightgray;
+  border-radius: 15px;
+  padding: 15px 20px;
+}
+
+.home_icon {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.home_icon:hover {
+  cursor: pointer;
+}

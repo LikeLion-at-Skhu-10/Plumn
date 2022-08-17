@@ -10,6 +10,7 @@
   {% block head %}
   <link rel="stylesheet" href="{% static 'css/post.css' %}" />
   {% endblock %}
+
 </head>
 
 
@@ -84,12 +85,6 @@
       </div>
     </span>
 
-    <!-- <div class="keyword_selected">
-      <button class="keyword_select">
-        <span>과학</span>
-      </button>
-    </div> -->
-
     <div class="saved">
       <button class="temporary_saved_btn" type="button">
         <span>임시 저장</span>
@@ -103,7 +98,7 @@
 
 
   <script src="{% static 'js/image.js' %}"></script>
-  <!-- <script src="{% static 'js/title.js' %}"></script> -->
+  <script src="{% static 'js/selectBox.js' %}"></script>
   <!-- <script src="{% static 'js/content_box.js' %}"></script> -->
   {% endblock %}
   {% block footer %} {% endblock %}

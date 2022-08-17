@@ -1,1 +1,138 @@
 <!-- 결제 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} 플럼 충전 페이지 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/library2.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="payPageWrap">
+        <span class="plumnFill_text">플럼 샵</span>
+        <span class="plumnCharge_text">플럼 충전</span>
+        <hr class="plumnFill_hr">
+        <span class="plumnFill_text">재완 님</span>
+        <div class="possess_plumn">
+            <div class="possess_plumn_text"><span>보유 플럼</span></div>
+            <div class="possess_plumn_money"><span>100 plumn</span></div>
+        </div>
+
+        <hr class="plumnFill_hr">
+
+        <div class="fillinPlumn">
+            <span class="plumnFill_text">Plumn 충전하기</span>
+            <div class="plumnCheckWrap">
+                <div class="plumnr1">
+                    <div class="plumnr1_text">10 Plumn</div>
+                    <div class="plumnr1_money">
+                        <label for="r1">1000원</label>
+                        <input id="r1" type="radio" name="money" value="1" Checked="true" onclick="r1View(value);"
+                            onchange="setDisplay()">
+                    </div>
+                </div>
+                <div class="plumnr2">
+                    <div class="plumnr2_text">20 Plumn</div>
+                    <div class="plumnr2_money">
+                        <label for="r2">2000원</label>
+                        <input id="r2" type="radio" name="money" value="2" onclick="r1View(value);"
+                            onchange="setDisplay()">
+                    </div>
+                </div>
+                <div class="plumnr3">
+                    <div class="plumnr3_text">30 Plumn</div>
+                    <div class="plumnr3_money">
+                        <label for="r3">3000원</label>
+                        <input id="r3" type="radio" name="money" value="3" onclick="r1View(value);"
+                            onchange="setDisplay()">
+                    </div>
+                </div>
+                <div class="plumnr4">
+                    <div class="plumnr4_text">50 Plumn</div>
+                    <div class="plumnr4_money">
+                        <label for="r4">5000원</label>
+                        <input id="r4" type="radio" name="money" value="4" onclick="r1View(value);"
+                            onchange="setDisplay()">
+                    </div>
+                </div>
+                <div class=" plumnr5">
+                    <div class="plumnr5_text">110 Plumn</div>
+                    <div class="plumnr5_money">
+                        <label for="r5">10000원</label>
+                        <input id="r5" type="radio" name="money" value="5" onclick="r1View(value);"
+                            onchange="setDisplay()">
+                    </div>
+                </div>
+            </div>
+
+            <div id="fillinWrap1">
+                <div class="fillinText"><span>결제 금액</span><span>1000원</span></div>
+            </div>
+
+            <div id="fillinWrap2">
+                <div class="fillinText"><span>결제 금액</span><span>2000원</span></div>
+            </div>
+
+            <div id="fillinWrap3">
+                <div class="fillinText"><span>결제 금액</span><span>3000원</span></div>
+            </div>
+
+            <div id="fillinWrap4">
+                <div class="fillinText"><span>결제 금액</span><span>5000원</span></div>
+            </div>
+
+            <div id="fillinWrap5">
+                <div class="fillinText"><span>결제 금액</span><span>10000원</span></div>
+            </div>
+
+            <hr class="plumnFill_hr">
+
+            <span class="plumnFill_text">결제 수단</span>
+            <div class="fillinMeans">
+                <label for="m1">신용카드</label>
+                <input id="m1" type="radio" name="radio" value="1">
+                <label for="m2">계좌이체</label>
+                <input id="m2" type="radio" name="radio" value="2">
+                <label for="m3">휴대폰결제</label>
+                <input id="m3" type="radio" name="radio" value="3">
+            </div>
+
+            <hr class="plumnFill_hr">
+
+            <div class="buyNotice">
+                <label for="s1">상품, 가격, 유의 사항등을 확인하였으며 구매에 동의합니다.</label>
+                <input type="checkbox">
+            </div>
+
+            <div class="fillinCheckbox">
+                <div class="fillinCheckBtn">
+                    <button class="fillinBtn" type="button" onclick="fillinCancel();"><span>취소</span></button>
+                    <button class="fillinBtn" type="button"><span>결제</span></button>
+                </div>
+            </div>
+
+            <script>
+                function fillinCancel() {
+                    window.location = "{% url 'index' %}";
+                }
+            </script>
+
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/fillMoney.js' %}"></script>
+    <script src="{% static 'js/fillinMoney.js' %}"></script>
+    {% endblock %}
+    {% block footer %} {% endblock %}
+</body>
+
+</html>
