@@ -1,0 +1,45 @@
+<!-- 아이디 찾기 성공 -->
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+    <title>{% block title %}아이디 찾기 확인{% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% endblock %}
+  </head>
+  <body>
+    {% block content %}
+    <div>
+      <div class="containerhome">
+        <a href="{% url 'index' %}">
+          <img class="picture" src="{% static 'img/plumn.png' %}"
+        /></a>
+
+        <div class="id_find_success">
+          <h4>내 아이디</h4>
+          <div class="listId input_margin">
+            <span>{{ user.email }}</span></div>
+          <div class="find_id">
+            <a href="{% url 'login' %}">
+              <button class="success_id_btn success_id_btn_plumn" type="button">
+                <span>로그인하기</span>
+              </button>
+            </a>
+            &nbsp;&nbsp;
+            <a href="{% url 'find_pw' %}">
+              <button class="success_id_btn success_id_btn_plumn" type="button">
+                <span>비밀번호 찾기</span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="hrhr"/>
+      {% endblock %}
+    </div>
+    {% block footer %} {% endblock %}
+  </body>
+</html>

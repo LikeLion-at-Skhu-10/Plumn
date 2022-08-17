@@ -1,0 +1,88 @@
+<!-- 로그인 -->
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+  <title>{% block title %} 로그인 창 {% endblock %}</title>
+  {% block head %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  {% endblock %}
+</head>
+
+<body>
+  {% block content %}
+  <fieldset class="containerhome">
+    <div class="picture_wrap">
+    <a href="{% url 'index' %}">
+      <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
+      </div>
+      {% if user.is_authenticated %}
+      <div class="login_success_after_text">
+        <span class="success_after_text">{{user.username}}님 안녕하세요!</span>
+      </div>
+      <div class="login_success_after_btn">
+        <button class="btn_plumnn" type="button" onclick="mypageShift()">
+        <span>마이페이지</span></button>
+        <button class="btn_plumnn" type="button" onclick="logoutShift()">
+          <span>로그아웃</span></button>
+      </div>
+
+      {% else %}
+
+      <div class="login">
+      <form method="POST">
+        {% csrf_token %}      
+    <div class="idpw_wrap">
+      <div class="id_wrap">
+        <h4>아이디</h4>
+        <input type="email" name="email" id="" placeholder="Email" />
+      </div>
+      
+      <div class="pw_wrap">
+        <h4>비밀번호</h4>
+        <input type="password" name="password" id="" placeholder="Password" />
+      </div>
+      </form>
+
+      <div class="login_etc">
+        <li>
+          <a href="{% url 'register' %}" class="find_text">계정 생성하기</a>
+        </li>
+        <li>
+          <a href="{% url 'find_id' %}" class="find_text">아이디 찾기</a>
+        </li>
+        <li>
+          <a href="{% url 'find_pw' %}" class="find_text">비밀번호 찾기</a>
+        </li>
+      </div>
+
+      <div class="login">
+        <button class="btn_plumn"><span>로그인</span></button>
+      </div>
+      {% if messages %}
+      {% for message in messages %}
+      <span class="login_id_error">
+          {{ message.message }}
+      </span>
+      {% endfor %}
+      {% endif %}
+      {% endif %}
+      <script>
+        function mypageShift() {
+          window.location = "{% url 'mypage' %}";
+        }
+        function logoutShift() {
+          window.location = "{% url 'logout' %}";
+        }
+      </script>
+  </fieldset>
+  <hr class="hrhr" />
+  {% endblock %}
+  </div>
+  {% block footer %} {% endblock %}
+</body>
+
+</html>
