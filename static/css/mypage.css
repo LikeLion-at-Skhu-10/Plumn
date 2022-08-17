@@ -324,6 +324,7 @@
   padding: 0;
   right: 0;
   left: 0;
+  top: 0;
   opacity: 0;
   cursor: pointer;
 }
@@ -346,6 +347,7 @@
   position: relative;
   height: 60px;
   width: 500px;
+  margin: 0 auto;
 }
 .prInput{
   position: relative;
@@ -404,6 +406,7 @@
   vertical-align: middle;
   justify-content: space-around;
   align-items: center;
+  margin: 0 auto;
 }
 .edit_combtn a{
   display: flex;

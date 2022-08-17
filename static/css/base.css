@@ -454,11 +454,11 @@ select {
 #checkbox:checked ~ .line-main::after {
   transform: rotate(-45deg);
 }
-#checkbox:checked ~ .line-split::before {
+#checkbox:checked~.line-split::before{
   opacity: 0;
 }
-#checkbox:checked ~ .line-split::after {
-  opacity: 0;
+#checkbox:checked~.line-split::after{
+  opacity: 0
 }
 #menu__box {
   position: fixed;

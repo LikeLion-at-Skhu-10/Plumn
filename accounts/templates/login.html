@@ -15,20 +15,37 @@
 <body>
   {% block content %}
   <fieldset class="container">
-    <div class="img-box">
-      <a href="{% url 'index' %}">
-        <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
+    <a href="{% url 'index' %}">
+      <img class="picture" src="{% static 'img/plumn.png' %}" /></a>
+      {% if user.is_authenticated %}
+      <div>
+        <h4>{{user.username}}님 안녕하세요!</h4>
+      </div>
+      <div>
+        <a class="register_btn register_btn_plumn" type ="button" href="{% url 'mypage' %}">
+        마이페이지
+        </a>
+        <a class="register_btn register_btn_plumn" type ="button" href="{% url 'logout' %}">
+        로그아웃
+        </a>
     </div>
+
+      {% else %}
+
+      <div class="login">
+      <form method="POST">
+        {% csrf_token %}      
     <div class="idpw_wrap">
       <div class="id_wrap">
         <h4>아이디</h4>
-        <input type="email" name="" id="" placeholder="Email" />
+        <input type="email" name="email" id="" placeholder="Email" />
       </div>
-
+      
       <div class="pw_wrap">
         <h4>비밀번호</h4>
-        <input type="password" name="" id="" placeholder="Password" />
+        <input type="password" name="password" id="" placeholder="Password" />
       </div>
+      </form>
 
       <div class="login_etc">
         <li>
@@ -45,12 +62,14 @@
       <div class="login">
         <button class="btn btn_plumn" onclick="loginSubmit();"><span>로그인</span></button>
       </div>
-      <script>
-        function loginSubmit() {
-          window.location = "{% url 'index' %}";
-        }
-      </script>
-
+      {% if messages %}
+      {% for message in messages %}
+      <span style="color: red;">
+          {{ message.message }}
+      </span>
+      {% endfor %}
+      {% endif %}
+      {% endif %}
   </fieldset>
   <hr class="hrhr" />
   {% endblock %}

@@ -6,33 +6,47 @@
 {% block head %}
 <link href="{% static 'css/mypage.css' %}" rel="stylesheet">
 {% endblock %}
+
 {% block content %}
 <div id="mypage">
     <div class="mypage_banner">
-      <h1>플럼이의 나무이야기</h1>
+      <h1>{{profile.username}}의 나무이야기</h1>
     </div>
     <div class="mypage_content">
       <div class="mypage_profile">
-        <img src="{% static 'img/munchickitten.jpg' %}">
+        {% if profile.userphoto %}
+          <img src="{{profile.userphoto.url}}">
+        {% else %}
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        {% endif %}
       </div>
       <div class="mypage_info">
-        <a>게시글<span>5</span></a>
-        <a id="follow_modalBtn">구독자<span>30</span></a>
-        <a id="follower_modalBtn">관심작가<span>5</span></a>
+        <a>게시글<span>{{ posts_count }}</span></a>
+        <a id="follow_modalBtn">구독자<span>{{ followers_count }}</span></a>
+        <a id="follower_modalBtn">관심작가<span>{{ following_count }}</span></a>
       </div>
+
+      {% if user.is_authenticated and user != profile.userid %}
       <div class="page_sub">
-        <button class="pagesub sub" id="toggle">구독하기</button>
-        <!-- <button class="pagesub canc" id="toggle">구독 중!</button> -->
+        {% if follow_status == True %}
+          <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
+        {% else %}
+          <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+        {% endif %}
       </div>
+      {% endif %}
+
+      {% for posts in posts %}
       <div class="page_write_container">
+        
         <div class="page_write_wrap">
           <!-- write_item 반복 -->
-          <a class="write_item" href="{% url 'read' %}">
+          <a class="write_item" href="#"> <!--글-->
             <div class="write-info">
-              <h1>Deep Python study with me</h1>
-              <p>Advance your data analyistics ....</p>
+              <h1>{{posts.title}}</h1>
+              <p>{{posts.content}}</p>
               <div>
-                <span>July. 03. 2022</span>
+                <span>{{posts.post_date}}</span>
                 <span>댓글 2</span>
                 <span><i class="fa-solid fa-heart"></i> 2</span>
             </div>
@@ -72,7 +86,7 @@
             </div>
           </a>
 
-          <a class="write_item" href="{% url 'read' %}">
+          <a class="write_item" href="#">
             <div class="write-info">
               <h1>Deep Python study with me</h1>
               <p>Advance your data analyistics ....</p>
@@ -86,9 +100,12 @@
               <img src="{% static 'img/plumn_icon.png' %}">
             </div>
           </a>
+
         </div>
       </div>
+    {% endfor %}
     </div>
+
     <div id="follow_modal" class="fmodal">
       <div class="modal-content">
         <div class="modal-header">
@@ -96,21 +113,26 @@
           <span class="closebtn">&times;</span>
         </div>
         <hr>
+        {% for follower in object.user.followers.all %}
         <div class="follow__list">
           <div class="follow__info">
-            <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
-            <h1>플럼</h1>
-            <p>자기소개</p>
+            <div><img src="{{ follower.userphoto }}"></div>
+            <h1>{{ follower.username }}</h1>
+            <p>{{ follower.userintro }}</p>
             <button>구독하기</button>
           </div>
+          <!--
           <div class="follow__info">
             <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
             <h1>플럼</h1>
             <p>자기소개</p>
             <button>구독하기</button>
           </div>
+          -->
         </div>
+        {% endfor %}
       </div>
+    </div>
   <script src="{% static 'js/followmodal.js' %}"></script>
 </div>
 
