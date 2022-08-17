@@ -1,11 +1,12 @@
 <!-- 메인 페이지 -->
 {% extends 'base.html' %}
 {% load static %}
+
 <head>
-  
+
   {% block title %} 글이 맺히는 곳, Plumn{% endblock %}
   {% block head %}
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
   {% endblock %}
 </head>
 
@@ -21,19 +22,14 @@
     <span class="next">&rang;</span>
   </p>
   <ul class="slide-pagination"></ul>
-  
+
 </div>
 <!-- 추천글 -->
 <div id="recommend-container">
-<<<<<<< HEAD
-  <h3 class="plumnh3">추천 글</h3>
-  <a class="recolist-anch" href="#">전체 글 보러가기 →</a>
-=======
   <h3 class="plumnh3">🍊추천 글</h3>
-  <a class="recolist-anch" href="{% url 'list' %}">전체 글 보러가기 →</a>
->>>>>>> aae46bed88247f3f1c8a3ed59a8702f2cb6b1150
-    <span class="anchoverlay"></span>
-    <span class="anchoverbase"></span>
+  <a class="recolist-anch" href="#">전체 글 보러가기 →</a>
+  <span class="anchoverlay"></span>
+  <span class="anchoverbase"></span>
   <!-- 5개짜리 리스트 -->
   <div class="recommend-list">
     <!-- 개별아이템들 -->
@@ -99,7 +95,7 @@
     <a class="topic-item" href="#"><span>국어/외국어</span></a>
     <a class="topic-item" href="#"><span>컴퓨터/IT/모바일</span></a>
     <a class="topic-item" href="#"><span>사회/정치</span></a>
-    
+
     <a class="topic-item" href="#"><span>문학</span></a>
     <a class="topic-item" href="#"><span>유아/아동</span></a>
     <a class="topic-item" href="#"><span>여행</span></a>

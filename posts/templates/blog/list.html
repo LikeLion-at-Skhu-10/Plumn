@@ -20,41 +20,36 @@
         <div class="list_title">
             <h2 class="list_title_text">IT 게시글</h2>
         </div>
+
         <div class="list_button_wrap">
-            <div class="list_btn_wrap_one">
-                <button class="list_btn" type="button"><span>가정/생활</span></button>
-                <button class="list_btn" type="button"><span>건강/취미</span></button>
-                <button class="list_btn" type="button"><span>경제/경영</span></button>
-                <button class="list_btn" type="button"><span>국어/외국어</span></button>
-                <button class="list_btn" type="button"><span>컴퓨터/IT/모바일</span></button>
-                <button class="list_btn" type="button"><span>사회/정치</span></button>
-                <button class="list_btn" type="button" onclick="myFunction()"><i
-                        class="fa-solid fa-ellipsis-vertical"></i></button>
-            </div>
-            <div class="list_btn_wrap_list">
-                <div class="list_btn_wrap_two">
-                    <button class="list_btn list_btn_hiding" type="button"><span>문학</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>유아/아동</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>여행</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>역사</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>예술</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>인문</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>인물</span></button>
-                </div>
-                <div class="list_btn_wrap_two">
-                    <button class="list_btn list_btn_hiding" type="button"><span>자기계발</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>과학</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>종교</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>문화</span></button>
-                    <button class="list_btn list_btn_hiding" type="button"><span>공학</span></button>
-                    <!-- <button class="list_btn list_btn_hiding" type="button"><span>요리</span></button> -->
-                    <button class="list_btn list_btn_hiding" type="button" onclick="myFunction()">
-                        <i class="fa-solid fa-xmark"></i></button>
-                </div>
-            </div>
+            <a class="list_btn" href="#"><span>가정/생활</span></a>
+            <a class="list_btn" href="#"><span>건강/취미</span></a>
+            <a class="list_btn" href="#"><span>경제/경영</span></a>
+            <a class="list_btn" href="#"><span>국어/외국어</span></a>
+            <a class="list_btn" href="#"><span>컴퓨터/IT/모바일</span></a>
+            <a class="list_btn" href="#"><span>사회/정치</span></a>
+            <a class="list_btn" href="#" onclick="myFunction()"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         </div>
 
-        <div class="writing_list">
+        <div class="list_btn_wrap_list">
+            <a class="list_btn list_btn_hiding" href="#"><span>문학</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>유아/아동</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>여행</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>역사</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>예술</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>인문</span></a>
+            <a class="list_btn list_btn_hiding" href="#" onclick="myFunction()">
+                <i class="fa-solid fa-xmark"></i></a>
+
+            <a class="list_btn list_btn_hiding" href="#"><span>자기계발</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>과학</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>종교</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>문화</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>공학</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>인물</span></a>
+        </div>
+
+        <a class="writing_list" style="margin-top: 100px; text-decoration: none; color:black;" href="{% url 'read' %}">
             <div class="list_text">
                 <div class="writing_title">
                     <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
@@ -68,17 +63,15 @@
                     <span class="list_comment">댓글 10</span>
                     <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
                     <span class="list_tag_btn">#IT</span>
+                    <span class="list_writer">by GraceKim</span>
                 </div>
-            </div>
-
-            <div class="list_who">
-                <span class="list_writer">by GraceKim</span>
             </div>
             <div class="list_photo">
                 <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
             </div>
-        </div>
+        </a>
         <hr class="list_hr">
+
         <div class="writing_list">
             <div class="list_text">
                 <div class="writing_title">
@@ -93,11 +86,8 @@
                     <span class="list_comment">댓글 10</span>
                     <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
                     <span class="list_tag_btn">#IT</span>
+                    <span class="list_writer">by GraceKim</span>
                 </div>
-            </div>
-
-            <div class="list_who">
-                <span class="list_writer">by GraceKim</span>
             </div>
             <div class="list_photo">
                 <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
