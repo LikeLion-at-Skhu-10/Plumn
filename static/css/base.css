@@ -132,16 +132,14 @@ table {
 
 /* @font-face kit by Fonts2u (https://fonts2u.com) */ 
 @import url('http://fonts.cdnfonts.com/css/austria');
+/* 경로 지정 다시함. */
 @font-face {
-  font-family:"Austria";
-  src:
-  /* url("Austria_Script.eot?") format("eot"), */
-  url("Austria_Script.woff") format("woff"),
-  url("Austria_Script.ttf") format("truetype");
-  /* url("Austria_Script.svg#Austria") format("svg"); */
-  font-weight: normal;
+  font-family: 'Austria';
   font-style: normal;
+  font-weight: 400;
+  src: local('Austria'), url('https://fonts.cdnfonts.com/s/83324/Austria.woff') format('woff');
 }
+
 /* Noto sans KR */
 @font-face {
   font-family: "Noto Sans KR";

@@ -1,1 +1,32 @@
 <!-- 사이트 피드백 완료 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} 피드백 완료 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <h1 class="feedback_sentence_suc">소중한 의견 감사합니다.</h1>
+
+    <div class="btn_centero">
+        <button class="fb_home_btn fb_home_btn_plumn" type="button" onclick="location.href= '{% url 'index' %}';">
+            홈으로
+        </button>
+    </div>
+
+    <hr class="hr_stylelishe">
+
+    <script src="{% static 'js/title.js' %}"></script>
+    {% endblock %}
+    {% block footer %} {% endblock %}
+</body>
+
+</html>
