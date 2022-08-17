@@ -16,6 +16,69 @@ def base(request):
 def notice(request):
     return render(request, 'notice.html')
 
+def create(request):
+    return render(request, 'blog/create.html')
+
+def donate(request):
+    return render(request, 'blog/donate.html')
+
+def donatesuc(request):
+    return render(request, 'blog/donatesuc.html')
+
+def feedback(request):
+    return render(request, 'blog/feedback.html')
+
+def feedbacksuc(request):
+    return render(request, 'blog/feedbacksuc.html')
+
+def list(request):
+    return render(request, 'blog/list.html')
+
+def read(request):
+    return render(request, 'blog/read.html')
+
+def readreport(request):
+    return render(request, 'blog/readreport.html')
+
+def update(request):
+    return render(request, 'blog/update.html')
+
+def like(request):
+    return render(request, 'libr/like.html')
+
+def pay(request):
+    return render(request, 'libr/pay.html')
+
+def paysuc(request):
+    return render(request, 'libr/paysuc.html')
+
+def scrap(request):
+    return render(request, 'libr/scrap.html')
+
+def difuser(request):
+    return render(request, 'mypage/difuser.html')
+
+def editprofile(request):
+    return render(request, 'mypage/editprofile.html')
+
+def follower(request):
+    return render(request, 'mypage/follower.html')
+
+def following(request):
+    return render(request, 'mypage/following.html')
+
+def mypage(request):
+    return render(request, 'mypage/mypage.html')
+
+def plumusing(request):
+    return render(request, 'mypage/plumusing.html')
+
+def setting(request):
+    return render(request, 'mypage/setting.html')
+
+def notice(request):
+    return render(request, 'notice.html')
+
 '''
 ##############################
 @login_required #로그인 시 가능하게끔
@@ -95,18 +158,18 @@ def feedback(request):
             form.obj_date = timezone.now()
             form.save()
             form.save_m2m()
-            return render(request, 'feedback_success', {'form':form})
+            return render(request, 'blog/feedbacksuc.html', {'form':form})
         
     else:
         form = FeedbackForm ()
-        return render(request, 'feedback_success.html', {'form':form})
+        return render(request, 'blog/feedback.html', {'form':form})
 
 # 이의제기
-@login_required(login_url='/login/')
-def readreport(request, id):
+#@login_required(login_url='/login/')
+def readreport(request):
     objection_form = ObjectionForm()
     context = {'form' : objection_form}
-    post = get_object_or_404(Post, id=id)
+
     if request.method == 'POST':
         form = ObjectionForm(request.POST)
         if form.is_valid():
@@ -114,9 +177,9 @@ def readreport(request, id):
             form.obj_date = timezone.now()
             form.save()
             form.save_m2m()
-            return redirect('detail', post.id) # 원래 기존 글 페이지로 돌아감
+            return redirect('read') # 원래 기존 글 페이지로 돌아감
     else:
-        return render(request, 'objection.html', context)
+        return render(request, 'blog/readreport.html', context)
 
 # 추천
 @login_required(login_url='/login/')
