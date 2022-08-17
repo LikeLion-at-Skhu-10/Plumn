@@ -397,6 +397,9 @@ body {
 
 .writing_list {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
 .list_text {
@@ -405,8 +408,8 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-around;
-  margin-top: 60px;
-  margin-left: 100px;
+  /* margin-top: 60px;
+  margin-left: 100px; */
 }
 
 .writing_title {
@@ -448,35 +451,32 @@ body {
   font-size: 15px;
 }
 
-.list_who {
-  display: flex;
-  width: 5%;
-}
-
-.list_writer {
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 40px;
-}
-
 .list_photo {
-  display: flex;
-  width: 20%;
+  width: 10%;
   height: 250px;
-  align-items: flex-end;
+  overflow: hidden;
+  position: relative;
+  width: 200px;
+  height: 150px;
 }
 
 .list_photosize {
-  display: flex;
-  width: 190px;
-  height: 160px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-bottom: 40px;
 }
 
 .list_hr {
-  width: 65%;
+  width: 80%;
   margin-top: 30px;
+}
+
+.writing_dateother{
+  display: flex;
+
+}
+.list_writer{
+  margin-left: auto;
 }
 
 /***********************************************/
@@ -767,8 +767,6 @@ body {
     height: 100px;
   }
   .profile_img {
-    width: 100%;
-    max-width: 100%;
     object-fit: cover;
   }
   .profile_follow {
