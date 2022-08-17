@@ -4,10 +4,30 @@ import posts
 from .models import Post, Likes
 from accounts.models import User
 from mypage.models import Profile
-from .forms import FeedbackForm, ObjectionForm #PostForm
+from .forms import FeedbackForm, ObjectionForm, PostForm #PostForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+############################################################
+def create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.post_date = timezone.now()
+            form.save()
+            return redirect('list')
+    else:
+        form = PostForm
+        return render(request, 'create.html', {'form':form})
+
+def read(request):
+    posts = Post.objects
+    return render(request, 'read.html', {'posts':posts})
+
+def detail(request, id):
+    post = get_object_or_404(Post, id=id)
+    return render(request, 'detail.html', {'post':post})
+############################################################
 def index(request):
     return render(request, 'index.html')
 

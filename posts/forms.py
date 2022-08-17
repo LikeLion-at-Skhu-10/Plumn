@@ -4,10 +4,10 @@ from django import forms
 from .models import Post, Feedback, Objection
 
 
-#class PostForm(forms.ModelForm):
-#    class Meta:
-#        model = Post
-#        field = ['title', 'content','post_date', 'background_image'] #추천 / 스크랩은 별개?
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        field = ['title', 'content', 'image'] #추천 / 스크랩은 별개?
 
 ## 댓글 생성 forms임. 
 #class CommentForm(forms.ModelForm):
