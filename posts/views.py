@@ -1,6 +1,5 @@
 from time import time
 from django.shortcuts import render, redirect, get_object_or_404 #get_list_or_404
-import posts
 from .models import Post, Likes
 from accounts.models import User
 from mypage.models import Profile
@@ -13,20 +12,21 @@ def create(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form = form.save(commit=False)
+            form.user = request.user
             form.post_date = timezone.now()
             form.save()
             return redirect('list')
     else:
-        form = PostForm
-        return render(request, 'create.html', {'form':form})
+        form = PostForm()
+        return render(request, 'blog/create.html', {'form':form})
 
-def read(request):
+def list(request):
     posts = Post.objects
-    return render(request, 'read.html', {'posts':posts})
+    return render(request, 'blog/list.html', {'posts':posts})
 
-def detail(request, id):
+def read(request, id):
     post = get_object_or_404(Post, id=id)
-    return render(request, 'detail.html', {'post':post})
+    return render(request, 'read.html', {'post':post})
 ############################################################
 def index(request):
     return render(request, 'index.html')

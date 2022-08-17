@@ -14,3 +14,4 @@ from .models import Post, Feedback, Objection #Photo,
 
 admin.site.register(Feedback)
 admin.site.register(Objection)
+admin.site.register(Post)

@@ -55,26 +55,18 @@ body {
 }
 
 .title_form {
-  display: inline-block;
-  width: 480px;
-  margin-bottom: 180px;
-  padding-left: 820px;
-  padding-top: 100px;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 180px;
 }
 
 .title_write {
-  opacity: 1;
-  word-wrap: break-word;
   padding-bottom: 30px;
 }
 
 .form-control {
   font-size: 36px;
-  text-decoration: none;
-  visibility: visible;
-  margin-bottom: 50px;
-  height: 10px;
-  line-height: 1.5em;
+  border: none;
 }
 
 .form-control:focus {
@@ -110,22 +102,16 @@ body {
   font-size: 16px;
   margin-top: 50px;
   text-align: left;
-  outline: none;
 }
 
+.wrap_item {
+  border: none;
+  resize: none;
+  overflow: hidden;
+  width: 100%;
+}
 .wrap_item:focus {
   outline: none;
-}
-
-.wrap_item:empty::before {
-  color: black;
-  opacity: 0.5;
-}
-
-.wrap_item:empty::before {
-  content: "내용을 입력하세요";
-  cursor: text;
-  font-size: 20pt;
 }
 
 .item_type_text {

@@ -13,15 +13,14 @@
 
 </head>
 
-
-
-
 <body>
-  <div id="container_one">
+<div id="container_one">
     {% block content %}
+    <form action = "{% url 'create' %}" method="POST">
+      {% csrf_token %}
     <div class="title_form">
       <div class="title_write">
-        <h1 class="form-control" id="story" contenteditable="true"></h1>
+        <input type="text" name="title" class="form-control" id="story" maxlength="256" required placeholder="제목을 입력해주세요.">
       </div>
     </div>
     <div class="plus_button_wrap">
@@ -56,7 +55,7 @@
   <div class="container_two">
     <div class="space_form">
       <div class="space_write">
-        <p class="wrap_item item_type_text" id="demo" contenteditable="true" style="min-height: 300px"></p>
+        <textarea name="content" onkeyup="adjustHeight();" class="wrap_item item_type_text" id="demo" placeholder="내용을 입력해주세요" required></textarea>
       </div>
     </div>
 
@@ -89,17 +88,24 @@
       <button class="temporary_saved_btn" type="button">
         <span>임시 저장</span>
       </button>
-      <button class="saved_btn" type="button">
+      <button class="saved_btn" type="submit">
         <span>저장</span>
       </button>
     </div>
+  </form>
   </div>
-
-
 
   <script src="{% static 'js/image.js' %}"></script>
   <script src="{% static 'js/selectBox.js' %}"></script>
   <!-- <script src="{% static 'js/content_box.js' %}"></script> -->
+  <script>
+    function adjustHeight(){
+      var textEle = $('textarea');
+      textEle[0].style.height = 'auto';
+      var textEleHeight = textEle.prop('scrollHeight');
+      textEle.css('height', textEleHeight);
+    }
+  </script>
   {% endblock %}
   {% block footer %} {% endblock %}
 </body>
