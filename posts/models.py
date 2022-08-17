@@ -15,8 +15,8 @@ class Post(models.Model):
     title = models.CharField(max_length=256, null=False)
     content = models.TextField(null=False) # 내용 부분 도대체 어떻게 처리해야 할지?
     post_date = models.DateTimeField(auto_now_add=True) 
-    background_image = models.ImageField(upload_to='images/', blank=True) #제목 배경 사진
-    like_users = models.ManyToManyField(User, related_name='like_articles') #추천수
+    image = models.ImageField(upload_to='images/', blank=True) #제목 배경 사진
+    #like_users = models.ManyToManyField(User, related_name='like_articles') #추천수
     topic = models.ManyToManyField('Topic') #토픽
     
     def __str__(self):
