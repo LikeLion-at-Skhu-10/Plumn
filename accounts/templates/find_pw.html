@@ -1,0 +1,46 @@
+<!-- 비밀번호 찾기 -->
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+    <title>{% block title %}비밀번호 찾기창 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% endblock %}
+  </head>
+
+  <body>
+    {% block content %}
+    <div>
+      <div class="container">
+        <a href="{% url 'index' %}">
+          <img class="picture" src="{% static 'img/plumn.png' %}"
+        /></a>
+          <form method="POST">
+            {% csrf_token %}
+        <div class="text_wrap">
+          <div class="tel_find">
+            <h4>아이디를 입력하세요!</h4>
+            {{ form.as_p }}
+          </a>
+          </div>
+          {% if messages %}
+          {% for message in messages %}
+          <span style="color: red;">
+              {{ message.message }}
+          </span>
+          {% endfor %}
+          {% endif %}
+        </div>
+        <button class="btn btn_plumn" ><span>비밀번호 초기화</span></button>
+      </div>
+    </form>
+      <hr class="hr_register" />
+      <a href="{% url 'register' %}"> <p>계정 생성</p></a>
+      {% endblock %}
+    </div>
+    {% block footer %} {% endblock %}
+  </body>
+</html>
