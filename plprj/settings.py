@@ -41,7 +41,8 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# 모바일 접속을 위해 두었음. 나중에 배포할땐 뺄것 !
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

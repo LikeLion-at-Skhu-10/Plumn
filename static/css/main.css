@@ -1,10 +1,10 @@
 #slidebanner {
   width: 80vw;
-  height: 70vh;
+  height: 40vw;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 5em;
   margin-bottom: 60px;
 }
 .slides {
@@ -12,20 +12,13 @@
   display: flex;
   left: 0;
   top: 0;
-}
-.slides li {
   width: 80vw;
-  height: 70vh;
-  max-width: 100%;
 }
 .slides li:not(:last-child){
   float: left;
 }
 .slides img {
-  max-width: 100%;
-  max-height: 100%;
   width: 80vw;
-  height: 70vh;
 }
 .slide-anch span{
   position: absolute;
@@ -83,13 +76,15 @@
 }
 .recommend-item {
   display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   flex-direction: column;
 }
 .recommend-item a{
   overflow: hidden;
-  position: relative; 
+  position: relative;
+  width: 15vw;
+  height: 20vw;
 }
 .recommend-item figcaption{
   position: absolute;
@@ -109,10 +104,11 @@
 }
 .recommend-list img {
   max-width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 .recommend-list h4 {
-  font-size: 1.3em;
+  font-size: 1.2em;
   align-self: center;
   margin-top: 10px;
 }
@@ -121,7 +117,7 @@
   margin-top: 10px;
 }
 .recommend-item figcaption{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding-top: 30%;
 }
 
@@ -134,13 +130,13 @@
 .topic-list {
   display: grid;
   margin: 60px 200px 0 200px;
-  grid-template-columns: repeat(6, 150px);
-  grid-gap: 40px;
+  grid-template-columns: repeat(6, 200px);
+  grid-gap: 1.5em;
   justify-content: space-around;
 }
 .topic-item{
-  width: 150px;
-  height: 45px;
+  width: 200px;
+  height: 40px;
   background-color: white;
   border-radius: 30px;
   border: #FC9595 solid 1px;
@@ -167,16 +163,84 @@
 .famous-bannerwrap{
   display: flex;
   flex-direction: column;
-  padding: 80px;
+  padding: 5rem;
   text-align: center;
 }
 .famous-bannerwrap h1 {
   font-family:"Austria";
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .famous-bannerwrap h2{
   font-family: 'Noto Sans KR';
   font-size: 2rem;
   margin-top: 50px;
   opacity: 0.2;
+}
+
+/* notice.html */
+.notice-container {
+  padding-top: 70px;
+  display: flex;
+  margin: 100px;
+  flex-direction: column;
+  gap: 20px;
+}
+.notice-header {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+  gap: 30px;
+  font-size: 2em;
+}
+.closebtn {
+  color: #aaaaaa;
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: auto;
+  text-decoration: none;
+}
+.closebtn:hover,
+.closebtn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.notice-container hr{
+  width: 80%;
+  border: 1px solid #C6BADE;
+  opacity: 0.3;
+}
+
+.notice-body {
+  display: flex;
+  width: 75%;
+  margin: 0 auto;
+  flex-direction: column;
+  gap: 50px;
+}
+.notice-item{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 1.5em;
+}
+.notice-item > div:nth-child(1){
+  width: 100px;
+  height: 100px;
+}
+.notice-item img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+/* 반응형 */
+@media (max-width:1400px) {
+  .topic-list{
+    grid-template-columns: repeat(3, 200px);
+  }
+  .recommend-item figcaption{
+    font-size: 1.3rem;
+    padding-top: 0;
+  }
 }

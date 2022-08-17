@@ -1,1 +1,102 @@
 <!-- 마이 페이지 -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 마이 페이지 {% endblock %}
+{% block head %}
+<link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div id="mypage">
+  <div class="mypage_banner">
+    <h1>플럼이의 나무이야기</h1>
+  </div>
+  <div class="mypage_content">
+    <div class="mypage_profile">
+      <img src="{% static 'img/munchickitten.jpg' %}">
+    </div>
+    <div class="mypage_settings" onclick="settings()">
+      <i class="fa-solid fa-ellipsis-vertical" style="font-size: 20pt;"></i>
+    </div>
+    <div id="settings_list" class="">
+      <a href="{% url 'editprofile' %}" class ="settings_item">프로필 변경</a>
+      <a href="{% url 'setting' %}"class="settings_item">내 정보 변경</a>
+    </div>
+
+    <div class="mypage_info">
+      <a>게시글<span>5</span></a>
+      <a id="follow_modalBtn">구독자<span>30</span></a>
+      <a id="follower_modalBtn">관심작가<span>5</span></a>
+    </div>
+    <div class="mypage_menu">
+      <div class="mp_menu_first">
+        <a href="{% url 'create' %}" class="mp_menu__item"><span>글쓰기</span></a>
+        <a href="#" class="mp_menu__item"><span>내 글 목록</span></a>
+        <a href="{% url 'scrap' %}" class="mp_menu__item"><span>스크랩</span></a>
+      </div>
+      <div class="mp_menu_first icon">
+        <i class="fa-solid fa-pencil" style="font-size: 20pt"></i>
+        <i class="fa-solid fa-list" style="font-size: 20pt"></i>
+        <i class="fa-solid fa-star" style="font-size: 20pt"></i>
+      </div>
+      <div class="mp_menu_second">
+        <a href="{% url 'pay' %}" class="mp_menu__item"><span>자두 결제</span></a>
+        <a href="{% url 'plumusing' %}" class="mp_menu__item"><span>자두 내역</span></a>
+      </div>
+      <div class="mp_menu_second icon">
+        <i class="fa-solid fa-cart-shopping" style="font-size: 20pt"></i>
+        <i class="fa-solid fa-leaf" style="font-size: 20pt"></i>
+      </div>
+    </div>
+  </div>
+
+  <div id="follow_modal" class="fmodal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>구독자</h1>
+        <span class="closebtn">&times;</span>
+      </div>
+      <hr>
+      <div class="follow__list">
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        <div class="follow__info">
+          <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
+          <h1>플럼</h1>
+          <p>자기소개</p>
+          <button>구독하기</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  function settings(){
+    document.getElementById("settings_list").classList.toggle("show")
+  }
+</script>
+<script src="{% static 'js/followmodal.js' %}"></script>
+{% endblock %}
