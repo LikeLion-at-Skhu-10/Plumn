@@ -21,17 +21,17 @@
         {% endif %}
       </div>
       <div class="mypage_info">
-        <a>게시글<span>{{posts_count}}</span></a>
+        <a>게시글<span>{{ posts_count }}</span></a>
         <a id="follow_modalBtn">구독자<span>{{ followers_count }}</span></a>
-        <a id="follower_modalBtn">관심작가<span>{{following_count}}</span></a>
+        <a id="follower_modalBtn">관심작가<span>{{ following_count }}</span></a>
       </div>
 
       {% if user.is_authenticated and user != profile.userid %}
       <div class="page_sub">
         {% if follow_status == True %}
-          <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</button>
+          <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
         {% else %}
-          <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</button>
+          <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
         {% endif %}
       </div>
       {% endif %}
@@ -83,12 +83,12 @@
           <span class="closebtn">&times;</span>
         </div>
         <hr>
-        {% for follower in followers.all %}
+        {% for follower in object.user.followers.all %}
         <div class="follow__list">
           <div class="follow__info">
-            <div><img src="{{follower.profile.userphoto}}"></div>
-            <h1>{{follower.profile.username}}</h1>
-            <p>{{follower.userintro}}</p>
+            <div><img src="{{ follower.userphoto }}"></div>
+            <h1>{{ follower.username }}</h1>
+            <p>{{ follower.userintro }}</p>
             <button>구독하기</button>
           </div>
           <!--

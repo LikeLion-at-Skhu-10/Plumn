@@ -11,6 +11,6 @@ urlpatterns=[
     path('profile/<username>/follow/<option>', views.follow, name='follow'),
     path('notificaitons/', views.show_notifications, name='notifications'),
     path('<noti_id>/delete/', views.delete_notification, name='delete-notifications'),
-    #path('followers/', views.followers, name='followers'),
-    #path('followings/', views.followings, name='followings'),
+    #path('followers/<int:id>', views.followers, name='followers'),
+    #path('followings/<int:id>', views.followings, name='followings'),
 ]

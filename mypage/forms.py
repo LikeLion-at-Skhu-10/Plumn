@@ -83,11 +83,11 @@ class PasswordChangeForm(forms.Form):
             return self.add_error('new_password1', '소문자, 대문자, 숫자, 특수문자 각 각 한 개 이상 포함해주세요.')
         else:
             self.new_password1 = new_password1
-
+'''
     # --- check duplicate
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['new_password2'] != cd['new_password2']:
             raise forms.ValidationError('패스워드가 일치하지 않습니다.')
         return cd['new_password2']
-
+'''

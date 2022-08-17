@@ -15,6 +15,7 @@ from .models import Profile, Follow, Notification
 from .forms import EditprofileForm, PasswordChangeForm
 from django.urls import reverse_lazy, reverse
 from django.views import View
+from django.contrib.auth.hashers import check_password
 
 
 # 마이페이지
@@ -110,7 +111,7 @@ def setting(request):
             new_password1 = form.cleaned_data.get('new_password1')
             user.set_password(new_password1)
             update_session_auth_hash(request, user)
-            messages.success(request, "비밀번호를 성공적으로 변경했습니다.")
+            user.save()
             return redirect('mypage') 
         else:
             context['form'] = form
@@ -149,7 +150,7 @@ def followings(request, username):
     followings = Follow.objects.filter(following=username)
     context = followings
     return render(request, 'following.html', context)
-''' 
+'''
 #알람 확인 - 확인
 def show_notifications(request):
     user = request.user
