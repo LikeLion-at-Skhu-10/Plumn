@@ -17,26 +17,33 @@
     <div class="backimage_wrap">
         <div class="rd_img">
             <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="background_img">
-            <p class="rd_text">Ipad 4세대 air 리뷰</p>
+            <p class="rd_text">{{ post.title }}</p>
         </div>
     </div>
-
+    <form action="" method="POST">
+        {% csrf_token %}
     <div class="readreport_wrap">
         <div class="report_reason">
             <span class="report_reason_txt"><i class="fa-solid fa-square"></i> 위 글의 신고 사유를 선택해주세요</span>
         </div>
         <div class="report_reason_btn">
-            <label><input type="checkbox" name="reason" value="fact">허위 사실 유포</label>
-            <label><input type="checkbox" name="reason" value="legal">불법 정보</label>
-            <label><input type="checkbox" name="reason" value="leak">개인정보 유출, 거래</label>
-            <label><input type="checkbox" name="reason" value="overlap">도배 및 중복된 글</label>
+            <select name="obj_choices" required id="id_obj_choices">
+                <option value="FALSE_FACT">허위 사실 유포</option>
+                <option value="ILLEGAL">불법 정보 유포</option>
+                <option value="LEAK">개인 정보 유출</option>
+                <option value="DUPLICATION">도배 및 중복 글</option>
+            </select>
+            <!-- <label><input type="checkbox" name="obj_choices" value="fact">허위 사실 유포</label>
+            <label><input type="checkbox" name="obj_choices" value="legal">불법 정보</label>
+            <label><input type="checkbox" name="obj_choices" value="leak">개인정보 유출, 거래</label>
+            <label><input type="checkbox" name="obj_choices" value="overlap">도배 및 중복된 글</label> -->
         </div>
         <div class="report_text">
             <span class="report_reason_txt">
                 <span style="color: #fc9595;"><i class="fa-solid fa-square"></i> 신고</span> 사유를 자세하게 작성해주세요</span>
         </div>
         <div class="report_write">
-            <h1 class="report_form" id="report" contenteditable="true"></h1>
+            <textarea class="report_form" id="report" name="objection" placeholder="신고 사유를 자세하게 입력해주세요."></textarea>
         </div>
 
         <div class="report_btn_wrap">
@@ -44,13 +51,14 @@
             <button class="report_mit_btn" type="submit" onclick="submitBtn()">제출</button>
         </div>
     </div>
+</form>
     <script>
         function cancelBtn() {
-            window.location = "{% url 'read' %}";
+            window.location = "{% url 'read' post.id %}";
         }
         function submitBtn() {
             alert("제출하였습니다.");
-            window.location = "{% url 'read' %}";
+            window.location = "{% url 'read' post.id %}";
         }
     </script>
 

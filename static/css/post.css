@@ -57,7 +57,7 @@ body {
 .title_form {
   width: 50%;
   margin: 0 auto;
-  margin-top: 180px;
+  padding-top: 180px;
 }
 
 .title_write {
@@ -67,6 +67,7 @@ body {
 .form-control {
   font-size: 36px;
   border: none;
+  background: transparent;
 }
 
 .form-control:focus {
@@ -704,25 +705,16 @@ body {
 
 .report_form {
   font-size: 16px;
-  text-decoration: none;
-  visibility: visible;
   margin-bottom: 30px;
-  height: 30px;
+  height: 100%;
   line-height: 1.5em;
   margin: 20px;
-}
-
-.report_form:focus {
+  border: none;
   outline: none;
+  resize: none;
+  overflow: hidden;
 }
 
-.report_form:empty::before {
-  color: black;
-  opacity: 0.5;
-  content: "신고 사유를 작성해주세요";
-  cursor: text;
-  font-size: 16px;
-}
 
 @media (max-width: 1500px){
   .tt_textandbtn{

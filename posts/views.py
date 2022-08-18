@@ -7,6 +7,7 @@ from .forms import FeedbackForm, ObjectionForm, PostForm #PostForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 ############################################################
+@login_required(login_url='/login/')
 def create(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -18,15 +19,16 @@ def create(request):
             return redirect('list')
     else:
         form = PostForm()
+        print(form)
         return render(request, 'blog/create.html', {'form':form})
 
 def list(request):
-    posts = Post.objects
+    posts = Post.objects.all()
     return render(request, 'blog/list.html', {'posts':posts})
 
 def read(request, id):
     post = get_object_or_404(Post, id=id)
-    return render(request, 'read.html', {'post':post})
+    return render(request, 'blog/read.html', {'post':post})
 ############################################################
 def index(request):
     return render(request, 'index.html')
@@ -38,8 +40,96 @@ def base(request):
         return render(request, 'base.html', {'user':user})
     return render(request, 'base.html')
 
+def update(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save(commit=False)
+            form.save()
+            return render(request, 'blog/read.html', {'form':form, 'post':post})
+    else:
+        form = PostForm(instance=post)
+        return render(request, 'blog/update.html', {'form':form, 'post':post})
+
+def delete(request, id):
+    delete_post = Post.objects.get(id = id)
+    delete_post.delete()
+    return redirect('list')
+
 def notice(request):
     return render(request, 'notice.html')
+
+
+# 피드백
+@login_required(login_url='/login/')
+def feedback(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.obj_date = timezone.now()
+            form.save()
+            form.save_m2m()
+            return render(request, 'feedback_success', {'form':form})
+        
+    else:
+        form = FeedbackForm ()
+        return render(request, 'feedback_success.html', {'form':form})
+
+# 이의제기
+@login_required(login_url='/login/')
+def readreport(request, id):
+    objection_form = ObjectionForm()
+    post = get_object_or_404(Post, id=id)
+    context = {'form' : objection_form, 'post':post}
+    if request.method == 'POST':
+        form = ObjectionForm(request.POST)
+        print(form)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.obj_date = timezone.now()
+            form.save()
+            return redirect('read', post.id) # 원래 기존 글 페이지로 돌아감
+    else:
+        return render(request, 'blog/readreport.html', context)
+
+# 추천
+@login_required(login_url='/login/')
+def like(request, post_id):
+	user = request.user
+	post = Post.objects.get(id=post_id)
+	current_likes = post.likes
+	liked = Likes.objects.filter(user=user, post=post).count()
+
+	if not liked:
+		like = Likes.objects.create(user=user, post=post)
+		like.save()
+		current_likes = current_likes + 1
+
+	else:
+		Likes.objects.filter(user=user, post=post).delete()
+		current_likes = current_likes - 1
+
+	post.likes = current_likes
+	post.save()
+
+	return redirect('details', args=[post_id])
+
+@login_required
+def favorite(request, post_id):
+	user = request.user
+	post = Post.objects.get(id=post_id)
+	profile = Profile.objects.get(user=user)
+
+	if profile.favorites.filter(id=post_id).exists():
+		profile.favorites.remove(post)
+
+	else:
+		profile.favorites.add(post)
+
+	return redirect('details', args=[post_id])
 
 '''
 ##############################
@@ -111,70 +201,3 @@ def delete(request, id) :
 #             comment.delete()
 #     return redirect('articles:detail', article_pk)
 '''
-# 피드백
-def feedback(request):
-    if request.method == 'POST':
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.obj_date = timezone.now()
-            form.save()
-            form.save_m2m()
-            return render(request, 'feedback_success', {'form':form})
-        
-    else:
-        form = FeedbackForm ()
-        return render(request, 'feedback_success.html', {'form':form})
-
-# 이의제기
-@login_required(login_url='/login/')
-def readreport(request, id):
-    objection_form = ObjectionForm()
-    context = {'form' : objection_form}
-    post = get_object_or_404(Post, id=id)
-    if request.method == 'POST':
-        form = ObjectionForm(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.obj_date = timezone.now()
-            form.save()
-            form.save_m2m()
-            return redirect('detail', post.id) # 원래 기존 글 페이지로 돌아감
-    else:
-        return render(request, 'objection.html', context)
-
-# 추천
-@login_required(login_url='/login/')
-def like(request, post_id):
-	user = request.user
-	post = Post.objects.get(id=post_id)
-	current_likes = post.likes
-	liked = Likes.objects.filter(user=user, post=post).count()
-
-	if not liked:
-		like = Likes.objects.create(user=user, post=post)
-		like.save()
-		current_likes = current_likes + 1
-
-	else:
-		Likes.objects.filter(user=user, post=post).delete()
-		current_likes = current_likes - 1
-
-	post.likes = current_likes
-	post.save()
-
-	return redirect('details', args=[post_id])
-
-@login_required
-def favorite(request, post_id):
-	user = request.user
-	post = Post.objects.get(id=post_id)
-	profile = Profile.objects.get(user=user)
-
-	if profile.favorites.filter(id=post_id).exists():
-		profile.favorites.remove(post)
-
-	else:
-		profile.favorites.add(post)
-
-	return redirect('details', args=[post_id])

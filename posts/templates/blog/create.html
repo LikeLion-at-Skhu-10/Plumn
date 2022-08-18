@@ -16,7 +16,7 @@
 <body>
 <div id="container_one">
     {% block content %}
-    <form action = "{% url 'create' %}" method="POST">
+    <form action = "{% url 'create' %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
     <div class="title_form">
       <div class="title_write">
@@ -25,9 +25,10 @@
     </div>
     <div class="plus_button_wrap">
       <div class="cover_image_plus">
-        <input type="file" id="input-cover" class="image_inputType_file" accept="img/*">
+        <!-- <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="img/*"> -->
         <button class="cover_image_btn">
           <i class="fa-solid fa-image"></i>
+          <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="image/*">
           <span>커버 이미지 변경</span>
         </button>
       </div>

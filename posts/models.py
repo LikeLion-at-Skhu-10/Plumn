@@ -17,7 +17,7 @@ class Post(models.Model):
     post_date = models.DateTimeField(auto_now_add=True) 
     image = models.ImageField(upload_to='images/', blank=True) #제목 배경 사진
     #like_users = models.ManyToManyField(User, related_name='like_articles') #추천수
-    topic = models.ManyToManyField('Topic') #토픽
+    # post_topic = models.ManyToManyField(to='Topic', null=True, blank=True) #토픽
     
     def __str__(self):
         return self.title
@@ -81,6 +81,7 @@ class Feedback(models.Model):
 #이의제기
 class Objection(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE) #이하동문
+    post = models.ForeignKey(Post, on_delete = models.CASCADE, default = '', null=True)
     objection = models.TextField()
     obj_date = models.DateTimeField(auto_now_add=True)
     OBJ_CHOICES = (
