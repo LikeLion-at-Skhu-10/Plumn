@@ -83,13 +83,16 @@
           <span class="closebtn">&times;</span>
         </div>
         <hr>
-        {% if followers %}
-        {% for follower in follower.all %}
+        {% for follower_list in follower_list.items %}
         <div class="follow__list">
           <div class="follow__info">
-            <div><img src="{{ follower.user.profile.userphoto.url }}"></div>
-            <h1>{{ follower.user.profile.username }}</h1>
-            <p>{{ follower.user.profile.userintro }}</p>
+            {% if value.userphoto %}
+              <div><img src="{{ follower_list.userphoto.url }}"></div>
+            {% else %}
+              
+            {% endif %}
+            <h1>{{ value.username }}</h1>
+            <p>{{ value.userintro }}</p>
             {% if user.is_authenticated and user != profile.userid %}
             <div class="page_sub">
               {% if follow_status == True %}
@@ -102,7 +105,6 @@
           </div>
         </div>
         {% endfor %}
-        {% endif %}
       </div>
     </div>
 
@@ -113,18 +115,24 @@
           <span class="closebtn">&times;</span>
         </div>
         <hr>
-        {% for following in following.all %}
+        {% for following_list in following_list.keys %}
         <div class="follow__list">
           <div class="follow__info">
-            <div><img src="{{ following.userphoto.url }}"></div>
-            <h1>{{ follwing.username }}</h1>
-            <p>{{ following.userintro }}</p>
+            {% if following_list.userphoto %}
+              <div><img src="{{ following_list.userphoto.url }}"></div>
+            {% else %}
+              
+            {% endif %}
+            <h1>{{ following_list.username }}</h1>
+            <p>{{ following_list.userintro }}</p>
             {% if user.is_authenticated and user != profile.userid %}
             <div class="page_sub">
-              {% if follow_status == True %}
-                <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
-              {% else %}
-                <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+              {% if user != following_list %}
+                {% if follow_status == True %}
+                  <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
+                {% else %}
+                  <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+                {% endif %}
               {% endif %}
             </div>
             {% endif %}
