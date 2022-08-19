@@ -12,4 +12,5 @@ urlpatterns=[
     
     path('feedback/', views.feedback, name='feedback'), #피드백
     path('readreport/<int:id>', views.readreport, name='readreport'), # 이의제기
+    
 ]

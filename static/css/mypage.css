@@ -116,7 +116,7 @@
 /* 모달창 */
 
 .fmodal {
-  /* display: none;  */
+  display: none; 
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 200px; /* Location of the box */
