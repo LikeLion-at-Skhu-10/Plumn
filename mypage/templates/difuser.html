@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} 다른 유저 {% endblock %}
+{% block title %} {{ profile.username }} {% endblock %}
 {% block head %}
 <link href="{% static 'css/mypage.css' %}" rel="stylesheet">
 {% endblock %}
@@ -36,12 +36,13 @@
       </div>
       {% endif %}
 
-      {% for posts in posts %}
+
       <div class="page_write_container">
-        
+
         <div class="page_write_wrap">
           <!-- write_item 반복 -->
-          <a class="write_item" href="#"> <!--글-->
+          {% for posts in posts %}
+          <a class="write_item" href="{% url 'read' posts.id %}"> <!--글-->
             <div class="write-info">
               <h1>{{posts.title}}</h1>
               <p>{{posts.content}}</p>
@@ -55,55 +56,10 @@
               <img src="{% static 'img/plumn_icon.png' %}">
             </div>
           </a>
-          
-          <a class="write_item" href="{% url 'read' %}">
-            <div class="write-info">
-              <h1>Deep Python study with me</h1>
-              <p>Advance your data analyistics ....</p>
-              <div>
-                <span>July. 03. 2022</span>
-                <span>댓글 2</span>
-                <span><i class="fa-solid fa-heart"></i> 2</span>
-            </div>
-            </div>
-            <div class="write-img">
-              <img src="{% static 'img/plumn_icon.png' %}">
-            </div>
-          </a>
-
-          <a class="write_item" href="{% url 'read' %}">
-            <div class="write-info">
-              <h1>Deep Python study with me</h1>
-              <p>Advance your data analyistics ....</p>
-              <div>
-                <span>July. 03. 2022</span>
-                <span>댓글 2</span>
-                <span><i class="fa-solid fa-heart"></i> 2</span>
-            </div>
-            </div>
-            <div class="write-img">
-              <img src="{% static 'img/plumn_icon.png' %}">
-            </div>
-          </a>
-
-          <a class="write_item" href="#">
-            <div class="write-info">
-              <h1>Deep Python study with me</h1>
-              <p>Advance your data analyistics ....</p>
-              <div>
-                <span>July. 03. 2022</span>
-                <span>댓글 2</span>
-                <span><i class="fa-solid fa-heart"></i> 2</span>
-            </div>
-            </div>
-            <div class="write-img">
-              <img src="{% static 'img/plumn_icon.png' %}">
-            </div>
-          </a>
+      {% endfor %}
 
         </div>
       </div>
-    {% endfor %}
     </div>
 
     <div id="follow_modal" class="fmodal">
@@ -113,22 +69,60 @@
           <span class="closebtn">&times;</span>
         </div>
         <hr>
-        {% for follower in object.user.followers.all %}
+        {% for follower_list in follower_list.items %}
         <div class="follow__list">
           <div class="follow__info">
-            <div><img src="{{ follower.userphoto }}"></div>
-            <h1>{{ follower.username }}</h1>
-            <p>{{ follower.userintro }}</p>
-            <button>구독하기</button>
+            {% if value.userphoto %}
+              <div><img src="{{ follower_list.userphoto.url }}"></div>
+            {% else %}
+              
+            {% endif %}
+            <h1>{{ value.username }}</h1>
+            <p>{{ value.userintro }}</p>
+            {% if user.is_authenticated and user != profile.userid %}
+            <div class="page_sub">
+              {% if follow_status == True %}
+                <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
+              {% else %}
+                <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+              {% endif %}
+            </div>
+            {% endif %}
           </div>
-          <!--
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="following_modal" class="fmodal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>관심작가</h1>
+          <span class="closebtn">&times;</span>
+        </div>
+        <hr>
+        {% for following_list in following_list.keys %}
+        <div class="follow__list">
           <div class="follow__info">
-            <div><img src="{% static 'img/munchickitten.jpg' %}"></div>
-            <h1>플럼</h1>
-            <p>자기소개</p>
-            <button>구독하기</button>
+            {% if following_list.userphoto %}
+              <div><img src="{{ following_list.userphoto.url }}"></div>
+            {% else %}
+              
+            {% endif %}
+            <h1>{{ following_list.username }}</h1>
+            <p>{{ following_list.userintro }}</p>
+            {% if user.is_authenticated and user != profile.userid %}
+            <div class="page_sub">
+              {% if user != following_list %}
+                {% if follow_status == True %}
+                  <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
+                {% else %}
+                  <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+                {% endif %}
+              {% endif %}
+            </div>
+            {% endif %}
           </div>
-          -->
         </div>
         {% endfor %}
       </div>

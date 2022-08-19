@@ -16,7 +16,7 @@ from .forms import EditprofileForm, PasswordChangeForm
 from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.contrib.auth.hashers import check_password
-
+from django.template.defaulttags import register
 
 # 마이페이지
 # @login_required(login_url='/login/')
@@ -29,11 +29,25 @@ def mypage(request):
     following_count = Follow.objects.filter(follower=user).count()
     followers_count = Follow.objects.filter(following=user).count()
 
+    followers = Follow.objects.filter(following=user)
+    follower_list = {}
+    for follower in followers:
+        follower_profile = Profile.objects.filter(id=follower.follower_id)
+        follower_list[id] = follower_profile
+        
+    
+    followings = Follow.objects.filter(follower=user)
+    following_list = {}
+    for following in followings:
+        following_profile = Profile.objects.filter(id=following.following_id)
+        following_list[id] = following_profile
     context={
         'profile':profile,
         'following_count':following_count,
         'followers_count':followers_count,
         'posts_count':posts_count,
+        'follower_list':follower_list,
+        'followeing_list':following_list,
         }
     
     return render(request, 'mypage.html', context)
@@ -49,8 +63,18 @@ def profile(request, username):
     followers_count = Follow.objects.filter(following=user).count()
 
     # 구독자 / 관심 작가
-    #follower = Follow.objects.filter(follower=username)
-    #following = Follow.objects.filter(following=username)
+    followers = Follow.objects.filter(following=user)
+    follower_list = {}
+    for follower in followers:
+        follower_profile = Profile.objects.filter(id=follower.follower_id)
+        follower_list[id] = follower_profile
+        
+    
+    followings = Follow.objects.filter(follower=user)
+    following_list = {}
+    for following in followings:
+        following_profile = Profile.objects.filter(id=following.following_id)
+        following_list[id] = following_profile
     # 구독 상태
     follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
 
@@ -61,17 +85,23 @@ def profile(request, username):
 
     
     context = {
-		'posts': posts_paginator,
+		'posts_paginator': posts_paginator,
+        'posts' : posts,
 		'profile':profile,
 		'following_count':following_count,
 		'followers_count':followers_count,
 		'posts_count':posts_count,
 		'follow_status':follow_status,
-        #'follower':follower,
-        #'following':following,
+        'follower_list':follower_list,
+        'followeing_list':following_list,
+        
 	}
 
     return render(request, 'difuser.html', context)
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
 
 
 #프로필 수정 - 확인
