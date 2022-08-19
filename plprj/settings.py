@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 #장고에 MySQL연동시켜 데베 세팅 툴파일을 생성해서 import한 것.
 import os, json
+import django_heroku
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 
@@ -44,7 +45,6 @@ DEBUG = True
 # 모바일 접속을 위해 두었음. 나중에 배포할땐 뺄것 !
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,7 +67,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+django_heroku.settings(locals())
 
 ROOT_URLCONF = 'plprj.urls'
 
