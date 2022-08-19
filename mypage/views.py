@@ -19,7 +19,7 @@ from django.contrib.auth.hashers import check_password
 from django.template.defaulttags import register
 
 # 마이페이지
-# @login_required(login_url='/login/')
+@login_required(login_url='/login/')
 def mypage(request):
     user = request.user
     profile = Profile.objects.get(id=user.id)

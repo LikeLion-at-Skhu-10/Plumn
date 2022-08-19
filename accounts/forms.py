@@ -8,6 +8,7 @@ from django.forms.widgets import ClearableFileInput
 from argon2 import PasswordHasher
 from django.contrib.auth import password_validation
 #from django.contrib.auth.password_validation import password_validators_help_text_html
+import re
 
 #회원가입 폼
 class RegisterForm(forms.Form):
@@ -68,12 +69,14 @@ class RegisterForm(forms.Form):
         password_confirm = cleaned_data.get('password_confirm')
         user_phone = cleaned_data.get('user_phone')
         
+        REGEX_PASSWORD = '^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
+
         if password != password_confirm:
             return self.add_error('password_confirm', '비밀번호가 다릅니다.')
         elif not (2 <= len(username) <= 8):
             return self.add_error('username', '이름은 2~8자로 입력해 주세요.')
-        elif 8 > len(password):
-            return self.add_error('password', '비밀번호는 8자 이상으로 적어주세요.')
+        elif re.search(REGEX_PASSWORD, password) is None:
+            return self.add_error('password', '소문자, 대문자, 숫자, 특수문자 각 각 한 개 이상 포함해주세요.')
         elif User.objects.filter(username=self.cleaned_data['username']).exists():
             return self.add_error('username', '이미 존재하는 이름입니다.')
         elif User.objects.filter(email=self.cleaned_data['email']).exists():
