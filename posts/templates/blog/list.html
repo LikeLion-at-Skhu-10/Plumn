@@ -22,7 +22,7 @@
         </div>
         <div class="list_button_wrap">
             <div class="list_btn_wrap_one">
-                <button class="list_btn" type="button"><span>가정/생활</span></button>
+                <button class="list_btn" type="button"><span>{{ posts.topic }}</span></button>
                 <button class="list_btn" type="button"><span>건강/취미</span></button>
                 <button class="list_btn" type="button"><span>경제/경영</span></button>
                 <button class="list_btn" type="button"><span>국어/외국어</span></button>
@@ -68,7 +68,7 @@
                     <span class="list_date">{{ post.post_date }}</span>
                     <span class="list_comment">댓글 10</span>
                     <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
-                    <span class="list_tag_btn">#IT</span>
+                    <span class="list_tag_btn">{{ post.get_topic_display }}</span>
                 </div>
             </div>
 

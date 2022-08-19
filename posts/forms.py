@@ -7,7 +7,7 @@ from .models import Post, Feedback, Objection
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'image', 'content'] #추천 / 스크랩은 별개?
+        fields = ['title', 'image', 'content', 'topic'] #추천 / 스크랩은 별개?
 
 ## 댓글 생성 forms임. 
 #class CommentForm(forms.ModelForm):

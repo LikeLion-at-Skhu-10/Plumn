@@ -29,7 +29,7 @@
         <div class="tt_textandbtn">
             <p class="tt_text">{{ post.content }}
             <div class="tt_btn_wrap">
-                <span class="list_tag_btn">#IT</span>
+                <span class="list_tag_btn">{{ post.get_topic_display }}</span>
                 {% if user == post.user %}
                 <div>
                     <button class="tt_feedback" type="button" onclick="updateBtn()">수정</button>

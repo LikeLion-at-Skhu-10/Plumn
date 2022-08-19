@@ -26,22 +26,22 @@
     <div class="plus_button_wrap">
       <div class="cover_image_plus">
         <!-- <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="img/*"> -->
-        <button class="cover_image_btn">
-          <i class="fa-solid fa-image"></i>
-          <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="image/*">
-          <span>커버 이미지 변경</span>
-        </button>
+          <button class="cover_image_btn" type="button">
+            <i class="fa-solid fa-image"></i>
+            <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="image/*">
+            <span>커버 이미지 변경</span>
+          </button>
       </div>
 
       <div class="cover_color_plus">
-        <button class="cover_color_btn" onclick="colorChange()">
+        <button class="cover_color_btn" onclick="colorChange()" type="button">
           <i class="fa-solid fa-palette"></i>
           <span>커버 배경색 변경</span>
         </button>
       </div>
 
       <div class="middle_sort_plus">
-        <button class="sort_btn">
+        <button class="sort_btn" type="button">
           <i class="fa-solid fa-align-center"></i>
           <span>가운데 정렬</span>
         </button>
@@ -75,13 +75,27 @@
 
     <span class="multi-select">
       <div class="keyword_btn">
-        <select name="keyword" id="keyword">
-          <option disabled selected>키워드 선택</option>
-          <option value="apple">인문</option>
-          <option value="orange">사회</option>
-          <option value="grape">과학</option>
-          <option value="melon">IT</option>
-        </select>
+          <select name="topic" id="keyword">
+            <option value="" selected>---------</option>
+            <option value="LIFE">가정 / 생활</option>
+            <option value="HEALTH / COOK">건강 / 요리</option>
+            <option value="ECONOMY / MANAGEMENT">경제 / 경영</option>
+            <option value="LANGUAGE">국어 / 외국어</option>
+            <option value="COMPUTER / IT">컴퓨터 / IT</option>
+            <option value="POLITICS / SOCIETY">정치 / 사회</option>
+            <option value="LITERATURE">문학</option>
+            <option value="CHILD">유아 / 아동</option>
+            <option value="TRAVEL">여행</option>
+            <option value="HISTORY">역사</option>
+            <option value="ART">예술</option>
+            <option value="HUMANITIES">인문</option>
+            <option value="PEOPLE">인물</option>
+            <option value="SELF-IMPROVEMENT">자기계발</option>
+            <option value="SCIENCE">과학</option>
+            <option value="RELIGION">종교</option>
+            <option value="CULTURE">문화</option>
+            <option value="ENGINEERING">공학</option>
+          </select>
       </div>
     </span>
 

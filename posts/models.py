@@ -17,13 +17,6 @@ class Post(models.Model):
     post_date = models.DateTimeField(auto_now_add=True) 
     image = models.ImageField(upload_to='images/', blank=True) #제목 배경 사진
     #like_users = models.ManyToManyField(User, related_name='like_articles') #추천수
-    # post_topic = models.ManyToManyField(to='Topic', null=True, blank=True) #토픽
-    
-    def __str__(self):
-        return self.title
-
-#토픽
-class Topic(models.Model):
     TOPIC_CHOICES = (
         ('LIFE', '가정 / 생활'), ('HEALTH / COOK', '건강 / 요리'), ('ECONOMY / MANAGEMENT', '경제 / 경영'), 
         ('LANGUAGE', '국어 / 외국어'), ('COMPUTER / IT', '컴퓨터 / IT'), ('POLITICS / SOCIETY', '정치 / 사회'),
@@ -32,8 +25,10 @@ class Topic(models.Model):
         ('PEOPLE', '인물'), ('SELF-IMPROVEMENT', '자기계발'), ('SCIENCE', '과학'), ('RELIGION', '종교'),
         ('CULTURE', '문화'), ('ENGINEERING', '공학')
     )
-        
-    topic = models.CharField(max_length = 50, choices=TOPIC_CHOICES, default=None)
+    topic = models.CharField(max_length = 50, choices=TOPIC_CHOICES, default=None, null=True, blank=True)
+    
+    def __str__(self):
+        return self.title
 
 #class Photo(models.Model):
 #    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
