@@ -196,6 +196,8 @@ li + li::before {
 .register_text {
   margin: 0 auto;
   width: 500px;
+  margin-top: 100px;
+  margin-bottom: -40px;
 }
 
 .text_wrap > h4 {
@@ -256,7 +258,7 @@ li + li::before {
   width: 100%;
   flex-direction: row;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .register_btn {
@@ -302,6 +304,7 @@ li + li::before {
   margin-bottom: 20px;
   width: 100%;
   flex-wrap: wrap;
+  align-content: center;
 }
 
 .tel_find input {
