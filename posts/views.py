@@ -30,14 +30,11 @@ def read(request, id):
     return render(request, 'blog/read.html', {'post':post})
 ############################################################
 def index(request):
-    return render(request, 'index.html')
-
-def base(request):
     user = request.user
-    if request.user.is_authenticated:
+    if user.is_authenticated:
+        print("왜안떠 시2발")
         user = User.objects.get(id=user.id)
         profile = Profile.objects.get(id=user.id)
-        
         posts_count = Post.objects.filter(user=user).count()
         following_count = Follow.objects.filter(follower=user).count()
         followers_count = Follow.objects.filter(following=user).count()
@@ -48,7 +45,24 @@ def base(request):
             'followers_count':followers_count,
             'posts_count':posts_count,
             }
-    
+        return render(request, 'index.html', context)
+    return render(request, 'index.html')
+
+def base(request):
+    user = request.user
+    if user.is_authenticated:
+        user = User.objects.get(id=user.id)
+        profile = Profile.objects.get(id=user.id)
+        posts_count = Post.objects.filter(user=user).count()
+        following_count = Follow.objects.filter(follower=user).count()
+        followers_count = Follow.objects.filter(following=user).count()
+
+        context={
+            'profile':profile,
+            'following_count':following_count,
+            'followers_count':followers_count,
+            'posts_count':posts_count,
+            }
         return render(request, 'base.html', context)
     return render(request, 'base.html')
 
@@ -82,7 +96,7 @@ def donate(request):
     return render(request, 'blog/donate.html')
 
 def pay(request):
-    return render(request, 'blog/pay.html')
+    return render(request, 'libr/pay.html')
 
 # 피드백
 @login_required(login_url='/login/')

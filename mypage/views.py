@@ -1,4 +1,3 @@
-import requests
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
@@ -123,9 +122,9 @@ def edit_profile(request):
         # 그래야 유효하지 않는 form 이 들어오더라도 Http response object 를 받을 수 있다
         else:
             messages.info(request, form.error_messages)
-            return render(request, 'editprofile.html', {'form':form})
+            return render(request, 'editprofile.html', {'form':form , 'profile': profile})
     else:
-        return render(request, 'editprofile.html', {'form':form})
+        return render(request, 'editprofile.html', {'form':form, 'profile': profile})
         
 #비밀번호 변경 - 확인
 @login_required(login_url='/login')
@@ -189,7 +188,7 @@ def show_notifications(request):
     
     context = {'notifications':notifications}
     
-    return render(request, 'notifications.html', context)
+    return render(request, 'notice.html', context)
 
 # 알람 삭제 - 확인
 def delete_notification(request, noti_id):

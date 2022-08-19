@@ -29,47 +29,77 @@
             <div class="myprofile">
               <div class="pro__circle">
                 <!-- 2. 로그인 안한 경우 -->
+                {% if user.is_authenticated %}
+                  {% if profile.userphoto %}
+                  <img src="{{profile.userphoto.url}}">
+                  {% else %}
+                  <img src="{% static 'img/needloginuser.png' %}">
+                  {% endif %}
+                {% else %}
                 <img src="{% static 'img/needloginuser.png' %}">
-
-                <!-- 1. 로그인 한 경우 -->
-                <!-- <img src="{% static 'img/munchickitten.jpg' %}"> -->
+                {% endif %}
+                
               </div>
 
-              <!-- 1. 로그인 한 경우 -->
-              <!-- <a class="pro__noti" href="{% url 'notice' %}"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
-            <h3>플럼님</h3>
-            <a class="mp_logout">로그아웃</a>
-            <div class="profile__usersub">
-              <a class="usersubinfo">게시글 <span>5</span></a>
-              <a class="usersubinfo">구독자 <span>30</span></a>
-              <a class="usersubinfo">관심작가 <span>5</span></a>
-            </div> -->
-            
-            <!-- 2. 로그인 안한 경우 -->
-            <div class="mp_login_container">
-              <a href="{% url 'login' %}" class="mp_login">로그인</a>
-              <a href="{% url 'register' %}" class="mp_login">회원가입</a>
+                <!-- 1. 로그인 한 경우 -->
+                {% if user.is_authenticated %}
+                <a class="pro__noti" href="{% url 'notice' %}"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+                <h3>{{ user.username }}</h3>
+                <a href="{% url 'logout' %}" class="mp_logout" style="text-decoration: none;">로그아웃</a>
+                <div class="profile__usersub">
+                  <a class="usersubinfo">게시글 <span>{{posts_count}}</span></a>
+                  <a class="usersubinfo">구독자 <span>{{ followers_count }}</span></a>
+                  <a class="usersubinfo">관심작가 <span>{{following_count}}</span></a>
+                </div>
+                
+                {% else %}
+                <a class="pro__noti" href="{% url 'notice' %}"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt; "></i></a> 
+                <a class="mp_logout" style="opacity: 0;">로그아웃</a>
+
+                {% endif %}
+              <!-- 2. 로그인 안한 경우 -->
+              {% if user.is_authenticated %}
+              {% else %}
+              <div class="mp_login_container">
+                <a href="{% url 'login' %}" class="mp_login">로그인</a>
+                <a href="{% url 'register' %}" class="mp_login">회원가입</a>
+              </div>
+              {% endif %}
             </div>
-          </div>
+
           <div class="menu_home">
             <i class="fa-solid fa-house" style="text-decoration: none; color: black; font-size: 20pt;"></i>
             <a href="{% url 'index' %}" class="plumn__home">플럼홈</a>
           </div>
+          {% if user.is_authenticated %}
+          <div class="menulist">
+            <a href="{% url 'list' %}" class="menulist__item">전체 글 보기</a>
+            <a href="{% url 'scrap' %}" class="menulist__item">내 서재</a>
+            <a href="{% url 'pay' %}" class="menulist__item">플럼 구매</a>
+            <a href="#" class="menulist__item">마이 뱃지</a>
+          </div>
+          {% else %}
           <div class="menulist">
             <a href="#" class="menulist__item">전체 글 보기</a>
             <a href="#" class="menulist__item" style="opacity: 0;">내 서재</a>
             <a href="#" class="menulist__item" style="opacity: 0;">플럼 구매</a>
             <a href="#" class="menulist__item" style="opacity: 0;">마이 뱃지</a>
           </div>
+          {% endif %}
+
           <div class="menu_fb">
             <div><h2>"A learned fool is more foolish than an ignorant one"</h2></div>
             <!-- 1. 로그인 한 경우 -->
-            <!-- <div><a href="{% url 'feedback' %}">사이트 피드백</a></div> -->
+            {% if user.is_authenticated %}
+            <div><a href="{% url 'feedback' %}">사이트 피드백</a></div>
+            {% else %}
             <!-- 2. 로그인 안한 경우 -->
             <div><a href="{% url 'find_id' %}">아이디를 잊어버리셨나요?</a></div>
+            {% endif %}
           </div>
         </div>
       </div>
+
       <h1 class="index"><a href="{% url 'index' %}">Plumn</a></h1>
     </div>
 
