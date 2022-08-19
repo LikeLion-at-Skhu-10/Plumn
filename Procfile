@@ -1,1 +1,1 @@
-web: gunicorn django_exercise.wsgi --log-file -
+web: gunicorn plprj.wsgi --log-file -
