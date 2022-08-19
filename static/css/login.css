@@ -12,7 +12,8 @@
   width: 30%;
 }
 
-.btn_plumnn {
+.btn_plumnn,
+.afterlog_btn_plumnn {
   margin-left: 180px;
   width: 200px;
   margin-top: 20px;
@@ -26,11 +27,16 @@
   border: 1.5px solid #fc9595;
 }
 
-.btn_plumnn:hover {
+.btn_plumnn:hover,
+.afterlog_btn_plumnn:hover {
   background-color: #fc9595;
   border: 1.5px solid #fe8d92;
   color: #ffffff;
   cursor: pointer;
+}
+
+.afterlog_btn_plumnn{
+  margin-left: 0px;
 }
 
 .picture {
@@ -166,17 +172,21 @@ li + li::before {
 
 .login_success_after_text{
   display: flex;
-  flex-direction: column ;
-  width: 15%;
+  width:30%;
+  flex-direction: column;
 }
 
 .success_after_text{
   font-size: 24px;
+  text-align: center;
 }
 
 .login_success_after_btn{
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 30px;
+
 }
 /* #FA777C */
 
@@ -251,6 +261,10 @@ li + li::before {
   cursor: pointer;
 }
 
+
+.errorlist > li {
+  margin-top: 40px;
+}
 /* 회원가입, 돌아가기 버튼 */
 
 .register {
@@ -512,6 +526,27 @@ li + li::before {
   border: none;
   border-top: 1px solid lightgray;
 }
+
+
+/**************************************************/
+/* 비밀번호 변경 메일 확인 창 */
+
+.reset_mail_wrap{
+  width: 100%;
+  margin: 300px 300px;
+  border: 2px solid #fc9595;
+  display: flex;
+  padding: 30px 30px;
+  border-radius: 15px;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.reset_mail_wrap > span{
+  font-size: 24px;
+  color: #fc9595;
+}
+
 
 /**************************************************/
 

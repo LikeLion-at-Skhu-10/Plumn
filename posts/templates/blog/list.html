@@ -52,12 +52,16 @@
 
         {% for post in posts %}
         
-        <a class="writing_list" href="{% url 'read' post.id %}">
+        <div class="writing_list" href="{% url 'read' post.id %}">
             <div class="list_text">
                 <div class="writing_title">
-                    <span class="list_title_text">{{ post.title }}<i class="fa-solid fa-lock"></i>
-                        <span class="lock_free_text charged_writing">이 글은 유료글 입니다.</span></span>
+                    <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
+                    <span class="list_title_text">{{ post.title }}
+                    </a>
+                        <i class="fa-solid fa-lock"></i>
+                        <span id="charged_writing" class="lock_free_text">이 글은 유료글 입니다.</span>
                 </div>
+                <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
                 <div class="writing_content">
                     <p class="list_content">{{ post.content }}</p>
                 </div>
@@ -67,10 +71,12 @@
                     <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
                     <span class="list_tag_btn">{{ post.get_topic_display }}</span>
                     <span class="list_writer">by GraceKim</span>
+                </div>
             </div>
             <div class="list_photo">
                 <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
             </div>
+        </a>
         </div>
         <hr class="list_hr">
         {% endfor %}
