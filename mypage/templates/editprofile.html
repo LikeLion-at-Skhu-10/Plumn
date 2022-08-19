@@ -30,7 +30,11 @@
     <div class="mypage_content">
         <div class="mypage_profile">
           <button class="mp_editbtn">
-            {{form.userphoto}}
+            {% if profile.userphoto %}
+            <img src="{{profile.userphoto.url}}">
+            {% else %}
+            <img src="{% static 'img/needloginuser.png' %}">
+            {% endif %}
           </button>
         </div>
       <div class="editpr_ip">  
