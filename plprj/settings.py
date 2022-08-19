@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 #장고에 MySQL연동시켜 데베 세팅 툴파일을 생성해서 import한 것.
 import os, json
 import django_heroku
+import dj_database_url
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 
@@ -195,3 +196,6 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_EMAIL_SUBJECT_PREFIX = "Plumn"
 
 AUTH_USER_MODEL = 'accounts.User' # 앱label.모델명
+
+db_from_env = dj_database_url.config(conn_max_age = 500)
+DATABASES['default'].update(db_from_env)
