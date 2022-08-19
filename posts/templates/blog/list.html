@@ -51,7 +51,6 @@
 
 
         {% for post in posts %}
-        
         <div class="writing_list" href="{% url 'read' post.id %}">
             <div class="list_text">
                 <div class="writing_title">
@@ -74,8 +73,8 @@
                 </div>
             </div>
             <div class="list_photo">
-                {% if posts.image %}
-                <img src="{{ posts.image.url }}" class="list_photosize">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="list_photosize">
                 {% else %}
                 <img src="{% static 'img/plumn.png' %}" class="list_photosize">
                 {% endif %}
