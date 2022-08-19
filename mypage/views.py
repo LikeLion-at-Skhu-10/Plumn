@@ -16,7 +16,7 @@ from .forms import EditprofileForm, PasswordChangeForm
 from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.contrib.auth.hashers import check_password
-
+from django.template.defaulttags import register
 
 # 마이페이지
 @login_required(login_url='/login/')
@@ -96,6 +96,10 @@ def profile(request, username):
 	}
 
     return render(request, 'difuser.html', context)
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
 
 
 #프로필 수정 - 확인
