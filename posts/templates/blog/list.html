@@ -74,7 +74,11 @@
                 </div>
             </div>
             <div class="list_photo">
-                <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+                {% if posts.image %}
+                <img src="{{ posts.image.url }}" class="list_photosize">
+                {% else %}
+                <img src="{% static 'img/plumn.png' %}" class="list_photosize">
+                {% endif %}
             </div>
         </a>
         </div>

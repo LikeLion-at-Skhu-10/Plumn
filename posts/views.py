@@ -27,7 +27,8 @@ def list(request):
 
 def read(request, id):
     post = get_object_or_404(Post, id=id)
-    return render(request, 'blog/read.html', {'post':post})
+    profile = Profile.objects.filter(user_posts_id_id=id)
+    return render(request, 'blog/read.html', {'post':post, 'profile':profile})
 ############################################################
 def index(request):
     return render(request, 'index.html')
