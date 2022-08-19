@@ -1,17 +1,8 @@
 function myFunction() {
-  var x = document.querySelector(".list_btn_wrap_list");
+  const x = document.querySelector(".list_btn_wrap_list");
   if (x.style.display == "none") {
-    x.style.display = "block";
+    x.style.display = "grid";
   } else {
     x.style.display = "none";
   }
 }
-
-// $(document).ready(function () {
-//   $("#hide").click(function () {
-//     $("p").hide();
-//   });
-//   $("#show").click(function () {
-//     $("p").show();
-//   });
-// });

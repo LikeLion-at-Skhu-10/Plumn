@@ -2,20 +2,18 @@
 {% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="UTF-8" />
-  <title>{% block title %} 회원가입 창 {% endblock %}</title>
-  <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
-  {% block head %}
-  <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-  {% endblock %}
-</head>
-
-<body>
-  {% block content %}
-  <form action="" method="POST">
-    {% csrf_token %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %} 회원가입 창 {% endblock %}</title>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% endblock %}
+  </head>
+  <body>
+    {% block content %}
+    <form method="POST">
+      {% csrf_token %}
     <div class="register_wrap">
       <div class="register_text">
         <div class="text_wrap">
@@ -48,32 +46,30 @@
       <div class="register_text">
         <div class="text_wrap">
           <h4>전화번호를 입력하세요!</h4>
-          <input type="tel" class="input_margin" name="" id="" placeholder="000-0000-0000" />
+           {{forms.user_phone}}
         </div>
       </div>
-  </form>
-
-  <div class="register">
-    <div class="text_wrap">
-      <button class="register_btn register_btn_plumn" type="button"><span>회원가입</span></button>
-
-      <button class="register_btn register_btn_plumn" type="button"
-        onclick="location.href= '{% url 'login' %}';"><span>돌아가기</span></button>
-
-
-      <!-- <button class="register_btn register_btn_plumn" type="button"
-        onclick="window.location = '{% url 'login' %}';"><span>돌아가기</span></button> -->
-
-      <!-- <a class="register_btn register_btn_plumn" type="button" href="{% url 'login' %}">
-      <span>돌아가기</span>
-    </a> -->
+      {% if error %}
+      <span style="color: red;">{{  error }}</span>
+      {% endif %}
+      <div class="register">
+        <div>
+          <button class="register_btn register_btn_plumn" ><span>회원가입</span></button>
+            </a>
+            </div>
+          <div>
+            <button class="register_btn register_btn_plumn" onclick="registerBack()"> <span>돌아가기</span></button>
+          </div>
+          <script>
+            function registerBack() {
+              window.location = "{% url 'login' %}";
+            }
+          </script>
+      </div>
+      <hr class="hrhr" />
+    </form>
+      {% endblock %}
     </div>
-  </div>
-  <hr class="hrhr" />
-
-  {% endblock %}
-  </div>
-  {% block footer %} {% endblock %}
-</body>
-
+    {% block footer %} {% endblock %}
+  </body>
 </html>

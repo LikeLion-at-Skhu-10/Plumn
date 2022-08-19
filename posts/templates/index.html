@@ -1,11 +1,12 @@
 <!-- 메인 페이지 -->
 {% extends 'base.html' %}
 {% load static %}
+
 <head>
-  
+
   {% block title %} 글이 맺히는 곳, Plumn{% endblock %}
   {% block head %}
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
   {% endblock %}
 </head>
 
@@ -21,7 +22,7 @@
     <span class="next">&rang;</span>
   </p>
   <ul class="slide-pagination"></ul>
-  
+
 </div>
 <!-- 추천글 -->
 <div id="recommend-container">
@@ -94,7 +95,7 @@
     <a class="topic-item" href="#"><span>국어/외국어</span></a>
     <a class="topic-item" href="#"><span>컴퓨터/IT/모바일</span></a>
     <a class="topic-item" href="#"><span>사회/정치</span></a>
-    
+
     <a class="topic-item" href="#"><span>문학</span></a>
     <a class="topic-item" href="#"><span>유아/아동</span></a>
     <a class="topic-item" href="#"><span>여행</span></a>

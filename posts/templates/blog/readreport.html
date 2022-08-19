@@ -27,20 +27,33 @@
             <span class="report_reason_txt"><i class="fa-solid fa-square"></i> 위 글의 신고 사유를 선택해주세요</span>
         </div>
         <div class="report_reason_btn">
-            <select name="obj_choices" required id="id_obj_choices">
-                <option value="FALSE_FACT">허위 사실 유포</option>
-                <option value="ILLEGAL">불법 정보 유포</option>
-                <option value="LEAK">개인 정보 유출</option>
-                <option value="DUPLICATION">도배 및 중복 글</option>
+            <select name="obj_choices" required id="id_obj_choices" class="report_selectBox">
+                <ul>
+                    <li>
+                        <option class="report_opt" value="none">신고 사유를 선택해주세요.</option>
+                    </li>
+                    <li>
+                        <option class="report_opt" value="FALSE_FACT">허위 사실 유포</option>
+                    </li>
+                    <li>
+                        <option class="report_opt" value="ILLEGAL">불법 정보 유포</option>
+                    </li>
+                    <li>
+                        <option class="report_opt" value="LEAK">개인 정보 유출</option>
+                    </li>
+                    <li>
+                        <option class="report_opt" value="DUPLICATION">도배 및 중복 글</option>
+                    </li>
+                </ul>
             </select>
-            <!-- <label><input type="checkbox" name="obj_choices" value="fact">허위 사실 유포</label>
-            <label><input type="checkbox" name="obj_choices" value="legal">불법 정보</label>
-            <label><input type="checkbox" name="obj_choices" value="leak">개인정보 유출, 거래</label>
-            <label><input type="checkbox" name="obj_choices" value="overlap">도배 및 중복된 글</label> -->
+            <!-- <label><input type="checkbox" name="reason" value="fact">허위 사실 유포</label>
+            <label><input type="checkbox" name="reason" value="legal">불법 정보</label>
+            <label><input type="checkbox" name="reason" value="leak">개인정보 유출, 거래</label>
+            <label><input type="checkbox" name="reason" value="overlap">도배 및 중복된 글</label> -->
         </div>
         <div class="report_text">
             <span class="report_reason_txt">
-                <span style="color: #fc9595;"><i class="fa-solid fa-square"></i> 신고</span> 사유를 자세하게 작성해주세요</span>
+                <span style="color: #fc9595;"><i class="fa-solid fa-square"></i>신고</span> 사유를 자세하게 작성해주세요</span>
         </div>
         <div class="report_write">
             <textarea class="report_form" id="report" name="objection" placeholder="신고 사유를 자세하게 입력해주세요."></textarea>

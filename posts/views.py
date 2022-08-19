@@ -72,6 +72,17 @@ def delete(request, id):
 def notice(request):
     return render(request, 'notice.html')
 
+def scrap(request):
+    return render(request, 'libr/scrap.html')
+
+def like(request):
+    return render(request, 'libr/like.html')
+
+def donate(request):
+    return render(request, 'blog/donate.html')
+
+def pay(request):
+    return render(request, 'blog/pay.html')
 
 # 피드백
 @login_required(login_url='/login/')
@@ -83,15 +94,15 @@ def feedback(request):
             form.obj_date = timezone.now()
             form.save()
             form.save_m2m()
-            return render(request, 'feedback_success', {'form':form})
+            return render(request, 'blog/feedbacksuc.html', {'form':form})
         
     else:
         form = FeedbackForm ()
-        return render(request, 'feedback_success.html', {'form':form})
+        return render(request, 'blog/feedback.html', {'form':form})
 
 # 이의제기
 @login_required(login_url='/login/')
-def readreport(request, id):
+def readreport(request):
     objection_form = ObjectionForm()
     post = get_object_or_404(Post, id=id)
     context = {'form' : objection_form, 'post':post}
@@ -107,6 +118,7 @@ def readreport(request, id):
     else:
         return render(request, 'blog/readreport.html', context)
 
+'''
 # 추천
 @login_required(login_url='/login/')
 def like(request, post_id):
@@ -169,4 +181,3 @@ def like(request):
 #         if request.user == comment.user:
 #             comment.delete()
 #     return redirect('articles:detail', article_pk)
-'''

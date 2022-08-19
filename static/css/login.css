@@ -1,14 +1,40 @@
 /**************************************************/
 
-.container {
+.containerhome {
   display: flex;
   width: 100%;
   align-items: center;
   /* justify-content: center; */
 }
 
+.containerhome2{
+  display:flex;
+  width: 30%;
+}
+
+.btn_plumnn {
+  margin-left: 180px;
+  width: 200px;
+  margin-top: 20px;
+  position: relative;
+  padding: 15px 35px;
+  border-radius: 15px;
+  font-weight: 300;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  border: 1.5px solid #fc9595;
+}
+
+.btn_plumnn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: #ffffff;
+  cursor: pointer;
+}
+
 .picture {
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .img-box {
@@ -23,7 +49,7 @@
 
 .id_wrap input {
   width: 110%;
-  height: 30px;
+  height: 4vh;
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid lightgray;
@@ -43,7 +69,7 @@
 
 .pw_wrap input {
   width: 110%;
-  height: 30px;
+  height: 4vh;
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid lightgray;
@@ -94,9 +120,13 @@ li + li::before {
   background-color: lightgray;
 }
 
+.picture_wrap{
+  display: flex;
+}
+
 .login {
   display: flex;
-  margin-left: 0 auto;
+  margin: 0 auto;
 }
 
 /* 로그인 버튼 */
@@ -104,7 +134,8 @@ li + li::before {
   margin: 20px;
 } */
 
-.btn {
+
+.btn_plumn {
   margin-left: 180px;
   width: 200px;
   margin-top: 20px;
@@ -115,9 +146,6 @@ li + li::before {
   background-color: white;
   color: #fc9595;
   transition: 0.25s;
-}
-
-.btn_plumn {
   border: 1.5px solid #fc9595;
   color: #fc9595;
 }
@@ -129,6 +157,27 @@ li + li::before {
   cursor: pointer;
 }
 
+.login_id_error{
+  display: flex;
+  color: red;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.login_success_after_text{
+  display: flex;
+  flex-direction: column ;
+  width: 15%;
+}
+
+.success_after_text{
+  font-size: 24px;
+}
+
+.login_success_after_btn{
+  display: flex;
+  flex-direction: column;
+}
 /* #FA777C */
 
 /**************************************************/
@@ -147,6 +196,8 @@ li + li::before {
 .register_text {
   margin: 0 auto;
   width: 500px;
+  margin-top: 100px;
+  margin-bottom: -40px;
 }
 
 .text_wrap > h4 {
@@ -155,7 +206,7 @@ li + li::before {
 }
 
 .text_wrap {
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 /* 입력창 (공통) */
@@ -206,8 +257,8 @@ li + li::before {
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-around;
-  margin-top: 10px;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 .register_btn {
@@ -238,32 +289,14 @@ li + li::before {
   margin-top: 50px;
 }
 
-.cancel_btn {
-  position: relative;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-weight: 200;
-  background-color: white;
-  color: #fc9595;
-  transition: 0.25s;
-  width: 200px;
-}
-
-.cancel_btn_plumn {
-  border: 1.5px solid #fc9595;
-  color: #fc9595;
-}
-
-.cancel_btn_plumn:hover {
-  background-color: #fc9595;
-  border: 1.5px solid #fe8d92;
-  color: white;
-  cursor: pointer;
-}
-
 /**************************************************/
 
 /* 아이디 찾기 창 */
+
+.id_container{
+  display: flex;
+  width: 100%;
+}
 
 .tel_find {
   display: flex;
@@ -271,15 +304,16 @@ li + li::before {
   margin-bottom: 20px;
   width: 100%;
   flex-wrap: wrap;
+  align-content: center;
 }
 
 .tel_find input {
-  width: 150%;
-  height: 30px;
+  width: 100%;
+  height: 3.5vh;
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid lightgray;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   outline: none;
 }
 
@@ -287,20 +321,67 @@ li + li::before {
   border: 1px solid #fc9595;
 }
 
+.tel_text{
+  margin-bottom: 30px;
+}
+
+.text_wrapingId {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 250px;
+  margin-left: 100px;
+  width: 300px;
+}
+
+.find_id_btn_plumn {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 15px 50px;
+  border-radius: 15px;
+  font-weight: 300;
+  background-color: white;
+  color: #fc9595;
+  transition: 0.25s;
+  border: 1.5px solid #fc9595;
+}
+
+.find_id_btn_plumn:hover {
+  background-color: #fc9595;
+  border: 1.5px solid #fe8d92;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.find_id_error{
+  color: red;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-left: 25px;
+}
+
+.hr_accountA{
+  text-decoration: none;
+}
+
+.hr_accountA:visited{
+  color: mediumturquoise;
+}
+
+.hr_account{
+  text-align: center;
+}
+
 /**************************************************/
 
 /* 아이디 찾기 성공 창*/
+
 .listId {
   border: 1px solid lightgray;
   color: black;
   padding: 30px 30px;
   border-radius: 10px;
 }
-
-/* .id_find_success {
-  display: flex;
-  flex-direction: column;
-} */
 
 .find_id {
   display: flex;
@@ -331,69 +412,66 @@ li + li::before {
 
 /* 비밀번호 찾기 창 */
 
-.text_wrap1 {
-  margin-top: 30px;
-  margin-bottom: 30px;
+.email_find > p {
+  width: 100%;
 }
 
-/* 입력창 (공통) */
-.text_wrap1 input {
-  width: 80%;
-  height: 30px;
+.email_find > p > input {
+  width: 100%;
+  height: 3.5vh;
   border-radius: 10px;
   padding: 0px 20px;
   border: 1px solid lightgray;
+  margin-bottom: 50px;
+  outline: none;
+} 
+
+.email_find {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.email input {
+  width: 100%;
+  height: 3.5vh;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  margin-bottom: 50px;
   outline: none;
 }
 
-.text_wrap1 input:focus {
+.email input:focus {
   border: 1px solid #fc9595;
 }
-.tel_certify {
-  display: flex;
-  align-content: flex-start;
-}
 
-.tel_certify_btn {
-  position: relative;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-weight: 200;
-  background-color: white;
-  color: #fc9595;
-  transition: 0.25s;
+.findPw_Wrap{
   width: 250px;
-  margin-top: 10px;
 }
 
-.tel_certify_btn_plumn {
-  border: 1.5px solid #fc9595;
-  color: #fc9595;
-}
-
-.tel_certify_btn_plumn:hover {
-  background-color: #fc9595;
-  border: 1.5px solid #fe8d92;
-  color: white;
-  cursor: pointer;
-}
-
-.find_pw_btn {
+.text_wraping {
+  display: flex;
   margin: 0 auto;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-weight: 300;
-  background-color: white;
-  font-size: 11pt;
-  color: #fc9595;
-  transition: 0.25s;
-  text-align: center;
-  width: 220px;
+  margin-top: 200px;
+  margin-left: 100px;
 }
 
 .find_pw_btn_plumn {
-  border: 1.5px solid #fc9595;
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 20px;
+  position: relative;
+  padding: 15px 35px;
+  border-radius: 15px;
+  font-weight: 300;
+  background-color: white;
+  font-size: 10pt;
   color: #fc9595;
+  transition: 0.25s;
+  border: 1.5px solid #fc9595;
 }
 
 .find_pw_btn_plumn:hover {
@@ -422,16 +500,11 @@ li + li::before {
   font-size: 16px;
 }
 
-p {
-  text-align: center;
-  color: mediumturquoise;
-  font-size: 16px;
-  text-decoration: none;
+.email_find > p > label{
+  display: none;
+  color: black;
 }
 
-a {
-  text-decoration: none;
-}
 
 /* 전체 hr 고정 */
 .hrhr {
@@ -467,6 +540,12 @@ a {
   margin-top: 2px;
 }
 
+.errorlist > li {
+  color: red;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
 .change_pw {
   display: flex;
   flex-direction: column;
@@ -478,7 +557,8 @@ a {
 }
 
 .change_pw_btn {
-  margin-left: 100px;
+  margin: 0 auto;
+  margin-top: 30px;
   position: relative;
   padding: 15px 40px;
   border-radius: 15px;
@@ -502,8 +582,107 @@ a {
   cursor: pointer;
 }
 
+.pw_alert_text > p > label{
+  color: black;
+  float: left;
+  margin-bottom: 10px;
+}
+
+
+.pw_alert_text > p{
+  width: 80%;
+}
+
+.pw_alert_text >ul{
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 12px;
+  color: #fc9595;
+}
+
 /* 입력창 (공통) */
 
 /**************************************************/
 
 /* 아이디 찾기 창과 같은 클래스 사용 */
+
+/* 반응형 웹 */
+
+@media screen and (max-width: 1280px){
+  .containerhome{
+    flex-direction: column;
+  }
+  .login{
+    width: 300px;
+  }
+
+  .btn_plumn{
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .login_id_error{
+    justify-content: center;
+  }
+  
+  /* 아이디 찾기 창 */
+
+  .id_container{
+    flex-direction: column;
+  }
+
+  .tel_text{
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  .text_wraping{
+    margin: auto;
+    margin-top: 0px;
+  }
+
+  .text_wrapingId{
+    margin: auto;
+    margin-top: 0px;
+  }
+
+  .tel_find{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .find_id_error{
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  .find_id_btn_plumn{
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+
+  .find_pw_btn_plumn{
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+
+  .errorlist > li {
+    color: red;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .tel_find > p > input {
+    width: 100%;
+  }
+
+  .email_find > p > input{
+    margin: 0 auto;
+    width: 85%;
+    margin-bottom: 50px;
+  }
+}
