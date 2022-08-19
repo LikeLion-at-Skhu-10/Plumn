@@ -390,7 +390,7 @@ body {
   grid-template-columns: repeat(7, 200px);
   grid-gap: 1em;
   justify-content: space-around;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .list_btn_wrap_list {
@@ -437,9 +437,11 @@ body {
 
 .writing_list {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 30px;
+  text-decoration: none;
 }
 
 .list_text {
@@ -448,6 +450,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   align-content: stretch;
+  color: black;
   /* margin-top: 60px;
   margin-left: 100px; */
 }

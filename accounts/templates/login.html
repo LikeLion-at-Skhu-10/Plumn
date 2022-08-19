@@ -22,12 +22,12 @@
       {% if user.is_authenticated %}
       <div class="login_success_after_text">
         <span class="success_after_text">{{user.username}}님 안녕하세요!</span>
-      </div>
-      <div class="login_success_after_btn">
-        <button class="btn_plumnn" type="button" onclick="mypageShift()">
-        <span>마이페이지</span></button>
-        <button class="btn_plumnn" type="button" onclick="logoutShift()">
-          <span>로그아웃</span></button>
+        <div class="login_success_after_btn">
+          <button class="afterlog_btn_plumnn" type="button" onclick="mypageShift()">
+          <span>마이페이지</span></button>
+          <button class="afterlog_btn_plumnn" type="button" onclick="logoutShift()">
+            <span>로그아웃</span></button>
+        </div>
       </div>
 
       {% else %}
