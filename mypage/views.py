@@ -29,11 +29,25 @@ def mypage(request):
     following_count = Follow.objects.filter(follower=user).count()
     followers_count = Follow.objects.filter(following=user).count()
 
+    followers = Follow.objects.filter(following=user)
+    follower_list = {}
+    for follower in followers:
+        follower_profile = Profile.objects.filter(id=follower.follower_id)
+        follower_list[id] = follower_profile
+        
+    
+    followings = Follow.objects.filter(follower=user)
+    following_list = {}
+    for following in followings:
+        following_profile = Profile.objects.filter(id=following.following_id)
+        following_list[id] = following_profile
     context={
         'profile':profile,
         'following_count':following_count,
         'followers_count':followers_count,
         'posts_count':posts_count,
+        'follower_list':follower_list,
+        'followeing_list':following_list,
         }
     
     return render(request, 'mypage.html', context)
@@ -49,10 +63,18 @@ def profile(request, username):
     followers_count = Follow.objects.filter(following=user).count()
 
     # 구독자 / 관심 작가
-    follower = Profile.objects.filter(userid=Follow.objects.filter(following=user))
-    #profile_follower = Profile.objects(id=follower)
-    following = Profile.objects.filter(userid=Follow.objects.filter(follower=user))
-    #profile_following = Profile.objects(id=following)
+    followers = Follow.objects.filter(following=user)
+    follower_list = {}
+    for follower in followers:
+        follower_profile = Profile.objects.filter(id=follower.follower_id)
+        follower_list[id] = follower_profile
+        
+    
+    followings = Follow.objects.filter(follower=user)
+    following_list = {}
+    for following in followings:
+        following_profile = Profile.objects.filter(id=following.following_id)
+        following_list[id] = following_profile
     # 구독 상태
     follow_status = Follow.objects.filter(following=user, follower=request.user).exists()
 
@@ -69,8 +91,8 @@ def profile(request, username):
 		'followers_count':followers_count,
 		'posts_count':posts_count,
 		'follow_status':follow_status,
-        'follower':follower,
-        'following':following,
+        'follower_list':follower_list,
+        'followeing_list':following_list,
 	}
 
     return render(request, 'difuser.html', context)

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404 #get_list_or_40
 import posts
 from .models import Post, Likes
 from accounts.models import User
-from mypage.models import Profile
+from mypage.models import Profile, Follow
 from .forms import FeedbackForm, ObjectionForm #PostForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -15,7 +15,20 @@ def base(request):
     user = request.user
     if request.user.is_authenticated:
         user = User.objects.get(id=user.id)
-        return render(request, 'base.html', {'user':user})
+        profile = Profile.objects.get(id=user.id)
+        
+        posts_count = Post.objects.filter(user=user).count()
+        following_count = Follow.objects.filter(follower=user).count()
+        followers_count = Follow.objects.filter(following=user).count()
+
+        context={
+            'profile':profile,
+            'following_count':following_count,
+            'followers_count':followers_count,
+            'posts_count':posts_count,
+            }
+    
+        return render(request, 'base.html', context)
     return render(request, 'base.html')
 
 def notice(request):

@@ -113,12 +113,12 @@
           <span class="closebtn">&times;</span>
         </div>
         <hr>
-        {% for following in following.all %}
+        {% for profile_following in profile_following.all %}
         <div class="follow__list">
           <div class="follow__info">
-            <div><img src="{{ following.userphoto.url }}"></div>
-            <h1>{{ follwing.username }}</h1>
-            <p>{{ following.userintro }}</p>
+            <div><img src="{{ profile_following.userphoto.url }}"></div>
+            <h1>{{ profile_following.username }}</h1>
+            <p>{{ profile_following.userintro }}</p>
             {% if user.is_authenticated and user != profile.userid %}
             <div class="page_sub">
               {% if follow_status == True %}

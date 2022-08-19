@@ -23,15 +23,21 @@
           <div class="menu__box">
             <!-- 프로필부분 -->
             <div class="myprofile">
-              <div class="pro__circle"><img src="{% static 'img/munchickitten.jpg' %}"></div>
+              <div class="pro__circle">
+                {% if profile.userphoto %}
+                  <img src="{{profile.userphoto.url}}">
+                {% else %}
+                  <img src="{% static 'img/munchickitten.jpg' %}">
+                {% endif %}
+              </div>
               <a class="pro__noti"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
-              <h3>플럼님</h3>
-              <a class="mp_logout">로그아웃</a>
+              <h3>{{user.username}}</h3>
+              <a class="mp_logout" href="{% url 'logout' %}">로그아웃</a>
               <!-- 게시글, 구독자, 관심작가 데이터 들어가는 부분 -->
               <div class="profile__usersub">
-                <a href="#" class="usersubinfo">게시글 <span>5</span></a>
-                <a href="#" class="usersubinfo">구독자 <span>30</span></a>
-                <a href="#" class="usersubinfo">관심작가 <span>5</span></a>
+                <a href="#" class="usersubinfo">게시글 <span>{{ posts_count }}</span></a>
+                <a href="#" class="usersubinfo">구독자 <span>{{ followers_count }}</span></a>
+                <a href="#" class="usersubinfo">관심작가 <span>{{ following_count }}</span></a>
               </div>
             </div>
             <div class="menu_home">
