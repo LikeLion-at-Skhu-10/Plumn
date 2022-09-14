@@ -33,7 +33,6 @@ def read(request, id):
 def index(request):
     user = request.user
     if user.is_authenticated:
-        print("왜안떠 시2발")
         user = User.objects.get(id=user.id)
         profile = Profile.objects.get(id=user.id)
         posts_count = Post.objects.filter(user=user).count()
