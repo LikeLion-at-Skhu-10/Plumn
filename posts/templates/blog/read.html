@@ -62,71 +62,51 @@
         <span>이 작가의 다른 게시글 보기</span>
     </div>
     <!-- 첫번째 게시글 -->
+    {% for i in recommendation %}
     <div class="writing_list">
         <div class="list_text">
             <div class="writing_title">
-                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
+                <span class="list_title_text">{{i.title}}<i class="fa-solid fa-lock"></i>
                     <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
             </div>
             <div class="writing_content">
-                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
+                <p class="list_content">{{i.content}}</p>
             </div>
             <div class="writing_dateother">
-                <span class="list_date">August.08.2022</span>
-                <span class="list_comment">댓글 10</span>
-                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                <span class="list_date">{{i.post_date}}</span>
+                <span class="list_comment">댓글: {{comment.user}}</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>좋아요:0</span>
                 <span class="list_tag_btn">#IT</span>
-                <span class="list_writer">by GraceKim</span>
+                <span class="list_writer">{{i.user}}</span>
             </div>
         </div>
         <div class="list_photo">
             <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
         </div>
     </div>
-    <hr class="list_hr">
-    <!-- 두번째 게시글 -->
-    <div class="writing_list">
-        <div class="list_text">
-            <div class="writing_title">
-                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
-                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
-            </div>
-            <div class="writing_content">
-                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
-            </div>
-            <div class="writing_dateother">
-                <span class="list_date">August.08.2022</span>
-                <span class="list_comment">댓글 10</span>
-                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
-                <span class="list_tag_btn">#IT</span>
-                <span class="list_writer">by GraceKim</span>
-            </div>
-        </div>
-        <div class="list_photo">
-            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
-        </div>
-    </div>
+    {% endfor %}
     <hr class="list_hr">
 
     <div class="dif_writing">
-        추천 게시글
+        추천 게시물
     </div>
-    <!-- 첫번째 추천 게시글 -->
+    <!--추천 게시글 -->
+    {% for i in recommendation %}
     <div class="writing_list">
         <div class="list_text">
             <div class="writing_title">
-                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
+                <span class="list_title_text">{{i.title}}<i class="fa-solid fa-lock"></i>
                     <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
             </div>
             <div class="writing_content">
-                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
+                <!-- <p class="list_content">{{i.content}}</p> -->
             </div>
             <div class="writing_dateother">
-                <span class="list_date">August.08.2022</span>
-                <span class="list_comment">댓글 10</span>
-                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                <span class="list_date">{{i.post_date}}</span>
+                <span class="list_comment">댓글: {{comment.user}}</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>좋아요:0</span>
                 <span class="list_tag_btn">#IT</span>
-                <span class="list_writer">by GraceKim</span>
+                <span class="list_writer">{{i.user}}</span>
             </div>
         </div>
         <div class="list_photo">
@@ -134,30 +114,7 @@
         </div>
     </div>
     <hr class="list_hr">
-    <!-- 두번째 추천 게시글 -->
-    <div class="writing_list">
-        <div class="list_text">
-            <div class="writing_title">
-                <span class="list_title_text">Ipad Air 4세대 리뷰<i class="fa-solid fa-lock"></i>
-                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
-            </div>
-            <div class="writing_content">
-                <p class="list_content">아이패드 4세대 리뷰 시작해보겠습니당~ 우선 프로나 기본 아이패드, 미니에 비해서는 어쩌구저쩌구~~</p>
-            </div>
-            <div class="writing_dateother">
-                <span class="list_date">August.08.2022</span>
-                <span class="list_comment">댓글 10</span>
-                <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
-                <span class="list_tag_btn">#IT</span>
-                <span class="list_writer">by GraceKim</span>
-            </div>
-        </div>
-        <div class="list_photo">
-            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
-        </div>
-    </div>
-    <hr class="list_hr">
-
+    {% endfor %}
     <script>
         function reportBtn() {
             window.location = "{% url 'readreport' post.id %}";
@@ -166,14 +123,14 @@
             window.location = "{% url 'update' post.id %}";
         }
         function deleteBtn() {
-            if (confirm("게시글을 삭제하시겠습니까?") == true){
+            if (confirm("게시글을 삭제하시겠습니까?") == true) {
                 alert("게시글이 삭제되었습니다.")
                 window.location = "{% url 'delete' post.id %}";
             } else {
                 return false;
             }
         }
-        </script>
+    </script>
     <script src="{% static 'js/btnchange.js' %}"></script>
     {% endblock %}
 

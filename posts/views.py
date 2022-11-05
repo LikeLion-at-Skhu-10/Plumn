@@ -28,7 +28,9 @@ def list(request):
 def read(request, id):
     post = get_object_or_404(Post, id=id)
     profile = Profile.objects.filter(user_posts_id_id=id)
-    return render(request, 'blog/read.html', {'post':post, 'profile':profile})
+    recommendation = Post.objects.all() #post 테이블의 모든 객체 불러오서 recommendation변수에 저장.  
+    return render(request, 'blog/read.html', {'post':post, 'profile':profile, 'recommendation':recommendation})
+
 ############################################################
 def index(request):
     user = request.user
