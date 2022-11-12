@@ -44,6 +44,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 60px;
 }
 .plumnh3 {
   font-size: 2em;
@@ -129,13 +130,14 @@
 }
 .topic-list {
   display: grid;
-  margin: 60px 200px 0 200px;
-  grid-template-columns: repeat(6, 200px);
-  grid-gap: 1.5em;
+  width: 100%;
+  grid-gap: 1rem;
   justify-content: space-around;
+  grid-template-columns: repeat(6, 15%);
+  margin-top: 2rem;
 }
 .topic-item{
-  width: 200px;
+  width: 100%;
   height: 40px;
   background-color: white;
   border-radius: 30px;
@@ -144,7 +146,7 @@
   position: relative;
   text-decoration: none;
   color: #FC9595;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 .topic-item:hover {
   background-color: #FC9595;
@@ -159,6 +161,7 @@
 #famous-banner{
   margin-top: 60px;
   background-color: #F6EFEF;
+  margin-bottom: 60px;
 }
 .famous-bannerwrap{
   display: flex;
@@ -234,10 +237,51 @@
   width: 100%;
   border-radius: 50%;
 }
+.writerrec {
+  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.writerrec-card {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, .4) 0px 4px 4px 0px;
+  background: #f9f6f6;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.writerrec-card h2 {
+  font-size: 1.3rem;
+  
+}
+.writerrec-card h2, .writerrec-card p {
+  padding: 5px;
+  color: grey;
+}
+.profile-cr {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile-cr img {
+  width: 100%;
+  height: 100%;
+}
+
+
 /* 반응형 */
 @media (max-width:1400px) {
   .topic-list{
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(3, 15rem);
   }
   .recommend-item figcaption{
     font-size: 1.3rem;

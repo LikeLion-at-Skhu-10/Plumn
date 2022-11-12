@@ -265,6 +265,7 @@ select {
   margin-right: 50px;
   gap: 50px;
 }
+
 .nav2 a:hover {
   background-color: #eee;
   border-radius: 50%;
