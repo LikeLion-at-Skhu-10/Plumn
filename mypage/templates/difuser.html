@@ -69,16 +69,16 @@
           <span class="closebtn">&times;</span>
         </div>
         <hr>
-        {% for follower_list in follower_list.items %}
+        {% for i in follower_list %}
         <div class="follow__list">
           <div class="follow__info">
-            {% if value.userphoto %}
-              <div><img src="{{ follower_list.userphoto.url }}"></div>
+            {% if i.userphoto %}
+              <div><img src="{{ i.userphoto.url }}"></div>
             {% else %}
               
             {% endif %}
-            <h1>{{ value.username }}</h1>
-            <p>{{ value.userintro }}</p>
+            <h1>{{ i.username }}</h1>
+            <p>{{ i.userintro }}</p>
             {% if user.is_authenticated and user != profile.userid %}
             <div class="page_sub">
               {% if follow_status == True %}

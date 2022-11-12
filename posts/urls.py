@@ -15,5 +15,6 @@ urlpatterns=[
     path('scrap/', views.scrap, name='scrap'),
     path('like/', views.like, name='like'),
     path('donate/', views.donate, name='donate'),
-    path('pay/', views.pay, name='pay')
+    path('pay/', views.pay, name='pay'),
+    path('search/', views.search, name='search'),
 ]

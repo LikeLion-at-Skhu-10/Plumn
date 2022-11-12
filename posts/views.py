@@ -6,6 +6,7 @@ from mypage.models import Profile, Follow
 from .forms import FeedbackForm, ObjectionForm, PostForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 ############################################################
 @login_required(login_url='/login/')
 def create(request):
@@ -137,6 +138,33 @@ def readreport(request):
     else:
         return render(request, 'blog/readreport.html', context)
 
+def search(request):
+    posts = Post.objects.all().order_by('id') #id순으로
+    search = request.GET.get('searching', '') #검색어
+    if search:
+        posts = posts.filter(
+            Q(title__icontains=search) |
+            Q(content__icontains=search)  |
+            Q(user__username__icontains=search)
+        ).distinct()
+        return render(request, 'blog/search.html', {'posts':posts, 'search':search})
+    else:
+        return render(request, 'blog/search.html')
+
+@login_required
+def scrap(request, id):
+	user = request.user
+	post = Post.objects.get(id=id)
+	profile = Profile.objects.get(user=user)
+    
+	if profile.scrap.filter(id=id).exists():
+		profile.scrap.remove(post)
+
+	else:
+		profile.scrap.add(post)
+
+	return render(request, 'blog/read.html', {'post':post, 'profile':profile})
+
 '''
 # 추천
 @login_required(login_url='/login/')
@@ -157,20 +185,6 @@ def like(request, post_id):
 
 	post.likes = current_likes
 	post.save()
-
-	return redirect('details', args=[post_id])
-
-@login_required
-def favorite(request, post_id):
-	user = request.user
-	post = Post.objects.get(id=post_id)
-	profile = Profile.objects.get(user=user)
-
-	if profile.favorites.filter(id=post_id).exists():
-		profile.favorites.remove(post)
-
-	else:
-		profile.favorites.add(post)
 
 	return redirect('details', args=[post_id])
 
