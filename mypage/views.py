@@ -33,13 +33,14 @@ def mypage(request):
     for follower in followers:
         follower_profile = Profile.objects.filter(id=follower.follower_id)
         follower_list[id] = follower_profile
-        
+
     
     followings = Follow.objects.filter(follower=user)
     following_list = {}
     for following in followings:
         following_profile = Profile.objects.filter(id=following.following_id)
         following_list[id] = following_profile
+    
     context={
         'profile':profile,
         'following_count':following_count,
@@ -67,8 +68,8 @@ def profile(request, username):
     for follower in followers:
         follower_profile = Profile.objects.filter(id=follower.follower_id)
         follower_list[id] = follower_profile
-        
-    
+
+
     followings = Follow.objects.filter(follower=user)
     following_list = {}
     for following in followings:

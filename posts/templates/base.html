@@ -107,8 +107,9 @@
 
     <div class="nav2">
       <div class="search-container">
-        <form id="search-content">
-          <input type="text" name="input" class="search-input" id="search-input">
+        <form id="search-content" action="{% url 'search' %}" method="get">
+          {% csrf_token %}
+          <input type="text"  name="searching" class="search-input" id="search-input">
           <button type="reset" class="search" id="search-btn"></button>
         </form>
       </div>
