@@ -8,6 +8,7 @@ urlpatterns=[
     path('readreport/<int:id>', views.readreport, name='readreport'), # 이의제기
     path('create/', views.create, name='create'),
     path('list/', views.list, name='list'),
+    path('list/<str:topic>', views.topiclist, name='topiclist'),
     path('read/<int:id>', views.read, name='read'),
     path('update/<int:id>', views.update, name='update'),
     path('delete/<int:id>', views.delete, name='delete'),

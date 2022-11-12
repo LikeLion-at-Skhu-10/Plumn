@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Feedback, Objection #Photo, 
+from .models import Post, Feedback, Objection, Topic #Photo, 
 
 
 #admin.site.register(Post, PostAdmin)
@@ -15,3 +15,4 @@ from .models import Post, Feedback, Objection #Photo,
 admin.site.register(Feedback)
 admin.site.register(Objection)
 admin.site.register(Post)
+admin.site.register(Topic)

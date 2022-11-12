@@ -1,6 +1,6 @@
 from time import time
 from django.shortcuts import render, redirect, get_object_or_404 #get_list_or_404
-from .models import Post, Likes
+from .models import Post, Likes, Topic
 from accounts.models import User
 from mypage.models import Profile, Follow
 from .forms import FeedbackForm, ObjectionForm, PostForm
@@ -24,6 +24,11 @@ def create(request):
 def list(request):
     posts = Post.objects.all()
     return render(request, 'blog/list.html', {'posts':posts})
+
+def topiclist(request, topic):
+    topic_posts = Post.objects.filter(topic=topic)
+    topics = Topic.objects.all()
+    return render(request, 'blog/list.html', {'topic_posts':topic_posts, 'topics':topics})
 
 def read(request, id):
     post = get_object_or_404(Post, id=id)

@@ -25,9 +25,15 @@ class Post(models.Model):
         ('PEOPLE', '인물'), ('SELF-IMPROVEMENT', '자기계발'), ('SCIENCE', '과학'), ('RELIGION', '종교'),
         ('CULTURE', '문화'), ('ENGINEERING', '공학')
     )
-    topic = models.CharField(max_length = 50, choices=TOPIC_CHOICES, default=None, null=True, blank=True)
+    topic = models.ForeignKey('Topic', on_delete=models.CASCADE)
     def __str__(self):
         return self.title
+
+class Topic(models.Model):
+    topic = models.CharField(max_length=30, null=False)
+    
+    def __str__(self):
+        return self.topic
 
 #class Photo(models.Model):
 #    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
