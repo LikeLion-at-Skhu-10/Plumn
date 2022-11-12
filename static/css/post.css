@@ -1,4 +1,11 @@
-body {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* body {
   height: 3000px;
 }
 
@@ -90,11 +97,11 @@ body {
   border: 0.1px thin lightgray;
   opacity: 0.5;
   margin-top: 30px;
-}
+} */
 
 /* 내용 입력 할려는 부분 */
 
-.space_form {
+/* .space_form {
   width: 60%;
   margin: 0 auto;
 }
@@ -118,12 +125,12 @@ body {
 .item_type_text {
   font-size: 24px;
   line-height: 2em;
-}
+} */
 
 /***********************************************/
 /* 컨텐츠 박스 부분 */
 
-.content_box {
+/* .content_box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,11 +151,12 @@ body {
   border: 0.1px thin lightgray;
   opacity: 0.5;
   margin-top: 20px;
-}
+} */
 
 /***********************************************/
 /* 키워드 버튼 부분 */
-.keyword_btn {
+
+/* .keyword_btn {
   display: flex;
   justify-content: center;
   margin-top: 40px;
@@ -168,30 +176,13 @@ body {
 
 #keyword:focus {
   cursor: pointer;
-}
-
-/* .keyword_selected {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-right: 500px;
-}
-
-.keyword_select {
-  width: 80px;
-  height: 30px;
-  position: relative;
-  border-radius: 10px;
-  padding: 2px 10px;
-  font-weight: 300;
-  background-color: #fc9595;
-  border: 1.5px solid #fe8d92;
-  color: #ffffff;
 } */
+
 
 /***********************************************/
 /* 저장 부분 */
-.saved {
+
+/* .saved {
   display: flex;
   justify-content: flex-end;
   margin-right: 30px;
@@ -222,7 +213,7 @@ body {
   border: 1.5px solid #fe8d92;
   color: #ffffff;
   cursor: pointer;
-}
+} */
 
 /***********************************************/
 /* 피드백 페이지 */

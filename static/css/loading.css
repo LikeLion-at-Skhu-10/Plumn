@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "HallymGothic-Regular";
+  }
+
+/* @font-face kit by Fonts2u (https://fonts2u.com) */ 
+@import url('http://fonts.cdnfonts.com/css/austria');
+/* 경로 지정 다시함. */
+@font-face {
+  font-family: 'Austria';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Austria'), url('https://fonts.cdnfonts.com/s/83324/Austria.woff') format('woff');
+}
+
+/* Noto sans KR */
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2)
+      format("woff2"),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff)
+      format("woff"),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2)
+      format("woff2"),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff)
+      format("woff"),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf)
+      format("opentype");
+}
+
+/* 로딩창 배경색 gradient */
+
+html,
+body{
+    margin: 0;
+    background: linear-gradient(-45deg, #fff1f1, #fadcdc, #ffb7b7, #ffb7b7, #fdcccc, #fcdfdf);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Main loading창 */
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: white; */
+    min-height: 100vh;
+}
+
+h2{
+    font-family: "Noto Sans KR";;
+    position: relative;
+    font-size: 10em;
+    color: #fde2e2;
+    -webkit-text-stroke: 0.01vw #f5a9a9;
+    text-transform: uppercase;
+}
+
+h2::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color:#ffb9b9;
+    -webkit-text-stroke: 0.1vw #ffb9b9;
+    border-right: 2px solid white;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+@keyframes animate{
+    0%,
+    10%,
+    100%{
+        width: 0;
+    }
+    70%,
+    90%{
+        width: 100%;
+    }
+}
+
+/* 로딩창 안에 버튼 클릭하기 ! */
+/* .loading a
+{
+    position: relative;
+    background: #383d52;
+    color: black;
+    border-radius: 50px;
+    margin-top: 100px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 0.05em;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+
+.loading a:hover{
+    letter-spacing: 0.1em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 2px var(--clr);;
+}
+
+.loading a::before{
+    content: '';
+    position: absolute;
+    border-radius: 50px;
+    inset: 1px;
+    background: #fff;
+}
+
+.loading a span{
+    position: relative;
+    z-index: 1;
+}
+
+.i_bar{
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.i_bar::before{
+    content: '';
+    position: absolute;
+    border-radius: 50px;
+    top: -3.0px;
+    left: 78%;
+    width: 50px;
+    height: 2px;
+    border: 2px solid black;
+    background: #fff;
+    transform: translateX(-50%);
+    transition: 0.5s;
+}
+
+.loading a:hover i::before{
+    width: 50px;
+    left: 20%;
+    border: 2px solid var(--clr);
+}
+
+.i_bar::after{
+    content: '';
+    position: absolute;
+    border-radius: 50px;
+    bottom: -3.5px;
+    left: 22%;
+    width: 50px;
+    height: 2px;
+    border: 2px solid black;
+    background: #fff;
+    transform: translateX(-50%);
+    transition: 0.5s;
+}
+
+.loading a:hover i::after{
+    width: 50px;
+    left: 80%;
+    border: 2px solid var(--clr);
+} */
+
+.main_shift{
+    all: unset;
+    margin-top: 36px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.main_shift:hover{
+    color: #ffeaea;
+    transform: translateY(-6px);
+}

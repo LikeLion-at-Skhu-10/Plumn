@@ -16,6 +16,6 @@ urlpatterns = [
     path('', include('posts.urls')),
     path('', include('accounts.urls')),
     path('', include('mypage.urls')),
-]
+]   
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

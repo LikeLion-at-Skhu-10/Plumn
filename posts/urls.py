@@ -3,6 +3,7 @@ from posts import views
 from accounts import views as account_views
 urlpatterns=[
     path('base/', views.base, name='base'),
+    path('loading/', views.loading, name='loading'),
     path('notice/', views.notice, name='notice'),
     path('feedback/', views.feedback, name='feedback'), #피드백
     path('readreport/<int:id>', views.readreport, name='readreport'), # 이의제기

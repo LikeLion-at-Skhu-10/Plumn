@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "HallymGothic-Regular";
+  }
+
+  @font-face {
+    font-family: "HallymGothic-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2")
+      format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  html,
+body{
+    margin: 0;
+}
+
+/* Main loading창 */
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #252839;
+    min-height: 100vh;
+}
+
+h2{
+    position: relative;
+    font-size: 10em;
+    color:#252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+    /* text-transform: uppercase; */
+}
+
+h2::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color:#01fe87;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #01fe87;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+@keyframes animate{
+    0%,
+    10%,
+    100%{
+        width: 0;
+    }
+    70%,
+    90%{
+        width: 100%;
+    }
+}
+
+/* 로딩창 안에 버튼 클릭하기 ! */
+.loading a
+{
+    position: relative;
+    background: #383d52;
+    color: #fff;
+    border-radius: 50px;
+    margin-top: 100px;
+    text-decoration: none;
+    /* text-transform: uppercase; */
+    font-size: 2em;
+    letter-spacing: 0.05em;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+
+.loading a:hover{
+    letter-spacing: 0.1em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 2px var(--clr);;
+}
+
+.loading a::before{
+    content: '';
+    position: absolute;
+    border-radius: 50px;
+    inset: 1px;
+    background: #383d52;
+}
+
+.loading a span{
+    position: relative;
+    z-index: 1;
+}
+
+.i_bar{
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.i_bar::after{
+    content: '';
+    position: absolute;
+    border-radius: 50px;
+    bottom: -3.5px;
+    left: 22%;
+    width: 50px;
+    height: 3px;
+    border: 2px solid var(--clr);
+    background: #383d52;
+    transform: translateX(-50%);
+    transition: 0.5s;
+}
+
+.loading a:hover i::after{
+    width: 50px;
+    left: 60%;
+}

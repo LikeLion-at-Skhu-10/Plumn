@@ -1,0 +1,21 @@
+<!-- 로딩 페이지 -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/loading.css' %}">
+    <title>Plumning</title>
+</head>
+<body>
+    <div class="loading">
+        <h2 data-text="Plumn...">Plumn</h2>
+        <!-- <a href="{% url 'index' %}"  style="--clr:#fc9595"><span>플럼 시작하기</span><i class="i_bar"></i></a> -->
+        <!-- <i class="fa-regular fa-face-sad-tear"></i> -->
+        <a href="{% url 'index' %}" class="main_shift">홈페이지 바로가기</a>
+    </div> 
+</body>
+</html>

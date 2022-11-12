@@ -2,127 +2,20 @@
 {% extends 'base.html' %}{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
   <meta charset="UTF-8">
-  <title>{% block title %} 플럼 작성하기 {% endblock %}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}플럼 작성하기{% endblock %}</title>
   {% block head %}
-  <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/post.css' %}">
   {% endblock %}
-
 </head>
-
 <body>
-<div id="container_one">
-    {% block content %}
-    <form action = "{% url 'create' %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-    <div class="title_form">
-      <div class="title_write">
-        <input type="text" name="title" class="form-control" id="story" maxlength="256" required placeholder="제목을 입력해주세요.">
-      </div>
-    </div>
-    <div class="plus_button_wrap">
-      <div class="cover_image_plus">
-        <!-- <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="img/*"> -->
-          <button class="cover_image_btn" type="button">
-            <i class="fa-solid fa-image"></i>
-            <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="image/*">
-            <span>커버 이미지 변경</span>
-          </button>
-      </div>
+  {% block content %}
 
-      <div class="cover_color_plus">
-        <button class="cover_color_btn" onclick="colorChange()" type="button">
-          <i class="fa-solid fa-palette"></i>
-          <span>커버 배경색 변경</span>
-        </button>
-      </div>
-
-      <div class="middle_sort_plus">
-        <button class="sort_btn" type="button">
-          <i class="fa-solid fa-align-center"></i>
-          <span>가운데 정렬</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- container 커버 부분 끝 -->
-
-  <hr class="hr_style">
-
-  <div class="container_two">
-    <div class="space_form">
-      <div class="space_write">
-        <textarea name="content" onkeyup="adjustHeight();" class="wrap_item item_type_text" id="demo" placeholder="내용을 입력해주세요" required></textarea>
-      </div>
-    </div>
-
-    <div class="content_box">
-      <div class="box change_text">본문</div>
-      <div class="box change_boldtext"><i class="fa-solid fa-bold fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-underline fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-strikethrough fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-palette fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-link fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-images fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-paperclip fa-lg"></i></div>
-    </div>
-
-    <hr class="hr_stylelish">
-
-    <span class="multi-select">
-      <div class="keyword_btn">
-          <select name="topic" id="keyword">
-            <option value="" selected>---------</option>
-            <option value="LIFE">가정 / 생활</option>
-            <option value="HEALTH / COOK">건강 / 요리</option>
-            <option value="ECONOMY / MANAGEMENT">경제 / 경영</option>
-            <option value="LANGUAGE">국어 / 외국어</option>
-            <option value="COMPUTER / IT">컴퓨터 / IT</option>
-            <option value="POLITICS / SOCIETY">정치 / 사회</option>
-            <option value="LITERATURE">문학</option>
-            <option value="CHILD">유아 / 아동</option>
-            <option value="TRAVEL">여행</option>
-            <option value="HISTORY">역사</option>
-            <option value="ART">예술</option>
-            <option value="HUMANITIES">인문</option>
-            <option value="PEOPLE">인물</option>
-            <option value="SELF-IMPROVEMENT">자기계발</option>
-            <option value="SCIENCE">과학</option>
-            <option value="RELIGION">종교</option>
-            <option value="CULTURE">문화</option>
-            <option value="ENGINEERING">공학</option>
-          </select>
-      </div>
-    </span>
-
-    <div class="saved">
-      <button class="temporary_saved_btn" type="button">
-        <span>임시 저장</span>
-      </button>
-      <button class="saved_btn" type="submit">
-        <span>저장</span>
-      </button>
-    </div>
-  </form>
-  </div>
-
-  <script src="{% static 'js/image.js' %}"></script>
-  <script src="{% static 'js/selectBox.js' %}"></script>
-  <!-- <script src="{% static 'js/content_box.js' %}"></script> -->
-  <script>
-    function adjustHeight(){
-      var textEle = $('textarea');
-      textEle[0].style.height = 'auto';
-      var textEleHeight = textEle.prop('scrollHeight');
-      textEle.css('height', textEleHeight);
-    }
-  </script>
   {% endblock %}
   {% block footer %} {% endblock %}
 </body>
-
 </html>

@@ -2,6 +2,7 @@ from distutils.command.upload import upload
 from pdb import post_mortem
 from pyexpat import model
 from tkinter import CASCADE
+from unittest.util import _MAX_LENGTH
 from django.db import models
 from accounts.models import User
 from mypage.models import Notification

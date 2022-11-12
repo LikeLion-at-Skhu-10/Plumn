@@ -26,7 +26,7 @@ def list(request):
     return render(request, 'blog/list.html', {'posts':posts})
 
 def read(request, id):
-    post = get_object_or_404(Post, id=id)
+    post = get_object_or_404(Blog, id=id)
     profile = Profile.objects.filter(user_posts_id_id=id)
     return render(request, 'blog/read.html', {'post':post, 'profile':profile})
 ############################################################
@@ -98,6 +98,9 @@ def donate(request):
 def pay(request):
     return render(request, 'libr/pay.html')
 
+def loading(request):
+    return render(request, 'loading.html')
+
 # 피드백
 @login_required(login_url='/login/')
 def feedback(request):
@@ -131,6 +134,7 @@ def readreport(request):
             return redirect('read', post.id) # 원래 기존 글 페이지로 돌아감
     else:
         return render(request, 'blog/readreport.html', context)
+
 
 '''
 # 추천
