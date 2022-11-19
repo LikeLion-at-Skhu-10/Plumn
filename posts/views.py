@@ -24,12 +24,15 @@ def create(request):
 
 def list(request):
     posts = Post.objects.all()
-    return render(request, 'blog/list.html', {'posts':posts})
+    topic = Topic.objects.all()
+    search = request.GET.get('searching', '') #검색어
+    
+    return render(request, 'blog/list.html', {'posts':posts, 'topic':topic})
 
 def topiclist(request, topic):
     topic_posts = Post.objects.filter(topic=topic)
     topics = Topic.objects.all()
-    return render(request, 'blog/list.html', {'topic_posts':topic_posts, 'topics':topics})
+    return render(request, 'blog/topiclist.html', {'topic_posts':topic_posts, 'topics':topics})
 
 def read(request, id):
     post = get_object_or_404(Post, id=id)
@@ -92,10 +95,37 @@ def delete(request, id):
 def notice(request):
     return render(request, 'notice.html')
 
-def scrap(request):
+
+@login_required(login_url='/login/')
+def scrap(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    profile = Profile.objects.get(user=user)
+    
+    if profile.scrap.filter(id=post_id).exists():
+        profile.scrap.remove(post)
+    else:
+        profile.scrap.add(post)
+
     return render(request, 'libr/scrap.html')
 
-def like(request):
+@login_required(login_url='/login/')
+def like(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    current_likes = post.likes
+    liked = Likes.objects.filter(user=user, post=post).count()
+    
+    if not liked:
+        Likes.objects.create(user=user, post=post)
+        current_likes = current_likes + 1
+    
+    else:
+        Likes.objects.filter(user=user, post=post).delete()
+        current_likes = current_likes - 1
+        
+    post.likes = current_likes
+    post.save()    
     return render(request, 'libr/like.html')
 
 def donate(request):
@@ -115,7 +145,7 @@ def feedback(request):
             form.save()
             form.save_m2m()
             return render(request, 'blog/feedbacksuc.html', {'form':form})
-        
+
     else:
         form = FeedbackForm ()
         return render(request, 'blog/feedback.html', {'form':form})

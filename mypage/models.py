@@ -22,7 +22,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=32, unique=True, verbose_name='유저 이름')
     userintro = models.CharField(max_length=256, verbose_name='유저 소개말', blank=True, null=True)
     user_posts_id = models.ForeignKey(to='posts.Post', on_delete=models.CASCADE, related_name='user_post', null=True)  #reltaed_name은 역참조
-    scrap = models.ManyToManyField(to='posts.Post', null=True) #
+    scrap = models.ManyToManyField(to='posts.Post', null=True) 
     userphoto= models.ImageField(upload_to='images/', blank=True, null=True) #유저 이미지, 디폴트 이미지와 upload_to 설정
     #여기서 프로필 사진 설정 해야 할듯
     

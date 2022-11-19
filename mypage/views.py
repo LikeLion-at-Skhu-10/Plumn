@@ -152,6 +152,26 @@ def setting(request):
     else:
         return render(request, 'setting.html', context)
 
+#스크랩
+@login_required(login_url='/login')
+def scraps(request):
+    user = request.user
+    profile = Profile.objects.get(id=user.id)
+    scraps = profile.scrap.all()
+    
+    context = {
+        'profile' : profile,
+        'scrap' : scraps,
+    }
+    return render(request, 'libr/scrap.html', context)
+
+@login_required(login_url='/login')
+def likes(request):
+    user = request.user
+    profile = Profile.objects.get(id=user.id)
+    #scraps = profile.scrap.all()
+    
+
 #팔로우
 @login_required(login_url='/login/')
 def follow(request, username, option):

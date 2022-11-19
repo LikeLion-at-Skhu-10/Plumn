@@ -17,64 +17,21 @@
       <a style="text-decoration: none; color:gray;" href="{% url 'like' %}">추천한 글</a>
     </div>
 
+    {% for scrap in scraps %}
     <div class="scrap__content_con">
       <!-- 아무 내용 없을 때 -->
-      <!-- <img class="none-contentimg" src="{% static 'img/plumn.png' %}">
-      <p class="none-contentp">스크랩한 글이 없습니다. </p> -->
-        
+      {% if profile.scrap is None %}
+      <img class="none-contentimg" src="{% static 'img/plumn.png' %}">
+      <p class="none-contentp">스크랩한 글이 없습니다. </p>
+      {% else %}
       <!-- 내용 있을 때 -->
       <div class="scrap-wrap">
         <a class="write_item" href="#">
           <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
+            <h1>{{scrap.title}}</h1>
+            <p>{{scrap.content}}</p>
             <div>
-              <span>July. 03. 2022</span>
-              <span>댓글 2</span>
-              <span><i class="fa-solid fa-heart"></i> 2</span>
-          </div>
-          </div>
-          <div class="write-img">
-            <img src="{% static 'img/plumn_icon.png' %}">
-          </div>
-        </a>
-
-        <a class="write_item" href="#">
-          <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
-            <div>
-              <span>July. 03. 2022</span>
-              <span>댓글 2</span>
-              <span><i class="fa-solid fa-heart"></i> 2</span>
-          </div>
-          </div>
-          <div class="write-img">
-            <img src="{% static 'img/plumn_icon.png' %}">
-          </div>
-        </a>
-
-        <a class="write_item" href="#">
-          <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
-            <div>
-              <span>July. 03. 2022</span>
-              <span>댓글 2</span>
-              <span><i class="fa-solid fa-heart"></i> 2</span>
-          </div>
-          </div>
-          <div class="write-img">
-            <img src="{% static 'img/plumn_icon.png' %}">
-          </div>
-        </a>
-
-        <a class="write_item" href="#">
-          <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
-            <div>
-              <span>July. 03. 2022</span>
+              <span>{{scrap.post_date}}</span>
               <span>댓글 2</span>
               <span><i class="fa-solid fa-heart"></i> 2</span>
           </div>
@@ -85,6 +42,8 @@
         </a>
       </div>
     </div>
+    {% endif %}
+    {% endfor %}
     
     <div class="scrap_pag pagination">
       <!-- 이전버튼이 있을 경우 -->

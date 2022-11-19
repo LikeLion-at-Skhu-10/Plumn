@@ -18,11 +18,11 @@
     {% block content %}
     <div class="list_container">
         <div class="list_title">
-            <h2 class="list_title_text">IT 게시글</h2>
+            <h2 class="list_title_text">{{topic.topic}}</h2>
         </div>
 
         <div class="list_button_wrap">
-            <a class="list_btn" href="{% url 'list' topic.id=1 %}"><span>가정/생활</span></a>
+            <a class="list_btn" href="{% url 'posts:topic' topic='가정 / 생활' %}"><span>가정/생활</span></a>
             <a class="list_btn" href="#"><span>건강/취미</span></a>
             <a class="list_btn" href="#"><span>경제/경영</span></a>
             <a class="list_btn" href="#"><span>국어/외국어</span></a>

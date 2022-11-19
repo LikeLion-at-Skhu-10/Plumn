@@ -12,9 +12,10 @@ urlpatterns=[
     path('read/<int:id>', views.read, name='read'),
     path('update/<int:id>', views.update, name='update'),
     path('delete/<int:id>', views.delete, name='delete'),
-    path('scrap/', views.scrap, name='scrap'),
     path('like/', views.like, name='like'),
     path('donate/', views.donate, name='donate'),
     path('pay/', views.pay, name='pay'),
     path('search/', views.search, name='search'),
+    path('read/<int:post_id>/like/', views.like, name="postlike"),
+    path('read/<int:post_id>/scrap/', views.scrap, name="postscrap"),
 ]
