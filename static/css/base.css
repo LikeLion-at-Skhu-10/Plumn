@@ -90,6 +90,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  text-decoration: none;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -127,7 +128,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
+:root {
+  font-size: 16px;
+}
 /* ================================================================================== */
 
 /* @font-face kit by Fonts2u (https://fonts2u.com) */ 
@@ -235,7 +238,7 @@ select {
   background-color: white;
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 3;
   border-bottom: 1px solid #eee;
 }
 .nav h1 {
@@ -651,4 +654,69 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.notif_container {
+  display: none;
+  max-width: 400px;
+  width: 100%;
+  max-height: 600px;
+  height: 100%;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, .4) 0px 4px 4px 0px;
+  right: 5rem;
+  top: 5rem;
+  z-index: 2;
+  border-radius: 10px;
+  position: fixed;
+  overflow: scroll;
+}
+
+.notif_content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  
+}
+.notif_content hr {
+  color: #eee;
+  width: 100%;
+
+}
+.notif_title {
+  font-size: 1.2rem;
+}
+.notif_body {
+  display: flex;
+  flex-direction: column;
+  
+}
+.notif_detail_content {
+  display: flex;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  color: #000;
+}
+.notif_profile {
+  width: 20%;
+  border-radius: 50%;
+  margin-right: 20px;
+  overflow: hidden;
+}
+.notif_profile img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.detail_content_wrap {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 10px 0;
+}
+.detail_content p{
+  font-size: 0.9rem;
+}
+.detail_time span {
+  font-size: 0.8rem;
 }
