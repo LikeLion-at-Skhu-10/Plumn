@@ -16,6 +16,6 @@ urlpatterns=[
     path('donate/', views.donate, name='donate'),
     path('pay/', views.pay, name='pay'),
     path('search/', views.search, name='search'),
-    path('read/<int:post_id>/like/', views.like, name="postlike"),
-    path('read/<int:post_id>/scrap/', views.scrap, name="postscrap"),
+    path('read/<int:post_id>/like/', views.like, name='like'),
+    path('read/<int:post_id>/scrap/', views.scrap, name='scrap'),
 ]

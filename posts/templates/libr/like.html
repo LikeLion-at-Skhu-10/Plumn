@@ -14,19 +14,25 @@
   <div class="scrap-container">
     <div><h2>내 서재</h2></div>
     <div class="scrap__a">
-      <a style="text-decoration: none; color:gray;"href="{% url 'scrap' %}">스크랩 글</a>
-      <a style="color: black;" href="{% url 'like' %}">추천한 글</a>
+      <a style="text-decoration: none; color:gray;"href="{% url 'scraps' %}">스크랩 글</a>
+      <a style="color: black;" href="{% url 'likes' %}">추천한 글</a>
     </div>
 
+    {% for scrap in scraps %}
     <div class="scrap__content_con">
+      <!-- 아무 내용 없을 때 -->
+      {% if profile.scrap is None %}
+      <img class="none-contentimg" src="{% static 'img/plumn.png' %}">
+      <p class="none-contentp">스크랩한 글이 없습니다. </p>
+      {% else %}
+      <!-- 내용 있을 때 -->
       <div class="scrap-wrap">
-        <!-- scrap item 반복 -->
         <a class="write_item" href="#">
           <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
+            <h1>{{scrap.title}}</h1>
+            <p>{{scrap.content}}</p>
             <div>
-              <span>July. 03. 2022</span>
+              <span>{{scrap.post_date}}</span>
               <span>댓글 2</span>
               <span><i class="fa-solid fa-heart"></i> 2</span>
           </div>
@@ -35,51 +41,23 @@
             <img src="{% static 'img/plumn_icon.png' %}">
           </div>
         </a>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
 
-        <a class="write_item" href="#">
-          <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
-            <div>
-              <span>July. 03. 2022</span>
-              <span>댓글 2</span>
-              <span><i class="fa-solid fa-heart"></i> 2</span>
-          </div>
-          </div>
-          <div class="write-img">
-            <img src="{% static 'img/plumn_icon.png' %}">
-          </div>
-        </a>
+        <div class="scrap_pag pagination">
+          <!-- 이전버튼이 있을 경우 -->
+          <a href="#"><i class="fa-solid fa-angles-left"></i></a>
+          <a href="#"><i class="fa-solid fa-angle-left"></i></a>
+          <!-- if문 끝 -->
+          <div><span>1 / 3</span></div>
+          <!-- 다음버튼이 있을 경우 -->
+          <a href="#"><i class="fa-solid fa-angle-right"></i></a>
+          <a href="#"><i class="fa-solid fa-angles-right"></i></a>
+          <!-- if문 끝 -->
+        </div>
 
-        <a class="write_item" href="#">
-          <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
-            <div>
-              <span>July. 03. 2022</span>
-              <span>댓글 2</span>
-              <span><i class="fa-solid fa-heart"></i> 2</span>
-          </div>
-          </div>
-          <div class="write-img">
-            <img src="{% static 'img/plumn_icon.png' %}">
-          </div>
-        </a>
-
-        <a class="write_item" href="#">
-          <div class="write-info">
-            <h1>Deep Python study with me</h1>
-            <p>Advance your data analyistics ....</p>
-            <div>
-              <span>July. 03. 2022</span>
-              <span>댓글 2</span>
-              <span><i class="fa-solid fa-heart"></i> 2</span>
-          </div>
-          </div>
-          <div class="write-img">
-            <img src="{% static 'img/plumn_icon.png' %}">
-          </div>
-        </a>
 
       </div>
     </div>

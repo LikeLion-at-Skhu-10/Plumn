@@ -107,7 +107,8 @@ def scrap(request, post_id):
     else:
         profile.scrap.add(post)
 
-    return render(request, 'libr/scrap.html')
+    return render(request, 'blog/read.html')
+
 
 @login_required(login_url='/login/')
 def like(request, post_id):
@@ -126,7 +127,7 @@ def like(request, post_id):
         
     post.likes = current_likes
     post.save()    
-    return render(request, 'libr/like.html')
+    return redirect('blog/read.html', current_likes.id)
 
 def donate(request):
     return render(request, 'blog/donate.html')

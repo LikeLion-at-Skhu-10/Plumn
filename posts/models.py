@@ -16,7 +16,7 @@ class Post(models.Model):
     content = models.TextField(null=False) # 내용 부분 도대체 어떻게 처리해야 할지?
     post_date = models.DateTimeField(auto_now_add=True) 
     image = models.ImageField(upload_to='images/', blank=True) #제목 배경 사진
-    #like_users = models.ManyToManyField(User, related_name='like_articles') #추천수
+    likes = models.IntegerField(default=0)
     TOPIC_CHOICES = (
         ('LIFE', '가정 / 생활'), ('HEALTH / COOK', '건강 / 요리'), ('ECONOMY / MANAGEMENT', '경제 / 경영'), 
         ('LANGUAGE', '국어 / 외국어'), ('COMPUTER / IT', '컴퓨터 / IT'), ('POLITICS / SOCIETY', '정치 / 사회'),
@@ -116,8 +116,3 @@ class Likes(models.Model):
 #Likes
 post_save.connect(Likes.user_liked_post, sender=Likes)
 post_delete.connect(Likes.user_unlike_post, sender=Likes)
-
-
-
-
-

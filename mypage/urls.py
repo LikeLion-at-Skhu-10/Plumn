@@ -12,6 +12,7 @@ urlpatterns=[
     path('notificaitons/', views.show_notifications, name='notifications'),
     path('<noti_id>/delete/', views.delete_notification, name='delete-notifications'),
     path('scraps/', views.scraps, name='scraps'),
+    path('likes/', views.likes, name='likes'),
     #path('followers/<int:id>', views.followers, name='followers'),
     #path('followings/<int:id>', views.followings, name='followings'),
 ]

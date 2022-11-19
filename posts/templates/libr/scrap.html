@@ -13,8 +13,8 @@
   <div class="scrap-container">
     <div><h2>내 서재</h2></div>
     <div class="scrap__a">
-      <a style="color: black;"href="{% url 'scrap' %}">스크랩 글</a>
-      <a style="text-decoration: none; color:gray;" href="{% url 'like' %}">추천한 글</a>
+      <a style="color: black;"href="{% url 'scraps' %}">스크랩 글</a>
+      <a style="text-decoration: none; color:gray;" href="{% url 'likes' %}">추천한 글</a>
     </div>
 
     {% for scrap in scraps %}

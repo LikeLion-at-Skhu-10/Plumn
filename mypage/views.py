@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from accounts.models import User
-from posts.models import Post
+from posts.models import Post, Likes
 from .models import Profile, Follow, Notification
 from .forms import EditprofileForm, PasswordChangeForm
 from django.urls import reverse_lazy, reverse
@@ -169,8 +169,12 @@ def scraps(request):
 def likes(request):
     user = request.user
     profile = Profile.objects.get(id=user.id)
-    #scraps = profile.scrap.all()
-    
+    likes = Likes.objects.filter(user_id=user.id)
+    context = {
+        'profile' : profile,
+        'likes' : likes,
+    }
+    return render(request, 'libr/like.html', context)
 
 #팔로우
 @login_required(login_url='/login/')
