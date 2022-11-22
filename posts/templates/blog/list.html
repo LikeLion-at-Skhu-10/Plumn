@@ -22,12 +22,14 @@
         </div>
 
         <div class="list_button_wrap">
-            <a class="list_btn" href="{% url 'list' topic.id=1 %}"><span>가정/생활</span></a>
-            <a class="list_btn" href="#"><span>건강/취미</span></a>
+            {% for topic in topic %}
+            <a class="list_btn" href="{% url 'topiclist' topic.id %}"><span>{{topic.topic}}</span></a>
+            {% comment %} <a class="list_btn" href="#"><span>건강/취미</span></a>
             <a class="list_btn" href="#"><span>경제/경영</span></a>
             <a class="list_btn" href="#"><span>국어/외국어</span></a>
             <a class="list_btn" href="#"><span>컴퓨터/IT/모바일</span></a>
-            <a class="list_btn" href="#"><span>사회/정치</span></a>
+            <a class="list_btn" href="#"><span>사회/정치</span></a> {% endcomment %}
+            {% endfor %}
             <a class="list_btn" href="#" onclick="myFunction()"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         </div>
 

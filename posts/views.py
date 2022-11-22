@@ -29,10 +29,10 @@ def list(request):
     
     return render(request, 'blog/list.html', {'posts':posts, 'topic':topic})
 
-def topiclist(request, topic):
-    topic_posts = Post.objects.filter(topic=topic)
-    topics = Topic.objects.all()
-    return render(request, 'blog/topiclist.html', {'topic_posts':topic_posts, 'topics':topics})
+def topiclist(request, id):
+    topic_posts = Post.objects.filter(topic=id)
+    topic = Topic.objects.all()
+    return render(request, 'blog/topiclist.html', {'topic_posts':topic_posts, 'topic':topic})
 
 def read(request, id):
     post = get_object_or_404(Post, id=id)
