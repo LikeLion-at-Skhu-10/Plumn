@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'posts',
     'accounts',
     'mypage',
+    'plum_pay',
 ]
 
 MIDDLEWARE = [

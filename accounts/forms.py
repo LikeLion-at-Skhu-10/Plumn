@@ -24,7 +24,7 @@ class RegisterForm(forms.Form):
     email = forms.EmailField(
         required = True,
         widget=forms.EmailInput(
-            attrs={'class' : 'input_margin', 'placeholder' : '이메일 아이디 입력'}),
+            attrs={'class' : 'input_margin', 'placeholder' : '이메일 입력'}),
             error_messages={
             'required' : '아이디를 입력해 주세요.',
             'unique' : '이미 존재하는 이메일 계정입니다.'}

@@ -25,7 +25,6 @@
       <a href="{% url 'editprofile' %}" class="settings_item">프로필 변경</a>
       <a href="{% url 'setting' %}" class="settings_item">내 정보 변경</a>
     </div>
-
     <div class="mypage_info">
       <a>게시글<span>{{posts_count}}</span></a>
       <a id="follow_modalBtn">구독자<span>{{ followers_count }}</span></a>
@@ -43,7 +42,7 @@
         <i class="fa-solid fa-star" style="font-size: 20pt"></i>
       </div>
       <div class="mp_menu_second">
-        <a href="#" class="mp_menu__item"><span>자두 결제</span></a>
+        <a href="{% url 'window' %}" class="mp_menu__item"><span>자두 결제</span></a>
         <a href="#" class="mp_menu__item"><span>자두 내역</span></a>
       </div>
       <div class="mp_menu_second icon">
