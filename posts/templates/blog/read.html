@@ -1,1 +1,140 @@
-<!-- 굴 읽기 페이지 -->
+<!-- 글 읽기 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} {{ post.title }} - {{ post.user }} {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="backimage_wrap">
+        <div class="rd_img">
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="아이유" class="background_img">
+            {% else %}
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="background_img">
+            {% endif %}
+
+            <p class="rd_text">{{ post.title }}</p>
+        </div>
+    </div>
+    <div class="tt_wrap">
+        <div class="tt_textandbtn">
+            <p class="tt_text">{{ post.content }}
+            <div class="tt_btn_wrap">
+                <span class="list_tag_btn">{{ post.get_topic_display }}</span>
+                {% if user == post.user %}
+                <div>
+                    <button class="tt_feedback" type="button" onclick="updateBtn()">수정</button>
+                    <button class="tt_feedback" type="button" onclick="deleteBtn()">삭제</button>
+                </div>
+                {% else %}
+                <button class="tt_feedback" type="button" onclick="reportBtn()">이의제기</button>
+                {% endif %}
+            </div>
+            </p>
+        </div>
+
+        <div class="myintro_box">
+            <div class="myintro_info">작가 정보</div>
+            <hr class="myintro_hr">
+            <div class="myintro_profile">
+                <div class="profile_photo">
+                    <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="profile_img">
+                </div>
+                <p class="profile_name">{{ post.user }}</p>
+                <!-- <p class="profile_description">{{ profile.userintro }}</p> -->
+                <button class="profile_follow" id="follow_btn" onclick="changebtnName()">구독</button>
+            </div>
+        </div>
+    </div>
+
+    <hr class="content_alert">
+
+    <div class="dif_writing">
+        <span>이 작가의 다른 게시글 보기</span>
+    </div>
+    <!-- 첫번째 게시글 -->
+    {% for i in recommendation %}
+    <div class="writing_list">
+        <div class="list_text">
+            <div class="writing_title">
+                <span class="list_title_text">{{i.title}}<i class="fa-solid fa-lock"></i>
+                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
+            </div>
+            <div class="writing_content">
+                <p class="list_content">{{i.content}}</p>
+            </div>
+            <div class="writing_dateother">
+                <span class="list_date">{{i.post_date}}</span>
+                <span class="list_comment">댓글: {{comment.user}}</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>좋아요:0</span>
+                <span class="list_tag_btn">#IT</span>
+                <span class="list_writer">{{i.user}}</span>
+            </div>
+        </div>
+        <div class="list_photo">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+        </div>
+    </div>
+    {% endfor %}
+    <hr class="list_hr">
+
+    <div class="dif_writing">
+        추천 게시물
+    </div>
+    <!--추천 게시글 -->
+    {% for i in recommendation %}
+    <div class="writing_list">
+        <div class="list_text">
+            <div class="writing_title">
+                <span class="list_title_text">{{i.title}}<i class="fa-solid fa-lock"></i>
+                    <span class="lock_free_text">이 글은 유료글 입니다.</span></span>
+            </div>
+            <div class="writing_content">
+                <!-- <p class="list_content">{{i.content}}</p> -->
+            </div>
+            <div class="writing_dateother">
+                <span class="list_date">{{i.post_date}}</span>
+                <span class="list_comment">댓글: {{comment.user}}</span>
+                <span class="list_like"><i class="fa-solid fa-heart"></i>좋아요:0</span>
+                <span class="list_tag_btn">#IT</span>
+                <span class="list_writer">{{i.user}}</span>
+            </div>
+        </div>
+        <div class="list_photo">
+            <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="list_photosize">
+        </div>
+    </div>
+    <hr class="list_hr">
+    {% endfor %}
+    <script>
+        function reportBtn() {
+            window.location = "{% url 'readreport' post.id %}";
+        }
+        function updateBtn() {
+            window.location = "{% url 'update' post.id %}";
+        }
+        function deleteBtn() {
+            if (confirm("게시글을 삭제하시겠습니까?") == true) {
+                alert("게시글이 삭제되었습니다.")
+                window.location = "{% url 'delete' post.id %}";
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <script src="{% static 'js/btnchange.js' %}"></script>
+    {% endblock %}
+
+    {% block footer %} {% endblock %}
+</body>
+
+</html>

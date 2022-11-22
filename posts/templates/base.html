@@ -1,0 +1,168 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://js.tosspayments.com/v1"></script>
+  <title>{% block title %} base {% endblock %}</title>
+  <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  {% block head %}
+  {% endblock %}
+</head>
+
+<body>
+  <!-- 헤더(네브) -->
+  <div id="header">
+    <div class="nav">
+      <!-- 메뉴바, index 로고  -->
+      <div class="nav1">
+        <label for="checkbox" class="hbmenu">
+          <input type="checkbox" id="checkbox" onclick="menutoggle()">
+          <span class="line line-main"></span>
+          <span class="line line-split"></span>
+        </label>
+        <div id="menu__container" class="nmenu">
+          <div id="menu__box" class="">
+            <!-- 프로필부분 -->
+            <div class="myprofile">
+              <div class="pro__circle">
+                <!-- 2. 로그인 안한 경우 -->
+                {% if user.is_authenticated %}
+                  {% if profile.userphoto %}
+                  <img src="{{profile.userphoto.url}}">
+                  {% else %}
+                  <img src="{% static 'img/needloginuser.png' %}">
+                  {% endif %}
+                {% else %}
+                <img src="{% static 'img/needloginuser.png' %}">
+                {% endif %}
+                
+              </div>
+
+                <!-- 1. 로그인 한 경우 -->
+                {% if user.is_authenticated %}
+                <a class="pro__noti" href="{% url 'notice' %}"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt;"></i></a>
+                <h3>{{ user.username }}</h3>
+                <a href="{% url 'logout' %}" class="mp_logout" style="text-decoration: none;">로그아웃</a>
+                <div class="profile__usersub">
+                  <a class="usersubinfo">게시글 <span>{{posts_count}}</span></a>
+                  <a class="usersubinfo">구독자 <span>{{ followers_count }}</span></a>
+                  <a class="usersubinfo">관심작가 <span>{{following_count}}</span></a>
+                </div>
+                
+                {% else %}
+                <a class="pro__noti" href="{% url 'notice' %}"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 20pt; "></i></a> 
+                <a class="mp_logout" style="opacity: 0;">로그아웃</a>
+
+                {% endif %}
+              <!-- 2. 로그인 안한 경우 -->
+              {% if user.is_authenticated %}
+              {% else %}
+              <div class="mp_login_container">
+                <a href="{% url 'login' %}" class="mp_login">로그인</a>
+                <a href="{% url 'register' %}" class="mp_login">회원가입</a>
+              </div>
+              {% endif %}
+            </div>
+
+          <div class="menu_home">
+            <i class="fa-solid fa-house" style="text-decoration: none; color: black; font-size: 20pt;"></i>
+            <a href="{% url 'index' %}" class="plumn__home">플럼홈</a>
+          </div>
+          {% if user.is_authenticated %}
+          <div class="menulist">
+            <a href="{% url 'list' %}" class="menulist__item">전체 글 보기</a>
+            <a href="{% url 'scrap' %}" class="menulist__item">내 서재</a>
+            <a href="{% url 'pay' %}" class="menulist__item">플럼 구매</a>
+            <a href="#" class="menulist__item">마이 뱃지</a>
+          </div>
+          {% else %}
+          <div class="menulist">
+            <a href="#" class="menulist__item">전체 글 보기</a>
+            <a href="#" class="menulist__item" style="opacity: 0;">내 서재</a>
+            <a href="#" class="menulist__item" style="opacity: 0;">플럼 구매</a>
+            <a href="#" class="menulist__item" style="opacity: 0;">마이 뱃지</a>
+          </div>
+          {% endif %}
+
+          <div class="menu_fb">
+            <div><h2>"A learned fool is more foolish than an ignorant one"</h2></div>
+            <!-- 1. 로그인 한 경우 -->
+            {% if user.is_authenticated %}
+            <div><a href="{% url 'feedback' %}">사이트 피드백</a></div>
+            {% else %}
+            <!-- 2. 로그인 안한 경우 -->
+            <div><a href="{% url 'find_id' %}">아이디를 잊어버리셨나요?</a></div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <h1 class="index"><a href="{% url 'index' %}">Plumn</a></h1>
+    </div>
+
+      <!-- 검색, 글쓰기, 마이페이지 -->
+
+    <div class="nav2">
+      <div class="search-container">
+        <form id="search-content">
+          <input type="text" name="input" class="search-input" id="search-input">
+          <button type="reset" class="search" id="search-btn"></button>
+        </form>
+      </div>
+      <a href="{% url 'create' %}"><i class="fa-solid fa-pencil" style="text-decoration: none; color: black; font-size: 28pt;"></i></a>
+      <a href="{% url 'mypage' %}"><i class="fa-solid fa-user" style="text-decoration: none; color: black; font-size: 28pt;"></i></a>
+    </div>
+  </div>
+
+</div>
+<div id="container">
+  <!-- 아래부터는 상속제외 -->
+  {% block content %}
+  {% endblock %}
+</div>
+<!-- 푸터 -->
+{% block footer %}
+<div id="footer">
+  <div class="footer_box">
+    <div class="footer_first">
+      <h2>글이 맺히는 곳, Plumn</h2>
+      <br>
+      <p>Front-End : 김은혜, 최재훈</p> 
+      <br>
+      <p>Back-End : 전천우, 정재완</p>
+      <div class="footer_sns">
+        <ul class="snslist">
+          <li class="sns-item">
+            <a href="https://www.instagram.com/likelion_skhu/"><i class="fa-brands fa-instagram" style="font-size: 30pt; color: white;"></i></a>
+          </li>
+          <li class="sns-item">
+            <a href="https://github.com/LikeLion-at-Skhu-10"><i class="fa-brands fa-github" style="font-size: 30pt; color: white;"></i></a>
+          </li>
+          <li class="sns-item">
+            <a href="https://likelion-at-skhu-10.github.io/"><i class="fa-solid fa-house" style="font-size: 28pt; color: white;"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer_second">
+      <p>ⓒ Copyright Plumn. ALL Right Reserved.</p>
+      <br>
+      <p>주소 : 서울 구로구 연동로 320</p><br>
+      <p>근무시간 : 월 ~ 금 AM 9 : 00 ~ PM 7 : 00</p><br>
+      <p>점심시간 : PM 12 : 00 ~ PM 1 : 00</p><br>
+      <p>고객센터 : AM 10 : 00 ~ PM 6 : 00</p><br>
+        
+    </div>
+  </div>
+  {% endblock %}
+  <script src="{% static 'js/search.js' %}"></script>
+  <script src="{% static 'js/menu_toggle.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </div>
+</body>
+
+</html>

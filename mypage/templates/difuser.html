@@ -1,0 +1,133 @@
+<!-- 유저 프로필(다른 사람) -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ profile.username }} {% endblock %}
+{% block head %}
+<link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="mypage">
+    <div class="mypage_banner">
+      <h1>{{profile.username}}의 나무이야기</h1>
+    </div>
+    <div class="mypage_content">
+      <div class="mypage_profile">
+        {% if profile.userphoto %}
+          <img src="{{profile.userphoto.url}}">
+        {% else %}
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        {% endif %}
+      </div>
+      <div class="mypage_info">
+        <a>게시글<span>{{ posts_count }}</span></a>
+        <a id="follow_modalBtn">구독자<span>{{ followers_count }}</span></a>
+        <a id="follower_modalBtn">관심작가<span>{{ following_count }}</span></a>
+      </div>
+
+      {% if user.is_authenticated and user != profile.userid %}
+      <div class="page_sub">
+        {% if follow_status == True %}
+          <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
+        {% else %}
+          <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+      <div class="page_write_container">
+
+        <div class="page_write_wrap">
+          <!-- write_item 반복 -->
+          {% for posts in posts %}
+          <a class="write_item" href="{% url 'read' posts.id %}"> <!--글-->
+            <div class="write-info">
+              <h1>{{posts.title}}</h1>
+              <p>{{posts.content}}</p>
+              <div>
+                <span>{{posts.post_date}}</span>
+                <span>댓글 2</span>
+                <span><i class="fa-solid fa-heart"></i> 2</span>
+            </div>
+            </div>
+            <div class="write-img">
+              <img src="{% static 'img/plumn_icon.png' %}">
+            </div>
+          </a>
+      {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+    <div id="follow_modal" class="fmodal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>구독자</h1>
+          <span class="closebtn">&times;</span>
+        </div>
+        <hr>
+        {% for follower_list in follower_list.items %}
+        <div class="follow__list">
+          <div class="follow__info">
+            {% if value.userphoto %}
+              <div><img src="{{ follower_list.userphoto.url }}"></div>
+            {% else %}
+              
+            {% endif %}
+            <h1>{{ value.username }}</h1>
+            <p>{{ value.userintro }}</p>
+            {% if user.is_authenticated and user != profile.userid %}
+            <div class="page_sub">
+              {% if follow_status == True %}
+                <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
+              {% else %}
+                <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="following_modal" class="fmodal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>관심작가</h1>
+          <span class="closebtn">&times;</span>
+        </div>
+        <hr>
+        {% for following_list in following_list.keys %}
+        <div class="follow__list">
+          <div class="follow__info">
+            {% if following_list.userphoto %}
+              <div><img src="{{ following_list.userphoto.url }}"></div>
+            {% else %}
+              
+            {% endif %}
+            <h1>{{ following_list.username }}</h1>
+            <p>{{ following_list.userintro }}</p>
+            {% if user.is_authenticated and user != profile.userid %}
+            <div class="page_sub">
+              {% if user != following_list %}
+                {% if follow_status == True %}
+                  <a class="pagesub canc" id="toggle" href="{% url 'follow' profile.userid 0 %}">구독 중!</a>
+                {% else %}
+                  <a class="pagesub sub" id="toggle" href="{% url 'follow' profile.userid 1 %}">구독하기</a>
+                {% endif %}
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  <script src="{% static 'js/followmodal.js' %}"></script>
+</div>
+
+{% endblock %}

@@ -1,1 +1,40 @@
 <!-- 사이트 피드백 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} 피드백 작성 {% endblock %}</title>
+    {% block head %}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <h1 class="feedback_sentence">작은 피드백은
+        <span class="plumn_text">플럼</span>에 큰 도움이 됩니다.
+    </h1>
+    <fieldset class="feedback_space">
+        <textarea class="feedback_text" name="feedback" id="feedback" cols="30" rows="30"
+            placeholder="내용을 입력해주세요!"></textarea>
+    </fieldset>
+    <div id="feedback_cnt">(0 / 1000)</div>
+
+    <div class="btn_centero">
+        <button class="fb_submit_btn fb_submit_btn_plumn" type="submit">
+            제출
+        </button>
+    </div>
+
+
+    <script src="{% static 'js/title.js' %}"></script>
+    {% endblock %}
+    {% block footer %} {% endblock %}
+</body>
+
+</html>

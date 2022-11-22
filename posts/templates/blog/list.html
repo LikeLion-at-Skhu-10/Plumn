@@ -1,1 +1,159 @@
 <!-- 글 목록 페이지 -->
+{% extends 'base.html' %}{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
+    <meta charset="UTF-8">
+    <title>{% block title %} 리스트 목록 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="list_container">
+        <div class="list_title">
+            <h2 class="list_title_text">IT 게시글</h2>
+        </div>
+
+        <div class="list_button_wrap">
+            <a class="list_btn" href="#"><span>가정/생활</span></a>
+            <a class="list_btn" href="#"><span>건강/취미</span></a>
+            <a class="list_btn" href="#"><span>경제/경영</span></a>
+            <a class="list_btn" href="#"><span>국어/외국어</span></a>
+            <a class="list_btn" href="#"><span>컴퓨터/IT/모바일</span></a>
+            <a class="list_btn" href="#"><span>사회/정치</span></a>
+            <a class="list_btn" href="#" onclick="myFunction()"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+        </div>
+
+        <div class="list_btn_wrap_list">
+            <a class="list_btn list_btn_hiding" href="#"><span>문학</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>유아/아동</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>여행</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>역사</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>예술</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>인문</span></a>
+            <a class="list_btn list_btn_hiding" href="#" onclick="myFunction()">
+                <i class="fa-solid fa-xmark"></i></a>
+
+            <a class="list_btn list_btn_hiding" href="#"><span>자기계발</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>과학</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>종교</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>문화</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>공학</span></a>
+            <a class="list_btn list_btn_hiding" href="#"><span>인물</span></a>
+        </div>
+
+
+        {% for post in posts %}
+        <div class="writing_list" href="{% url 'read' post.id %}">
+            <div class="list_text">
+                <div class="writing_title">
+                    <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
+                    <span class="list_title_text">{{ post.title }}
+                    </a>
+                        <i class="fa-solid fa-lock"></i>
+                        <span id="charged_writing" class="lock_free_text">이 글은 유료글 입니다.</span>
+                </div>
+                <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
+                <div class="writing_content">
+                    <p class="list_content">{{ post.content }}</p>
+                </div>
+                <div class="writing_dateother">
+                    <span class="list_date">{{ post.post_date }}</span>
+                    <span class="list_comment">댓글 10</span>
+                    <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                    <span class="list_tag_btn">{{ post.get_topic_display }}</span>
+                    <span class="list_writer">by GraceKim</span>
+                </div>
+            </div>
+            <div class="list_photo">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="list_photosize">
+                {% else %}
+                <img src="{% static 'img/plumn.png' %}" class="list_photosize">
+                {% endif %}
+            </div>
+        </a>
+        </div>
+        <hr class="list_hr">
+        {% endfor %}
+
+        <div id="charged_modal" class="cmodal">
+            <div class="modal_wrap">
+                <div class="cmodal_header">
+                    <h1>'Ipad Air 4세대 리뷰'</h1>
+                    <span class="closebtn">&times;</span>
+                </div>
+                <div class="cmodal_content">
+                    <h3>작성자: GraceKim</h3>
+                    <h1>이 글을 구매해서 읽어보시겠습니까?</h1>
+                    <div class="need_plumn">
+                        <span>필요 플럼</span>
+                        <span>5 Plumn</span>
+                    </div>
+                    <div class="possess_plumn">
+                        <span>보유 플럼</span>
+                        <span>100 Plumn</span>
+                    </div>
+                    <div class="chargeBuyBtn">
+                        <button class="charge_btn" onclick="location.href= '{% url 'pay' %}';"><span>플럼
+                                충전하기</span></button>
+
+                        <button class="buy_btn"><a id="realBuy_btn">
+                                <div class="button_wrap"><span>구매</span></div>
+                            </a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--구매완료 모달창 구현중.-->
+
+
+        <div id="buyCheck_modal" class="bmodal">
+            <div class="modal_wrap">
+                <div class="cmodal_header">
+                    <h1>'Ipad Air 4세대 리뷰'</h1>
+                    <span class="closebtn2">&times;</span>
+                </div>
+                <div class="cmodal_content">
+                    <h3>작성자: GraceKim</h3>
+                    <h1>결제 완료 되었습니다.</h1>
+                </div>
+                <div class="need_plumn">
+                    <span>차감된 플럼</span>
+                    <span>5 Plumn</span>
+                </div>
+                <div class="possess_plumn">
+                    <span>보유 플럼</span>
+                    <span>95 Plumn</span>
+                </div>
+                <div class="chargeBuyBtn">
+                    <button class="charge_btn" onclick="location.href= '{% url 'list' %}';"><span>닫기
+                        </span></button>
+                    <button class="buy_btn" onclick="location.href= '';"><span>구매한 글 읽기</span></button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        function homeShift() {
+            window.location = "{% url 'index' %}";
+        }
+    </script>
+    <script src="{% static 'js/list_btn.js' %}"></script>
+    <script src="{% static 'js/buyWriting.js' %}"></script>
+    {% endblock %}
+    {% block footer %} {% endblock %}
+</body>
+
+</html>

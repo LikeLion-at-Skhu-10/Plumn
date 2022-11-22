@@ -1,1 +1,122 @@
 <!-- 메인 페이지 -->
+{% extends 'base.html' %}
+{% load static %}
+
+<head>
+
+  {% block title %} 글이 맺히는 곳, Plumn{% endblock %}
+  {% block head %}
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  {% endblock %}
+</head>
+
+{% block content %}
+<div id="slidebanner">
+  <ul class="slides">
+    <li><img src="{% static 'img/banner1.png' %}"></li>
+    <li><img src="{% static 'img/test2.png' %}"></li>
+    <li><img src="{% static 'img/test3.png' %}"></li>
+  </ul>
+  <p class="slide-anch">
+    <span class="prev">&lang;</span>
+    <span class="next">&rang;</span>
+  </p>
+  <ul class="slide-pagination"></ul>
+
+</div>
+<!-- 추천글 -->
+<div id="recommend-container">
+  <h3 class="plumnh3">🍊Recommedation</h3>
+  <a class="recolist-anch" href="{% url 'list' %}">전체 글 보러가기 →</a>
+    <span class="anchoverlay"></span>
+    <span class="anchoverbase"></span>
+  <!-- 5개짜리 리스트 -->
+  <div class="recommend-list">
+    <!-- 개별아이템들 -->
+    <div class="recommend-item">
+      <a href="#">
+        <img src="{% static 'img/recommend_1.jpg' %}">
+        <figure>
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>벚꽃놀이</h4>
+      <p>by. Gracekim</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <img src="{% static 'img/recommend_2.jpeg' %}">
+        <figure>
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>고양이의 특성</h4>
+      <p>by. JH</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <img src="{% static 'img/recommend_3.JPG' %}">
+        <figure>
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>제주도의 오설록</h4>
+      <p>by. JeJu</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <img src="{% static 'img/recommend_4.jpeg' %}">
+        <figure>
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>애플제품의 장점</h4>
+      <p>by. Gracekim</p>
+    </div>
+    <div class="recommend-item">
+      <a href="#">
+        <img src="{% static 'img/recommend_5.jpeg' %}">
+        <figure>
+          <figcaption>자세히보기</figcaption>
+        </figure>
+      </a>
+      <h4>에메랄드 빛 함덕</h4>
+      <p>by. JeJu</p>
+    </div>
+  </div>
+</div>
+<div id="topic-container">
+  <h3 class="plumnh3">🍊Category</h3>
+  <div class="topic-list">
+    <!-- 개별아이템들 -->
+    <a class="topic-item" href="#"><span>가정·생활</span></a>
+    <a class="topic-item" href="#"><span>건강·취미</span></a>
+    <a class="topic-item" href="#"><span>경제·경영</span></a>
+    <a class="topic-item" href="#"><span>언어</span></a>
+    <a class="topic-item" href="#"><span>IT</span></a>
+    <a class="topic-item" href="#"><span>사회·정치</span></a>
+
+    <a class="topic-item" href="#"><span>문학</span></a>
+    <a class="topic-item" href="#"><span>유아·아동</span></a>
+    <a class="topic-item" href="#"><span>여행</span></a>
+    <a class="topic-item" href="#"><span>역사</span></a>
+    <a class="topic-item" href="#"><span>예술</span></a>
+    <a class="topic-item" href="#"><span>인문</span></a>
+
+    <a class="topic-item" href="#"><span>인물</span></a>
+    <a class="topic-item" href="#"><span>자기계발</span></a>
+    <a class="topic-item" href="#"><span>과학</span></a>
+    <a class="topic-item" href="#"><span>종교</span></a>
+    <a class="topic-item" href="#"><span>문화</span></a>
+    <a class="topic-item" href="#"><span>공학</span></a>
+  </div>
+</div>
+<div id="famous-banner">
+  <div class="famous-bannerwrap">
+    <h1>"A learned fool is more foolish than an ignorant one."</h1>
+    <h2>"엉터리로 배운 사람은 아무것도 모르는 사람보다 더 어리석다."</h2>
+  </div>
+</div>
+
+<script src="{% static 'js/slide.js' %}"></script>
+{% endblock %}

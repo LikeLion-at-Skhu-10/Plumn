@@ -1,0 +1,44 @@
+<!-- 아이디 찾기 -->
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon" />
+    <title>{% block title %} 아이디 찾기창 {% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% endblock %}
+  </head>
+
+<body>
+  {% block content %}
+    <form method="POST">
+      {% csrf_token %}
+  <div>
+    <div class="id_container">
+      <div class="picture_wrap">
+        <a href="{% url 'index' %}">
+          <img class="picture" src="{% static 'img/plumn.png' %}"/></a>
+          </div>
+        <div class="text_wrapingId">
+          <div class="tel_find">
+            <h4 class="tel_text">전화번호를 입력해주세요!</h4>
+            <input type="tel" name="user_phone" id="tel_input" placeholder="전화번호 입력" />
+            {% if messages %}
+            {% for message in messages %}
+              <span class="find_id_error">  {{ message.message }} </span>
+            {% endfor %}
+            {% endif %}
+            <button class="find_id_btn_plumn" type="submit"><span>아이디찾기</span></button>
+          </div>
+        </div>
+      </div>
+      <hr class="hr_register" />
+      <a href="{% url 'register' %}" class="hr_accountA"> <p class="hr_account">계정 생성</p></a>
+    </form>
+      {% endblock %}
+    </div>
+    {% block footer %} {% endblock %}
+  </body>
+</html>
