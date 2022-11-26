@@ -1,5 +1,8 @@
 body {
-  height: 3000px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #container_one {
@@ -54,14 +57,32 @@ body {
   display: none;
 }
 
+.title_imgBox {
+  width: 1920px;
+  height: 200px;
+  /* margin: 0 auto; */
+}
+
+.title_img {
+  width: 1920px;
+  height: 600px;
+  object-fit: cover;
+  z-index: -100;
+  transition: height 0.3s;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
+
 .title_form {
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
-  padding-top: 180px;
+  padding-top: 100px;
 }
 
 .title_write {
-  padding-bottom: 30px;
+  margin-top: 80px;
+  margin-bottom: 100px;
 }
 
 .form-control {
@@ -135,8 +156,19 @@ body {
   width: 80px;
   height: 40px;
   border: 0.3px solid #fc9595;
+  margin-right: 10px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.box:nth-child(4) {
+  margin-right: -50px;
+}
+
+.box:hover {
+  color: #fc9595;
+  transition: all 0.3s;
 }
 
 .hr_stylelish {
@@ -144,6 +176,64 @@ body {
   border: 0.1px thin lightgray;
   opacity: 0.5;
   margin-top: 20px;
+}
+
+.item_type_text.bold {
+  font-weight: 600;
+}
+
+.item_type_text.italic {
+  font-style: italic;
+}
+
+.js_change_boldtext.bgcolor,
+.js_change_font.bgcolor {
+  background-color: #fff2f2;
+  transition: all 0.3s;
+  color: #fc9595;
+}
+
+.font_color {
+  position: relative;
+  top: -100px;
+  right: 24px;
+  visibility: hidden;
+}
+
+.font_color.reveal {
+  visibility: visible;
+}
+
+.red,
+.blue,
+.gray {
+  border: 1px solid black;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.js_red {
+  color: red;
+}
+
+.js_red:hover {
+  border: 1px solid red;
+}
+
+.js_blue {
+  color: blue;
+}
+
+.js_blue:hover {
+  border: 1px solid blue;
+}
+
+.js_gray {
+  color: gray;
+}
+
+.js_gray:hover {
+  border: 1px solid gray;
 }
 
 /***********************************************/
@@ -176,7 +266,6 @@ body {
   margin-top: 20px;
   margin-right: 500px;
 }
-
 .keyword_select {
   width: 80px;
   height: 30px;
@@ -355,7 +444,6 @@ body {
   margin-top: 50px;
   margin-bottom: 100px;
 }
-
 .list_btn_wrap_two {
   margin-top: 30px;
 } */
@@ -972,7 +1060,6 @@ body {
   resize: none;
   overflow: hidden;
 }
-
 
 @media (max-width: 1500px) {
   .tt_textandbtn {

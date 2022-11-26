@@ -6,6 +6,7 @@ urlpatterns=[
     path('notice/', views.notice, name='notice'),
     path('feedback/', views.feedback, name='feedback'), #피드백
     path('readreport/<int:id>', views.readreport, name='readreport'), # 이의제기
+    path('loading/', views.loading, name='loading'),
     path('create/', views.create, name='create'),
     path('list/', views.list, name='list'),
     path('read/<int:id>', views.read, name='read'),

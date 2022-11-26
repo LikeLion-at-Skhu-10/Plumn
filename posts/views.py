@@ -19,6 +19,7 @@ def create(request):
             return redirect('list')
     else:
         form = PostForm()
+        print(form)
         return render(request, 'blog/create.html', {'form':form})
 
 def list(request):
@@ -85,6 +86,9 @@ def delete(request, id):
 
 def notice(request):
     return render(request, 'notice.html')
+
+def loading(request):
+    return render(request, 'loading.html')
 
 def scrap(request):
     return render(request, 'libr/scrap.html')
