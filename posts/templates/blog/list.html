@@ -21,7 +21,28 @@
             <h2 class="list_title_text">IT 게시글</h2>
         </div>
 
-        <div class="list_button_wrap">
+        <div class="keyword_slide list_btn_wrap">
+            <div class="keyword_box"><a class="keyword_list" href="">가정/생활</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">건강/취미</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">경제/경영</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">국어/외국어</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">컴퓨터/IT</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">사회/정치</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">문학</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">유아/아동</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">여행</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">역사</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">예술</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">인문</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">자기계발</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">과학</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">종교</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">문화</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">공학</a></div>
+            <div class="keyword_box"><a class="keyword_list" href="">인물</a></div>
+        </div>
+
+        <!-- <div class="list_button_wrap">
             <a class="list_btn" href="#"><span>가정/생활</span></a>
             <a class="list_btn" href="#"><span>건강/취미</span></a>
             <a class="list_btn" href="#"><span>경제/경영</span></a>
@@ -47,7 +68,7 @@
             <a class="list_btn list_btn_hiding" href="#"><span>문화</span></a>
             <a class="list_btn list_btn_hiding" href="#"><span>공학</span></a>
             <a class="list_btn list_btn_hiding" href="#"><span>인물</span></a>
-        </div>
+        </div> -->
 
 
         {% for post in posts %}
@@ -55,22 +76,22 @@
             <div class="list_text">
                 <div class="writing_title">
                     <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
-                    <span class="list_title_text">{{ post.title }}
+                        <span class="list_title_text">{{ post.title }}
                     </a>
-                        <i class="fa-solid fa-lock"></i>
-                        <span id="charged_writing" class="lock_free_text">이 글은 유료글 입니다.</span>
+                    <i class="fa-solid fa-lock"></i>
+                    <span id="charged_writing" class="lock_free_text">이 글은 유료글 입니다.</span>
                 </div>
                 <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
-                <div class="writing_content">
-                    <p class="list_content">{{ post.content }}</p>
-                </div>
-                <div class="writing_dateother">
-                    <span class="list_date">{{ post.post_date }}</span>
-                    <span class="list_comment">댓글 10</span>
-                    <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
-                    <span class="list_tag_btn">{{ post.get_topic_display }}</span>
-                    <span class="list_writer">by GraceKim</span>
-                </div>
+                    <div class="writing_content">
+                        <p class="list_content">{{ post.content }}</p>
+                    </div>
+                    <div class="writing_dateother">
+                        <span class="list_date">{{ post.post_date }}</span>
+                        <span class="list_comment">댓글 10</span>
+                        <span class="list_like"><i class="fa-solid fa-heart"></i>10</span>
+                        <span class="list_tag_btn">{{ post.get_topic_display }}</span>
+                        <span class="list_writer">by GraceKim</span>
+                    </div>
             </div>
             <div class="list_photo">
                 {% if post.image %}
@@ -79,7 +100,7 @@
                 <img src="{% static 'img/plumn.png' %}" class="list_photosize">
                 {% endif %}
             </div>
-        </a>
+            </a>
         </div>
         <hr class="list_hr">
         {% endfor %}
