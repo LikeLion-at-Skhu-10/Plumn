@@ -24,7 +24,7 @@
 
       <div class="title_form">
         <div class="title_write">
-          <input type="text" name="title" class="form-control" id="story" maxlength="20" required
+          <input type="text" name="title" class="form-control" id="story" maxlength="30" required
             placeholder="제목을 입력해주세요.">
         </div>
         <div class="plus_button_wrap">
@@ -43,15 +43,17 @@
             </button>
           </div>
 
+          <!-- 클릭 시 .title_form의 width를 30%로 변경 -->
           <div class="middle_sort_plus">
-            <button class="sort_btn" type="button">
+            <button class="sort_btn" type="button" onclick="middleSort()">
               <i class="fa-solid fa-align-center"></i>
-              <span>가운데 정렬</span>
+              <span class="middle_sort_font">가운데 정렬</span>
             </button>
           </div>
         </div>
       </div>
   </div>
+
 
   <!-- container 커버 부분 끝 -->
 
@@ -130,7 +132,19 @@
     }
   </script>
   <script>
-
+    function middleSort() {
+      const titleForm = document.querySelector('.title_form');
+      const sortFont = document.querySelector('.middle_sort_font');
+      sortFont.innerText = '가운데 정렬';
+      const clickedClass = "clicked";
+      if (titleForm.classList.contains(clickedClass)) {
+        sortFont.innerText = '가운데 정렬';
+        titleForm.classList.remove(clickedClass);
+      } else {
+        sortFont.innerText = '좌측 정렬';
+        titleForm.classList.add(clickedClass);
+      }
+    }
   </script>
   {% endblock %}
   {% block footer %} {% endblock %}
