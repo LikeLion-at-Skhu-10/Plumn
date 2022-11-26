@@ -18,7 +18,7 @@
     {% block content %}
     <div class="list_container">
         <div class="list_title">
-            <h2 class="list_title_text">IT 게시글</h2>
+            <h2 class="list_title_text">전체 게시글</h2>
         </div>
 
         <div class="list_button_wrap">
@@ -33,7 +33,7 @@
             <a class="list_btn" href="#" onclick="myFunction()"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         </div>
 
-        <div class="list_btn_wrap_list">
+        {% comment %} <div class="list_btn_wrap_list">
             <a class="list_btn list_btn_hiding" href="#"><span>문학</span></a>
             <a class="list_btn list_btn_hiding" href="#"><span>유아/아동</span></a>
             <a class="list_btn list_btn_hiding" href="#"><span>여행</span></a>
@@ -49,7 +49,7 @@
             <a class="list_btn list_btn_hiding" href="#"><span>문화</span></a>
             <a class="list_btn list_btn_hiding" href="#"><span>공학</span></a>
             <a class="list_btn list_btn_hiding" href="#"><span>인물</span></a>
-        </div>
+        </div> {% endcomment %}
 
         {% for post in posts %}
         <div class="writing_list" href="{% url 'read' post.id %}">
