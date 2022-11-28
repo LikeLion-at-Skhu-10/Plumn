@@ -6,7 +6,7 @@
 <head>
     <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
     <meta charset="UTF-8">
-    <title>{% block title %} 리스트 목록 {% endblock %}</title>
+    <title>{% block title %} {{topic.topic}} {% endblock %}</title>
     {% block head %}
     <link rel="stylesheet" href="{% static 'css/post.css' %}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -23,8 +23,10 @@
 
         <div class="list_button_wrap">
             {% for topic in topic %}
-            <a class="list_btn" href="{% url 'topiclist' topic.id %}"><span>{{topic.topic}}</span></a>
+                <a class="list_btn" href="{% url 'topiclist' topic.id %}"><span>{{topic.topic}}</span></a>
             {% endfor %}
+            <a class="list_btn list_btn_hiding" href="#" onclick="myFunction()">
+                <i class="fa-solid fa-xmark"></i></a>
             {% comment %} <a class="list_btn" href="#"><span>건강/취미</span></a>
             <a class="list_btn" href="#"><span>경제/경영</span></a>
             <a class="list_btn" href="#"><span>국어/외국어</span></a>
