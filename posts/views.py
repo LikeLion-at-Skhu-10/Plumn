@@ -10,17 +10,24 @@ from django.db.models import Q
 ############################################################
 @login_required(login_url='/login/')
 def create(request):
+    topic = Topic.objects.all()
     if request.method == 'POST':
+        post_topic = request.POST.get('topic')
+        print(post_topic)
         form = PostForm(request.POST, request.FILES)
+        form.topic_id = post_topic
+        print(form.errors)
         if form.is_valid():
+            print(post_topic)
             form = form.save(commit=False)
             form.user = request.user
             form.post_date = timezone.now()
             form.save()
             return redirect('list')
+        #return render(request, 'blog/create.html', {'form':form, 'topic':topic})
     else:
         form = PostForm()
-        return render(request, 'blog/create.html', {'form':form})
+        return render(request, 'blog/create.html', {'form':form, 'topic':topic})
 
 def list(request):
     posts = Post.objects.all()
@@ -30,7 +37,7 @@ def list(request):
     return render(request, 'blog/list.html', {'posts':posts, 'topic':topic})
 
 def topiclist(request, id):
-    topic_posts = Post.objects.filter(topic=id)
+    topic_posts = Post.objects.filter(topic_id=id)
     topic = Topic.objects.all()
     return render(request, 'blog/topiclist.html', {'topic_posts':topic_posts, 'topic':topic})
 

@@ -76,25 +76,9 @@
     <span class="multi-select">
       <div class="keyword_btn">
           <select name="topic" id="keyword">
-            <option value="" selected>---------</option>
-            <option value="LIFE">가정 / 생활</option>
-            <option value="HEALTH / COOK">건강 / 요리</option>
-            <option value="ECONOMY / MANAGEMENT">경제 / 경영</option>
-            <option value="LANGUAGE">국어 / 외국어</option>
-            <option value="COMPUTER / IT">컴퓨터 / IT</option>
-            <option value="POLITICS / SOCIETY">정치 / 사회</option>
-            <option value="LITERATURE">문학</option>
-            <option value="CHILD">유아 / 아동</option>
-            <option value="TRAVEL">여행</option>
-            <option value="HISTORY">역사</option>
-            <option value="ART">예술</option>
-            <option value="HUMANITIES">인문</option>
-            <option value="PEOPLE">인물</option>
-            <option value="SELF-IMPROVEMENT">자기계발</option>
-            <option value="SCIENCE">과학</option>
-            <option value="RELIGION">종교</option>
-            <option value="CULTURE">문화</option>
-            <option value="ENGINEERING">공학</option>
+            {% for topic in topic %}
+            <option value= "{{topic.id}}">{{topic.topic}}</option>
+            {% endfor %}
           </select>
       </div>
     </span>

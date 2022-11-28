@@ -6,7 +6,7 @@
 <head>
     <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
     <meta charset="UTF-8">
-    <title>{% block title %} {{topic.topic}} {% endblock %}</title>
+    <title>{% block title %} {{topic_posts.topic_id_set}} {% endblock %}</title>
     {% block head %}
     <link rel="stylesheet" href="{% static 'css/post.css' %}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -18,7 +18,7 @@
     {% block content %}
     <div class="list_container">
         <div class="list_title">
-            <h2 class="list_title_text">{{topic.topic}}</h2>
+            <h2 class="list_title_text">{{topic_posts.topic_id}}</h2>
         </div>
 
         <div class="list_button_wrap">
@@ -53,7 +53,7 @@
             <a class="list_btn list_btn_hiding" href="#"><span>인물</span></a>
         </div> {% endcomment %}
 
-        {% for post in posts %}
+        {% for post in topic_posts %}
         <div class="writing_list" href="{% url 'read' post.id %}">
             <div class="list_text">
                 <div class="writing_title">
