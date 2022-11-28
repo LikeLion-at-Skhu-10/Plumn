@@ -57,27 +57,30 @@
     </div>
     <!-- 댓글  -->
     <div class="commentBox">
+        <!-- 1) -->
         <div class="user_comment">
             <img src="{% static 'img/mylover.jpg' %}" alt="프로필" class="chat_profileImage">
             <span class="chat_profile_name">{{ post.user }}</span>
             <p class="js_comment commenting">잘보고있어요 !</p>
         </div>
 
-
+        <!-- 2) -->
         <div class="main_comment">
-
+            <!-- 요기에다가 만들면ㄷ ㅚ지 않을까 ? -->
         </div>
     </div>
-    <div class="chatbox">
-        <!-- <div class="chat_profile">
-            <img src="{% static 'img/mylover.jpg' %}" alt="프로필" class="chat_profileImage">
-            <p class="chat_profile_name">{{ post.user }}</p>
-        </div> -->
-        <div class="chat_userProfile">
-            <input class="chat_comment" type="text" placeholder="댓글을 입력해주세요" value="">
-            <button class="chat_button">쓰기</button>
+    <form action="">
+        <div class="chatbox">
+            <div class="chat_profile">
+                <img src="{% static 'img/mylover.jpg' %}" alt="프로필" class="chat_profileImage">
+                <p class="chat_profile_name">{{ post.user }}</p>
+            </div>
+            <div class="chat_userProfile">
+                <input class="chat_comment" type="text" placeholder="댓글을 입력해주세요" value="">
+                <button class="chat_button">쓰기</button>
+            </div>
         </div>
-    </div>
+    </form>
 
     <hr class="content_alert">
 
