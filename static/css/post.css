@@ -963,6 +963,100 @@ body {
   font-size: 28px;
 }
 
+.chatbox {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.chat_profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 70px;
+  font-size: 12px;
+  flex-grow: 0.02;
+  margin-right: 30px;
+}
+
+.chat_profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.chat_profile_name {
+  font-size: 12px;
+  opacity: 0;
+  position: absolute;
+  transition: all ease 0.5s;
+}
+
+.chat_profile:hover,
+.user_comment:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.chat_profileImage:hover + .chat_profile_name {
+  opacity: 1;
+}
+
+.chat_userProfile {
+  display: flex;
+}
+
+.chat_userProfile > input {
+  border: none;
+  background-color: #fdf7f7;
+  border-radius: 25px;
+  width: 1000px;
+  font-size: 16px;
+}
+
+.chat_userProfile > input:focus {
+  outline: 1px solid #ccc;
+}
+
+.chat_button {
+  border: none;
+  border-radius: 25px;
+  padding: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.chat_button:hover {
+  border: 1px solid #ccc;
+  transition: all 0.3s;
+  background-color: rgb(230, 230, 230);
+}
+
+.commentBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.user_comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  font-size: 12px;
+  flex-grow: 0.02;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.commenting {
+  font-size: 14px;
+}
 /***********************************************/
 /* 이의제기 페이지(readreport.html) */
 

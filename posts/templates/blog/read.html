@@ -47,12 +47,35 @@
             <hr class="myintro_hr">
             <div class="myintro_profile">
                 <div class="profile_photo">
-                    <img src="{% static 'img/mylover.jpg' %}" alt="아이유" class="profile_img">
+                    <img src="{% static 'img/needloginuser.png' %}" alt="아이유" class="profile_img">
                 </div>
                 <p class="profile_name">{{ post.user }}</p>
                 <!-- <p class="profile_description">{{ profile.userintro }}</p> -->
                 <button class="profile_follow" id="follow_btn" onclick="changebtnName()">구독</button>
             </div>
+        </div>
+    </div>
+    <!-- 댓글  -->
+    <div class="commentBox">
+        <div class="user_comment">
+            <img src="{% static 'img/mylover.jpg' %}" alt="프로필" class="chat_profileImage">
+            <span class="chat_profile_name">{{ post.user }}</span>
+            <p class="js_comment commenting">잘보고있어요 !</p>
+        </div>
+
+
+        <div class="main_comment">
+
+        </div>
+    </div>
+    <div class="chatbox">
+        <!-- <div class="chat_profile">
+            <img src="{% static 'img/mylover.jpg' %}" alt="프로필" class="chat_profileImage">
+            <p class="chat_profile_name">{{ post.user }}</p>
+        </div> -->
+        <div class="chat_userProfile">
+            <input class="chat_comment" type="text" placeholder="댓글을 입력해주세요" value="">
+            <button class="chat_button">쓰기</button>
         </div>
     </div>
 
@@ -166,15 +189,16 @@
             window.location = "{% url 'update' post.id %}";
         }
         function deleteBtn() {
-            if (confirm("게시글을 삭제하시겠습니까?") == true){
+            if (confirm("게시글을 삭제하시겠습니까?") == true) {
                 alert("게시글이 삭제되었습니다.")
                 window.location = "{% url 'delete' post.id %}";
             } else {
                 return false;
             }
         }
-        </script>
+    </script>
     <script src="{% static 'js/btnchange.js' %}"></script>
+    <script src="{% static 'js/reportChat.js' %}"></script>
     {% endblock %}
 
     {% block footer %} {% endblock %}
