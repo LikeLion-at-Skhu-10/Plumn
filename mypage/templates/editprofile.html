@@ -30,6 +30,7 @@
     <div class="mypage_content">
         <div class="mypage_profile">
           <button class="mp_editbtn">
+            <input type="file" name="userphoto" accept="image/*" id="id_userphoto">
             {% if profile.userphoto %}
             <img src="{{profile.userphoto.url}}">
             {% else %}
@@ -39,16 +40,16 @@
         </div>
       <div class="editpr_ip">  
         <div class="prform">
-          {{ form.username }}
+          <input type="text" name="username" required class="prInput" required id="id_username" value="{{profile.username}}">
           <label class="prInputLabel" for="name">이름</label>
           <span class="spanOverlay"></span>
           <span class="spanBase"></span>
         </div>
         <div class="prform">
-            {{ form.userintro }}
-            <label class="prInputLabel" for="name">자기소개</label>
-            <span class="spanOverlay"></span>
-            <span class="spanBase"></span>
+          <input type="text" name="userintro" class="prInput" maxlength="256" id="id_userintro" value="{{profile.userintro}}">
+          <label class="prInputLabel" for="name">자기소개</label>
+          <span class="spanOverlay"></span>
+          <span class="spanBase"></span>
         </div>
         <div class="row">
           <div class="col s12">
