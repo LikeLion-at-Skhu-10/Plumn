@@ -14,40 +14,46 @@
 </head>
 
 <body>
-<div id="container_one">
+  <div id="container_one" class="title_container">
     {% block content %}
-    <form action = "{% url 'create' %}" method="POST" enctype="multipart/form-data">
+    <div class="title_imgBox">
+      <img class="title_img" src="" alt="">
+    </div>
+    <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-    <div class="title_form">
-      <div class="title_write">
-        <input type="text" name="title" class="form-control" id="story" maxlength="256" required placeholder="제목을 입력해주세요.">
-      </div>
-    </div>
-    <div class="plus_button_wrap">
-      <div class="cover_image_plus">
-        <!-- <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="img/*"> -->
-          <button class="cover_image_btn" type="button">
-            <i class="fa-solid fa-image"></i>
-            <input type="file" name="image" id="input-cover" class="image_inputType_file" accept="image/*">
-            <span>커버 이미지 변경</span>
-          </button>
-      </div>
 
-      <div class="cover_color_plus">
-        <button class="cover_color_btn" onclick="colorChange()" type="button">
-          <i class="fa-solid fa-palette"></i>
-          <span>커버 배경색 변경</span>
-        </button>
-      </div>
+      <div class="title_form">
+        <div class="title_write">
+          <input type="text" name="title" class="form-control" id="story" maxlength="30" required
+            placeholder="제목을 입력해주세요.">
+        </div>
+        <div class="plus_button_wrap">
+          <div class="cover_image_plus">
+            <button class="cover_image_btn" type="button">
+              <i class="fa-solid fa-image"></i>
+              <input type="file" name="image" id="input-cover" class="image_inputType_file js-image" accept="image/*">
+              <span>커버 이미지 변경</span>
+            </button>
+          </div>
 
-      <div class="middle_sort_plus">
-        <button class="sort_btn" type="button">
-          <i class="fa-solid fa-align-center"></i>
-          <span>가운데 정렬</span>
-        </button>
+          <div class="cover_color_plus">
+            <button class="cover_color_btn" onclick="colorChange()" type="button">
+              <i class="fa-solid fa-palette"></i>
+              <span>커버 배경색 변경</span>
+            </button>
+          </div>
+
+          <!-- 클릭 시 .title_form의 width를 30%로 변경 -->
+          <div class="middle_sort_plus">
+            <button class="sort_btn" type="button" onclick="middleSort()">
+              <i class="fa-solid fa-align-center"></i>
+              <span class="middle_sort_font">가운데 정렬</span>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
+
 
   <!-- container 커버 부분 끝 -->
 
@@ -56,19 +62,23 @@
   <div class="container_two">
     <div class="space_form">
       <div class="space_write">
-        <textarea name="content" onkeyup="adjustHeight();" class="wrap_item item_type_text" id="demo" placeholder="내용을 입력해주세요" required></textarea>
+        <textarea name="content" onkeyup="adjustHeight();" class="wrap_item item_type_text" id="demo"
+          placeholder="내용을 입력해주세요" required></textarea>
       </div>
     </div>
 
     <div class="content_box">
-      <div class="box change_text">본문</div>
-      <div class="box change_boldtext"><i class="fa-solid fa-bold fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-underline fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-strikethrough fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-palette fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-link fa-lg"></i></div>
+      <div class="box js_change_text">본문</div>
+      <div class="box js_change_boldtext"><i class="fa-solid fa-bold fa-lg"></i></div>
+      <div class="box js_change_font"><i class="fa-solid fa-underline fa-lg"></i></div>
+      <div class="box js_font_color"><i class="fa-solid fa-palette fa-lg"></i></div>
+      <div class="font_color">
+        <div class="red js_red">red</div>
+        <div class="blue js_blue">blue</div>
+        <div class="gray js_gray">gray</div>
+      </div>
       <div class="box"><i class="fa-solid fa-images fa-lg"></i></div>
-      <div class="box"><i class="fa-solid fa-paperclip fa-lg"></i></div>
+      <!-- <div class="box"><i class="fa-solid fa-paperclip fa-lg"></i></div> -->
     </div>
 
     <hr class="hr_stylelish">
@@ -91,18 +101,33 @@
         <span>저장</span>
       </button>
     </div>
-  </form>
+    </form>
   </div>
 
   <script src="{% static 'js/image.js' %}"></script>
   <script src="{% static 'js/selectBox.js' %}"></script>
   <!-- <script src="{% static 'js/content_box.js' %}"></script> -->
   <script>
-    function adjustHeight(){
+    function adjustHeight() {
       var textEle = $('textarea');
       textEle[0].style.height = 'auto';
       var textEleHeight = textEle.prop('scrollHeight');
       textEle.css('height', textEleHeight);
+    }
+  </script>
+  <script>
+    function middleSort() {
+      const titleForm = document.querySelector('.title_form');
+      const sortFont = document.querySelector('.middle_sort_font');
+      sortFont.innerText = '가운데 정렬';
+      const clickedClass = "clicked";
+      if (titleForm.classList.contains(clickedClass)) {
+        sortFont.innerText = '가운데 정렬';
+        titleForm.classList.remove(clickedClass);
+      } else {
+        sortFont.innerText = '좌측 정렬';
+        titleForm.classList.add(clickedClass);
+      }
     }
   </script>
   {% endblock %}

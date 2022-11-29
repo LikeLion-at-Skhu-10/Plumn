@@ -56,10 +56,10 @@
             <div class="list_text">
                 <div class="writing_title">
                     <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
-                    <span class="list_title_text">{{ post.title }}
+                        <span class="list_title_text">{{ post.title }}
                     </a>
-                        <i class="fa-solid fa-lock"></i>
-                        <span id="charged_writing" class="lock_free_text">이 글은 유료글 입니다.</span>
+                    <i class="fa-solid fa-lock"></i>
+                    <span id="charged_writing" class="lock_free_text">이 글은 유료글 입니다.</span>
                 </div>
                 <a href="{% url 'read' post.id %}" style="text-decoration: none; color: black">
                 <div class="writing_content">
@@ -80,7 +80,7 @@
                 <img src="{% static 'img/plumn.png' %}" class="list_photosize">
                 {% endif %}
             </div>
-        </a>
+            </a>
         </div>
         <hr class="list_hr">
         {% endfor %}

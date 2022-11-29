@@ -25,10 +25,19 @@ function colorChange() {
 }
 
 // 커버 이미지 변경 js
+document.querySelector(".cover_image_btn").addEventListener("click", () => {
+  const realUpload = document.querySelector(".js-image");
+  realUpload.click();
+});
 
-const coverImageBtn = document.querySelector(".cover_image_btn");
-const inputCover = document.querySelector("#input-cover");
-
-coverImageBtn.addEventListener("click", () => {
-  inputCover.click();
+const imageInput = document.querySelector("#input-cover");
+imageInput.addEventListener("change", function () {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    const uploadImage = reader.result;
+    document.querySelector(
+      ".title_img"
+    ).style.backgroundImage = `url(${uploadImage})`;
+  });
+  reader.readAsDataURL(this.files[0]);
 });

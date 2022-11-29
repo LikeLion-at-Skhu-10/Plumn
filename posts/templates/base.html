@@ -113,11 +113,136 @@
           <button type="reset" class="search" id="search-btn"></button>
         </form>
       </div>
+      <a onclick="notification()" id="notification_button" class="toggle" style="cursor: pointer;"><i class="fa-solid fa-bell" style="text-decoration: none; color: black; font-size: 28pt;"></i></a>
       <a href="{% url 'create' %}"><i class="fa-solid fa-pencil" style="text-decoration: none; color: black; font-size: 28pt;"></i></a>
       <a href="{% url 'mypage' %}"><i class="fa-solid fa-user" style="text-decoration: none; color: black; font-size: 28pt;"></i></a>
     </div>
   </div>
+</div>
+<div class="notif_container">
+  <div class="notif_content">
 
+    <div class="notif_title">
+      <h2>알림</h2>
+    </div>
+    <hr>
+    <div class="notif_body">
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 구독하셨습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 1시간 전</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 00000 글에 댓글을 남겼습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 2시간 전</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 00000 글에 댓글을 남겼습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 2시간 전</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 00000 글에 댓글을 남겼습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 2시간 전</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 00000 글에 댓글을 남겼습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 2시간 전</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 00000 글에 댓글을 남겼습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 2시간 전</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 00000 글에 댓글을 남겼습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 2시간 전</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="notif_detail_content" href="#">
+        <div class="notif_profile">
+          <img src="{% static 'img/munchickitten.jpg' %}">
+        </div>
+        <div class="detail_content_wrap">
+          <div class="detail_content">
+            <p>000님이 00000 글에 댓글을 남겼습니다.</p>
+          </div>
+          <div class="detail_time">
+            <span>약 2시간 전</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
 </div>
 <div id="container">
   <!-- 아래부터는 상속제외 -->
