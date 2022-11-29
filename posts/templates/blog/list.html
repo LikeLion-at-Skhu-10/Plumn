@@ -24,32 +24,9 @@
         <div class="list_button_wrap">
             {% for topic in topic %}
             <a class="list_btn" href="{% url 'topiclist' topic.id %}"><span>{{topic.topic}}</span></a>
-            {% comment %} <a class="list_btn" href="#"><span>건강/취미</span></a>
-            <a class="list_btn" href="#"><span>경제/경영</span></a>
-            <a class="list_btn" href="#"><span>국어/외국어</span></a>
-            <a class="list_btn" href="#"><span>컴퓨터/IT/모바일</span></a>
-            <a class="list_btn" href="#"><span>사회/정치</span></a> {% endcomment %}
             {% endfor %}
             <a class="list_btn" href="#" onclick="myFunction()"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         </div>
-
-        {% comment %} <div class="list_btn_wrap_list">
-            <a class="list_btn list_btn_hiding" href="#"><span>문학</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>유아/아동</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>여행</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>역사</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>예술</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>인문</span></a>
-            <a class="list_btn list_btn_hiding" href="#" onclick="myFunction()">
-                <i class="fa-solid fa-xmark"></i></a>
-
-            <a class="list_btn list_btn_hiding" href="#"><span>자기계발</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>과학</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>종교</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>문화</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>공학</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>인물</span></a>
-        </div> {% endcomment %}
 
         {% for post in posts %}
         <div class="writing_list" href="{% url 'read' post.id %}">
