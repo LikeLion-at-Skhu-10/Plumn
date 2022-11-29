@@ -6,7 +6,10 @@
 <head>
     <link href="{% static 'img/plumn_icon.png' %}" rel="shorcut icon">
     <meta charset="UTF-8">
-    <title>{% block title %} {{topic_posts.topic_id_set}} {% endblock %}</title>
+    <title>{% block title %} 
+        {{topic.id}}
+        {% endblock %}
+    </title>
     {% block head %}
     <link rel="stylesheet" href="{% static 'css/post.css' %}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -27,31 +30,9 @@
             {% endfor %}
             <a class="list_btn list_btn_hiding" href="#" onclick="myFunction()">
                 <i class="fa-solid fa-xmark"></i></a>
-            {% comment %} <a class="list_btn" href="#"><span>건강/취미</span></a>
-            <a class="list_btn" href="#"><span>경제/경영</span></a>
-            <a class="list_btn" href="#"><span>국어/외국어</span></a>
-            <a class="list_btn" href="#"><span>컴퓨터/IT/모바일</span></a>
-            <a class="list_btn" href="#"><span>사회/정치</span></a> {% endcomment %}
+
             <a class="list_btn" href="#" onclick="myFunction()"><i class="fa-solid fa-ellipsis-vertical"></i></a>
         </div>
-        
-        {% comment %} <div class="list_btn_wrap_list">
-            <a class="list_btn list_btn_hiding" href="#"><span>문학</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>유아/아동</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>여행</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>역사</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>예술</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>인문</span></a>
-            <a class="list_btn list_btn_hiding" href="#" onclick="myFunction()">
-                <i class="fa-solid fa-xmark"></i></a>
-
-            <a class="list_btn list_btn_hiding" href="#"><span>자기계발</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>과학</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>종교</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>문화</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>공학</span></a>
-            <a class="list_btn list_btn_hiding" href="#"><span>인물</span></a>
-        </div> {% endcomment %}
 
         {% for post in topic_posts %}
         <div class="writing_list" href="{% url 'read' post.id %}">
@@ -105,7 +86,7 @@
                         <span>100 Plumn</span>
                     </div>
                     <div class="chargeBuyBtn">
-                        <button class="charge_btn" onclick="location.href= '{% url 'pay' %}';"><span>플럼
+                        <button class="charge_btn" onclick="location.href= '{% url 'window' %}';"><span>플럼
                                 충전하기</span></button>
 
                         <button class="buy_btn"><a id="realBuy_btn">

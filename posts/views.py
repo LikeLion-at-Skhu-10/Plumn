@@ -7,6 +7,7 @@ from .forms import FeedbackForm, ObjectionForm, PostForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+import requests, json, base64, time
 ############################################################
 @login_required(login_url='/login/')
 def create(request):
@@ -47,6 +48,7 @@ def read(request, id):
     return render(request, 'blog/read.html', {'post':post, 'profile':profile})
 ############################################################
 def index(request):
+    topic = Topic.objects.all()
     user = request.user
     if user.is_authenticated:
         user = User.objects.get(id=user.id)
@@ -60,9 +62,10 @@ def index(request):
             'following_count':following_count,
             'followers_count':followers_count,
             'posts_count':posts_count,
+            'topic':topic,
             }
         return render(request, 'index.html', context)
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'topic':topic})
 
 def base(request):
     user = request.user
@@ -252,3 +255,46 @@ def like(request):
 #         if request.user == comment.user:
 #             comment.delete()
 #     return redirect('articles:detail', article_pk)
+
+def window(request):
+    return render(request, 'window.html')
+
+
+def success(request):
+    orderId = request.GET.get('orderId')
+    amount = request.GET.get('amount')
+    paymentKey = request.GET.get('paymentKey')
+    
+    url = "https://api.tosspayments.com/v1/payments/confirm"
+    secretkey = "test_sk_5GePWvyJnrKJ2BqWOe1VgLzN97Eo"
+    userpass = secretkey + ':'
+    encoded_u = base64.b64encode(userpass.encode()).decode()
+    
+    headers = {
+        "Authorization" : "Basic %s" % encoded_u,
+        "Content-Type" : "application/json"
+    }
+    params = {
+        "orderId" : orderId,
+        "amount" : amount,
+        "paymentKey"  : paymentKey,
+    }
+    
+    res = requests.post(url, data=json.dumps(params), headers=headers)
+    resjson = res.json()
+    pretty = json.dumps(resjson, indent=4)
+    respaymentKey = resjson["paymentKey"]
+    resorderId = resjson["orderId"]
+    return render(request, "success.html",
+        {
+            "res":pretty,
+            "respaymentKey":respaymentKey,
+            "resorderId":resorderId,
+        }
+    )
+
+def fail(request):
+    code = request.GET.get('code')
+    message = request.GET.get('message')
+    
+    return render(request, 'fail.html', {'code':code, 'message':message})

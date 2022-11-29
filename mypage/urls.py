@@ -1,6 +1,7 @@
 from django.urls import path
 from mypage import views
 from .views import PasswordChangeView #LoginRequiredMixin
+import posts.views as post_views
 
 urlpatterns=[
     path('mypage/', views.mypage, name='mypage'),
@@ -13,6 +14,9 @@ urlpatterns=[
     path('<noti_id>/delete/', views.delete_notification, name='delete-notifications'),
     path('scraps/', views.scraps, name='scraps'),
     path('likes/', views.likes, name='likes'),
+    path('window/', post_views.window, name='window'),
+    path('fail/', post_views.fail, name='fail'),
+    path('success/', post_views.success, name='success'),
     #path('followers/<int:id>', views.followers, name='followers'),
     #path('followings/<int:id>', views.followings, name='followings'),
 ]

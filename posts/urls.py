@@ -18,4 +18,7 @@ urlpatterns=[
     path('search/', views.search, name='search'),
     path('read/<int:post_id>/like/', views.like, name='like'),
     path('read/<int:post_id>/scrap/', views.scrap, name='scrap'),
+    path('window', views.window, name="window"),
+    path('success', views.success, name="success"),
+    path('fail', views.fail, name="fail"),
 ]
